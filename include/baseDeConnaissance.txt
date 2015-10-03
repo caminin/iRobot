@@ -1,0 +1,7 @@
+IF acheteur est célibataire
+THEN prendre un petit appartement
+OU
+IF acheteurs sont deux
+THEN prendre un grand appartement
+
+IF 
