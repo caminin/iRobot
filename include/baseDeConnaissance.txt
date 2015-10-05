@@ -1,34 +1,43 @@
-IF adc non pris
-AND adc préféré
-THEN prendre adc
+IF l'adc n'est pas pris
+AND je voudrai prendre un adc
+THEN je prends adc
 
-IF pas de choix
-THEN prendre support
+IF je n'ai pas de choix
+THEN je prends support
+OU
+IF je suis le premier pick
+AND je n'ai pas de choix
+THEN je prends mid
 
-IF dernier pick
-THEN prendre support
+IF je suis le dernier pick
+THEN je prends support
 
-IF premier pick
-THEN prendre mid
+IF le mid n'est pas pris
+AND je ne suis pas le premier pick
+THEN je prends le mid
 
-IF mid non pris
-AND non premier pick
-THEN prendre mid
+IF mon adversaire un mid est un ap
+AND je vais prendre un mid
+THEN je prends le personnage galio
 
-IF adversaire ap
-AND prendre mid
-THEN prendre galio
+IF mon adversaire est un ad
+AND je prends mid
+THEN je prends le personnage kennen
 
-IF adversaire ad
-AND prendre mid
-THEN prendre kennen
+IF je prends adc
+AND je veux lancer des sorts
+AND mon adversaire est une caitlyn
+THEN je prends corki
 
-IF prendre adc
-AND lancé des sorts
-AND adversaire caitlyn
-THEN prendre corki
+IF je prends adc
+AND je ne connais pas mon adversaire
+THEN je prends caitlyn
 
-IF prendre adc
-AND 
-plop
+IF je prends mid
+AND je veux lancer des sorts
+THEN je prends veigar
+
+
+
+
 
