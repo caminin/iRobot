@@ -23,6 +23,12 @@ IF adversaire ad
 AND prendre mid
 THEN prendre kennen
 
+IF prendre adc
+AND lancé des sorts
+AND adversaire caitlyn
+THEN prendre corki
 
-
+IF prendre adc
+AND 
+plop
 
