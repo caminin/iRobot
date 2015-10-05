@@ -1,4 +1,5 @@
 adc non pris
+mid non pris
 adc préféré
 pas de choix
 prendre support
@@ -9,7 +10,7 @@ prendre support
 premier pick
 prendre mid
 
-mid non pris
+
 non premier pick
 prendre mid
 
