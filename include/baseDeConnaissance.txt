@@ -1,7 +1,28 @@
-IF acheteur est célibataire
-THEN prendre un petit appartement
-OU
-IF acheteurs sont deux
-THEN prendre un grand appartement
+IF adc non pris
+AND adc choisi
+THEN prendre adc
 
-IF 
+IF pas de choix
+THEN prendre support
+
+IF dernier pick
+THEN prendre support
+
+IF premier pick
+THEN prendre mid
+
+IF mid non pris
+AND non premier pick
+THEN prendre mid
+
+IF adversaire ap
+AND prendre mid
+THEN prendre galio
+
+IF adversaire ad
+AND prendre mid
+THEN prendre kennen
+
+
+
+
