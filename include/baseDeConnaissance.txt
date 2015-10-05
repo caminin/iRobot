@@ -1,5 +1,5 @@
 IF adc non pris
-AND adc choisi
+AND adc préféré
 THEN prendre adc
 
 IF pas de choix
