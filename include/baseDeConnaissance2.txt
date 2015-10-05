@@ -1,8 +1,0 @@
-IF tempréature inferieur à 37.5
-THEN normal
-
-IF température supérieur à 37.5
-AND nez coulant
-THEN rhume
-
-IF 
