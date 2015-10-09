@@ -1,9 +1,9 @@
-#include "ostream"
-#include "string"
-#include "fstream"
-#include "vector"
-#include "iostream"
-#include "algorithm"
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <vector>
+#include <ostream>
+#include <algorithm>
 #include <string.h>
 using namespace std;
 
