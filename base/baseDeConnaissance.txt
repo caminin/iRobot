@@ -1,0 +1,17 @@
+IF POSTE[i].statut==LIBRE
+AND je veux POSTE[i]
+THEN je prends POSTE[i]
+
+IF !(avoir choix)
+THEN je prends DernierPoste(POSTE)
+
+IF je vais POSTE
+THEN je prends Pref(POSTE)
+
+IF je vais POSTE
+AND il prend PERSO
+THEN je prends Counter(POSTE,PERSO)
+
+IF mon adversaire est PERSO
+AND mon adversaire va POSTE
+THEN je prends counter(POSTE,PERSO)
