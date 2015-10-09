@@ -11,6 +11,7 @@ int main() {
     ofstream baseFait;
     baseFait.open("baseFait.txt");
     string ligne;
+    std::vector<string> lignes;
     
 
     if ( !fichier )
@@ -32,11 +33,24 @@ int main() {
             	if(pos!=string::npos)
             	{
             		ligne=ligne.substr(pos+1);
-			      	baseFait<<ligne<<"\n";
-            		
-            	}
-            }																						
 
+                    bool existe = false;
+                    int i = 0;
+
+                    while (existe == false && i < lignes.size())
+            		{
+                        if (lignes[i]==ligne)
+                            existe = true;
+                        i++;
+                    }
+                    if (existe == false)
+                        lignes.push_back(ligne);
+            	}
+            }
+        }
+        for (vector<string>::iterator i = lignes.begin(); i != lignes.end(); ++i)
+        {
+            baseFait << *i << endl;
         }
     }
     baseFait.close();
