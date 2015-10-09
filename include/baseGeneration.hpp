@@ -1,9 +1,9 @@
-#include "../../../../../../usr/include/c++/5.1.1/iostream"
-#include "../../../../../../usr/include/c++/5.1.1/string"
-#include "../../../../../../usr/include/c++/5.1.1/fstream"
-#include "../../../../../../usr/include/c++/5.1.1/vector"
-#include "../../../../../../usr/include/c++/5.1.1/ostream"
-#include "../../../../../../usr/include/c++/5.1.1/algorithm"
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <vector>
+#include <ostream>
+#include <algorithm>
 #include <string.h>
 
 class baseGeneration
