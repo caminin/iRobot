@@ -1,0 +1,24 @@
+!(POSTE pris)
+je veux POSTE
+je prends POSTE
+je n'ai pas de choix
+X n'est pas pris
+je prends X
+je suis X
+je prends Y
+Y n'est pas pris
+je suis Y
+mon adversaire est X 
+mon adversaire va Y
+je vais Y
+je prends counter(Y,X)
+je veux Y
+mon adversaire est Z
+je prends Counter(X,Z,Y)
+je prends P
+je ne connais pas mon adversaire
+je prends caitlyn
+mon adversaire est Y
+je prends Counter(X,Y)
+je prends le mid
+je prends veigar

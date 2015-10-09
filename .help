@@ -1,0 +1,2 @@
+basegen:
+	Génère une base de fait à partir de la base de connaissance puis l'affiche

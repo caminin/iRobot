@@ -1,0 +1,40 @@
+IF !(POSTE pris)
+AND je veux POSTE
+THEN je prends POSTE
+
+IF je n'ai pas de choix
+AND X n'est pas pris
+THEN je prends X
+
+IF je suis X
+AND je n'ai pas de choix
+THEN je prends Y
+
+IF je suis X
+AND Y n'est pas pris
+THEN je prends Y
+
+IF X n'est pas pris
+AND je suis Y
+THEN je prends X
+
+IF mon adversaire est X 
+AND mon adversaire va Y
+AND je vais Y
+THEN je prends counter(Y,X)
+
+IF je prends X
+AND je veux Y
+AND mon adversaire est Z
+THEN je prends Counter(X,Z,Y)
+
+IF je prends P
+AND je ne connais pas mon adversaire
+THEN je prends caitlyn
+
+IF je prends X
+AND mon adversaire est Y
+THEN je prends Counter(X,Y)
+
+IF je prends le mid
+THEN je prends veigar
