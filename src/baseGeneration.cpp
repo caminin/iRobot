@@ -17,17 +17,17 @@ bool baseGeneration::myfind(vector<string> *myvector,string &ligne)
 }
 void baseGeneration::afficheBaseFait()
 {
-	std::ifstream fichier("./base/baseFait.txt");
+	ifstream fichier("./base/baseFait.txt");
         if(!fichier) 
         {
-            std::cerr << "Le fichier help n'existe pas" << std::endl;
+            cerr << "Le fichier help n'existe pas" << endl;
         }
         else
         {
-            std::string line;
-            while(std::getline(fichier,line))
+            string line;
+            while(getline(fichier,line))
             {
-                std::cout << line << std::endl;
+                cout << line << endl;
             }
         }
 }
@@ -38,7 +38,7 @@ void baseGeneration::creerBaseFaitUnique()
     ofstream baseFait;
     baseFait.open("./base/baseFait.txt");
     string ligne;
-    std::vector<string> lignes;
+    vector<string> lignes;
     
 
     if ( !fichier )

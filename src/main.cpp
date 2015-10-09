@@ -1,6 +1,8 @@
-#include <stdio.h>
+#include <cstdio>
 #include <string.h>
+#include <iostream>
 #include "../include/baseGeneration.hpp"
+using namespace std;
 
 
 
@@ -12,17 +14,17 @@ int main(int argc, char* argv[])
 	{
 		if(strcmp(argv[1],"help")==0)
 		{
-			std::ifstream fichier("./.help");
+			ifstream fichier("./.help");
         if(!fichier) 
         {
-            std::cerr << "Le fichier help n'existe pas" << std::endl;
+            cerr << "Le fichier help n'existe pas" << endl;
         }
         else
         {
-            std::string line;
-            while(std::getline(fichier,line))
+            string line;
+            while(getline(fichier,line))
             {
-                std::cout << line << std::endl;
+                cout << line << endl;
             }
         }
 		}
