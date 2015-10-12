@@ -34,7 +34,7 @@ string init(int argc, char *argv[])
 		if(strcmp(argv[1],"basegen")==0)
 		{
 			baseGeneration base;
-			base.creerBaseFaitUnique();
+			base.generationBaseFait();
 			base.afficheBaseFait();
 		}
 		else {
