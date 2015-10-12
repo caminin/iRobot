@@ -88,7 +88,7 @@ void baseGeneration::generationBaseFait()
 
 void baseGeneration::structGeneration(){
 	counter list_counter[15];
-	ofstream strucFile("../base/list_counter",ios_base::binary); 
+	
 	//=====================TOP=====================
 	list_counter[0].champion_a_counter=GAREN;
 	list_counter[0].champion_qui_counter=DARIUS;
@@ -139,19 +139,15 @@ void baseGeneration::structGeneration(){
 	list_counter[14].champion_a_counter=FIDDLE;
 	list_counter[14].champion_qui_counter=SHACO;
 	
+	ofstream strucFile("../base/list_counter",ios_base::binary); 
+	
 	for(int i=0;i<15;i++)
 	{
-		write(strucFile,list_counter[i]);
+		strucFile.write((char *)&(list_counter[i]),sizeof(counter));
 	}
-	
-	
-	
-	
-	
-	
-	write(strucFile,list_counter);
-	
+	strucFile.close();
 }
+
 
 
 
