@@ -1,4 +1,4 @@
-#include "../include/baseGeneration.hpp"
+#include "../include/fileGeneration.hpp"
 
 using namespace std;
 
@@ -6,7 +6,7 @@ extern string pathBaseFait;
 extern string pathBaseConnaissance;
 
 
-bool baseGeneration::myfind(vector<string> *myvector,string &ligne)
+bool fileGeneration::myfind(vector<string> *myvector,string &ligne)
 {
 	for(vector<string>::iterator i=myvector->begin();i!=myvector->end();i++)
    {
@@ -18,7 +18,7 @@ bool baseGeneration::myfind(vector<string> *myvector,string &ligne)
 	return false;
 }
 
-void baseGeneration::afficheBaseFait()
+void fileGeneration::afficheBaseFait()
 {
 	ifstream fichier(pathBaseFait);
         if(!fichier) 
@@ -35,7 +35,7 @@ void baseGeneration::afficheBaseFait()
         }
 }
 
-void baseGeneration::generationBaseFait()
+void fileGeneration::generationBaseFait()
 {
    fstream fichier(pathBaseConnaissance);
     ofstream baseFait;
@@ -86,7 +86,7 @@ void baseGeneration::generationBaseFait()
     baseFait.close();
 }
 
-void baseGeneration::structGeneration(){
+void fileGeneration::structGeneration(){
 	counter list_counter[15];
 	
 	//=====================TOP=====================

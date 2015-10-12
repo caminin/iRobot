@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <string.h>
 #include <iostream>
-#include "../include/baseGeneration.hpp"
+#include "../include/fileGeneration.hpp"
 using namespace std;
 
 string pathBaseFait = "./base/baseFait.txt";
@@ -33,7 +33,7 @@ string init(int argc, char *argv[])
 		}
 		if(strcmp(argv[1],"basegen")==0)
 		{
-			baseGeneration base;
+			fileGeneration base;
 			base.generationBaseFait();
 			base.afficheBaseFait();
 		}
