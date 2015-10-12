@@ -1,4 +1,4 @@
-POSTE[i].statut==LIBRE
+POSTE[i].libre==TRUE
 je veux POSTE[i]
 je prends POSTE[i]
 !(avoir choix)
@@ -9,4 +9,5 @@ il prend PERSO
 je prends Counter(POSTE,PERSO)
 mon adversaire est PERSO
 mon adversaire va POSTE
-je prends counter(POSTE,PERSO)
+Pref(POSTE)==vide
+je prends Default(POSTE)
