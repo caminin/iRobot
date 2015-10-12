@@ -15,17 +15,3 @@ THEN je prends Counter(POSTE,PERSO)
 IF mon adversaire est PERSO
 AND mon adversaire va POSTE
 THEN je prends counter(POSTE,PERSO)
-
-
-
-
-
-typedef struct s_poste {
-
-	string psote_nom
-	bool libre
-} poste;
-	
-	
-
-struct 

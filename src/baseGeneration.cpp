@@ -15,6 +15,7 @@ bool baseGeneration::myfind(vector<string> *myvector,string &ligne)
 	}
 	return false;
 }
+
 void baseGeneration::afficheBaseFait()
 {
 	ifstream fichier("./base/baseFait.txt");

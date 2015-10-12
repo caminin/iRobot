@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
 			base.afficheBaseFait();
 		}
 		else {
-			return 0;
+			cerr << "Donnez une commande" << endl;
 		}
 	}
 	return 0;
