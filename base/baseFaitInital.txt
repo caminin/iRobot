@@ -1,11 +1,2 @@
-JUNGLE Shaco
-TOP Garen
-MID 
-ADC Jinx
-SUPPORT Morgana
-
-JUNGLE Rengar
-TOP Rumble
-MID LeBlanc
-ADC Tristana
-SUPPORT Nautilus
+TOP Garen	MID Ahri
+ADC Jinx	JUNGLE Shaco
