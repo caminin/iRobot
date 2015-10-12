@@ -2,8 +2,8 @@ IF LISTEPOSTE.POSTE==0
 AND je veux LISTEPOSTE.POSTE
 THEN je prends LISTEPOSTE.POSTE
 
-IF avoirChoi pullx()==false
-THEN je prends DernierPoste(POSTE)
+IF avoirChoix()==false
+THEN je prends DernierPoste()
 
 IF je vais POSTE
 THEN je prends Pref(POSTE)

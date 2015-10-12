@@ -1,2 +1,2 @@
-TOP Garen	MID Ahri
-ADC Jinx	JUNGLE Shaco
+TOP/MID
+ADC/JUNGLE

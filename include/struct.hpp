@@ -28,17 +28,14 @@ enum type_poste {TOP,MID,ADC,SUPPORT,JUNGLE};
  
 enum statut {LIBRE,PRIS};
 
-typedef struct s_adversaire{
-     //sort_invoc ses_sorts[2];
-     champion son_champion;
-     type_poste son_poste;
-} adversaire ;
-
 
 typedef struct s_poste {
 	type_poste nom_poste;
 	statut mon_statut;
 } poste;
+
+// champion *TabAdversaire[5];
+// bool TabAllies[5];
 
 typedef struct s_counter {
 	champion champion_a_counter;
