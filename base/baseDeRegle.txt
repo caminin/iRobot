@@ -2,7 +2,7 @@ IF LISTEPOSTE.POSTE==0
 AND je veux LISTEPOSTE.POSTE
 THEN je prends LISTEPOSTE.POSTE
 
-IF avoirChoix()==false
+IF avoirChoi pullx()==false
 THEN je prends DernierPoste(POSTE)
 
 IF je vais POSTE
