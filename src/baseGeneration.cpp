@@ -1,7 +1,9 @@
 #include "../include/baseGeneration.hpp"
 
-
 using namespace std;
+
+extern string pathBaseFait;
+extern string pathBaseConnaissance;
 
 
 bool baseGeneration::myfind(vector<string> *myvector,string &ligne)
@@ -18,7 +20,7 @@ bool baseGeneration::myfind(vector<string> *myvector,string &ligne)
 
 void baseGeneration::afficheBaseFait()
 {
-	ifstream fichier("./base/baseFait.txt");
+	ifstream fichier(pathBaseFait);
         if(!fichier) 
         {
             cerr << "Le fichier help n'existe pas" << endl;
@@ -35,9 +37,9 @@ void baseGeneration::afficheBaseFait()
 
 void baseGeneration::generationBaseFait()
 {
-   fstream fichier("./base/baseDeConnaissance.txt");
+   fstream fichier(pathBaseConnaissance);
     ofstream baseFait;
-    baseFait.open("./base/baseFait.txt");
+    baseFait.open(pathBaseFait);
     string ligne;
     vector<string> lignes;
     

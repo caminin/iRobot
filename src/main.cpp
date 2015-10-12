@@ -4,29 +4,32 @@
 #include "../include/baseGeneration.hpp"
 using namespace std;
 
+string pathBaseFait = "./base/baseFait.txt";
+string pathBaseConnaissance = "./base/baseDeRegle.txt";
+string pathBaseChampion = "./base/baseChampion.txt";
 
 
-int main(int argc, char* argv[])
+string init(int argc, char *argv[])
 {
 	if(argc<2)
-		return 0;
+		return "Arguments insuffisants";
 	else 
 	{
 		if(strcmp(argv[1],"help")==0)
 		{
 			ifstream fichier("./.help");
-        if(!fichier) 
-        {
-            cerr << "Le fichier help n'existe pas" << endl;
-        }
-        else
-        {
-            string line;
-            while(getline(fichier,line))
-            {
-                cout << line << endl;
-            }
-        }
+	        if(!fichier) 
+	        {
+	            cerr << "Le fichier help n'existe pas" << endl;
+	        }
+	        else
+	        {
+	            string line;
+	            while(getline(fichier,line))
+	            {
+	                cout << line << endl;
+	            }
+	        }
 		}
 		if(strcmp(argv[1],"basegen")==0)
 		{
@@ -35,8 +38,15 @@ int main(int argc, char* argv[])
 			base.afficheBaseFait();
 		}
 		else {
-			cerr << "Donnez une commande" << endl;
+			return "Arguments incorrect";
 		}
 	}
+	return "Initialisation réussie";
+}
+
+int main(int argc, char* argv[])
+{
+	cout << init(argc, argv) << endl;
+
 	return 0;
 }
