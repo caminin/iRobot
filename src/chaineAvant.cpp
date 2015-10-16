@@ -1,9 +1,7 @@
-extern string pathBaseFait;
-extern string pathBaseConnaissance;
+#include "../include/chaineAvant.hpp"
 
-public class chaineAvant
-{
-public:
-	chaineAvant();
-	~chaineAvant();
-};
+
+void chaineAvant::runChaineAvant(){
+	
+
+}

@@ -1,0 +1,5 @@
+-Faire des structures pour contenir les bases de faits
+-Faire le parsage de la base de règle dans des instances de règle
+	-Faire une méthode appliquer qui applique la règle
+-Faire le chainage avant
+

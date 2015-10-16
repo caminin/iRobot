@@ -37,7 +37,7 @@ void fileGeneration::afficheBaseFait()
 
 void fileGeneration::generationBaseFait()
 {
-   fstream fichier(pathBaseConnaissance);
+    fstream fichier(pathBaseConnaissance);
     ofstream baseFait;
     baseFait.open(pathBaseFait);
     string ligne;
@@ -63,18 +63,16 @@ void fileGeneration::generationBaseFait()
             	if(pos!=string::npos)
             	{
             		ligne=ligne.substr(pos+1);
-
-                    bool existe = false;
-                    unsigned int i = 0;
-
-                    while ((existe == false) & (i < lignes.size()))
+						bool existe = false;
+                  unsigned int i = 0;
+                  while ((existe == false) & (i < lignes.size()))
             		{
-                        if (lignes[i]==ligne)
-                            existe = true;
-                        i++;
-                    }
-                    if (existe == false)
-                        lignes.push_back(ligne);
+							if (lignes[i]==ligne)
+								 existe = true;
+							i++;
+						}
+						if (existe == false)
+							lignes.push_back(ligne);
             	}
             }
         }
