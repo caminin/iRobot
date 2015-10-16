@@ -14,7 +14,7 @@ class fileGeneration
 		bool myfind(vector<std::string> *myvector,string &ligne);
 		void generationBaseFait();
 		void afficheBaseFait();
-		void structGeneration();
+		void generationStructFile();
 };
 
 

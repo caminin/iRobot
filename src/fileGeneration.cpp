@@ -86,7 +86,7 @@ void fileGeneration::generationBaseFait()
     baseFait.close();
 }
 
-void fileGeneration::structGeneration(){
+void fileGeneration::generationStructFile(){
 	counter list_counter[15];
 	
 	//=====================TOP=====================
@@ -139,7 +139,8 @@ void fileGeneration::structGeneration(){
 	list_counter[14].champion_a_counter=FIDDLE;
 	list_counter[14].champion_qui_counter=SHACO;
 	
-	ofstream strucFile("../base/list_counter",ios_base::binary); 
+	ofstream strucFile;
+	strucFile.open("../base/list_counter",ios_base::binary); 
 	
 	for(int i=0;i<15;i++)
 	{

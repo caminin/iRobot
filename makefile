@@ -1,7 +1,7 @@
 TARGET = prog
 
 SRCS = main.cpp\
-       baseGeneration.cpp\
+       fileGeneration.cpp\
 
 OBJ_DIR = ./obj
 SRC_DIR = ./src

@@ -31,11 +31,16 @@ string init(int argc, char *argv[])
 	            }
 	        }
 		}
-		if(strcmp(argv[1],"basegen")==0)
+		else if(strcmp(argv[1],"basegen")==0)
 		{
 			fileGeneration base;
 			base.generationBaseFait();
 			base.afficheBaseFait();
+		}
+		else if(strcmp(argv[1],"structgen")==0)
+		{
+			fileGeneration file;
+			file.generationStructFile();
 		}
 		else {
 			return "Arguments incorrect";
