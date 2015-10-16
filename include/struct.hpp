@@ -49,3 +49,9 @@ typedef struct s_moi {
 	champion champion_pris;
 	//sort_invoc mes_sorts[2];
 } moi;
+
+typedef struct s_preference
+{
+	string poste[5];
+	string champion[5];
+} preference;
