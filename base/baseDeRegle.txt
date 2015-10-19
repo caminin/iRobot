@@ -1,19 +1,19 @@
-IF LISTEPOSTE.POSTE==0
-AND je veux LISTEPOSTE.POSTE
-THEN je prends LISTEPOSTE.POSTE
+IF Libre(POSTE)==true
+AND je veux POSTE
+THEN je prends POSTE
 
 IF avoirChoix()==false
 THEN je prends DernierPoste()
 
-IF je vais POSTE
+IF avoirChoix()==true
 THEN je prends Pref(POSTE)
 
 IF je vais POSTE
 AND il prend PERSO
 THEN je prends Counter(POSTE,PERSO)
 
-IF mon adversaire prend PERSO
-AND mon adversaire va POSTE
+IF il prend PERSO
+AND il va POSTE
 THEN je prends Counter(POSTE,PERSO)
 
 IF Pref(POSTE)==vide

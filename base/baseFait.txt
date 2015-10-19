@@ -1,13 +1,37 @@
-POSTE[i].libre==TRUE
-je veux POSTE[i]
-je prends POSTE[i]
-!(avoir choix)
-je prends DernierPoste(POSTE)
+LISTEPOSTE.POSTE==0
+je veux LISTEPOSTE.POSTE
+je prends LISTEPOSTE.POSTE
+avoirChoix()==false
+je prends DernierPoste()
 je vais POSTE
 je prends Pref(POSTE)
+je vais POSTE
 il prend PERSO
 je prends Counter(POSTE,PERSO)
-mon adversaire est PERSO
-mon adversaire va POSTE
+il prend PERSO
+il va POSTE
+je prends Counter(POSTE,PERSO)
 Pref(POSTE)==vide
 je prends Default(POSTE)
+
+(tab_poste[5].libre==true)
+	tab_poste[i].libre=false;
+
+struct regle1
+	enum tab
+	int i
+	bool libre
+
+
+class regmle
+vector<Fait> cause
+vector<Fait> cons
+
+class Fait
+type "je prends"
+variable "PERSO"
+valeur "veigar
+
+type "?"
+variable "Poste[i].libre"
+vakeur "true"
