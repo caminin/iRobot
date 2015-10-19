@@ -15,6 +15,7 @@ class fileGeneration
 		void generationBaseFait();
 		void afficheBaseFait();
 		void generationStructFile();
+		counter* getStructFile(counter* tab_counter);
 };
 
 

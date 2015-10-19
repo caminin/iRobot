@@ -137,14 +137,28 @@ void fileGeneration::generationStructFile(){
 	list_counter[14].champion_a_counter=FIDDLE;
 	list_counter[14].champion_qui_counter=SHACO;
 	
-	ofstream strucFile;
-	strucFile.open("../base/list_counter",ios_base::binary); 
-	
+	ofstream strucFile("./base/list_counter.bin",ios::out |ios::binary);
+	int a=5;
+	strucFile.write((char *)&a,sizeof(int));
+		
 	for(int i=0;i<15;i++)
 	{
 		strucFile.write((char *)&(list_counter[i]),sizeof(counter));
 	}
 	strucFile.close();
+	counter* tab_counter=nullptr;
+	getStructFile(tab_counter);
+}
+
+
+counter* fileGeneration::getStructFile(counter* tab_counter){
+	tab_counter = new counter[15];
+	ifstream strucFile("./base/list_counter.bin",ios::out |ios::binary);
+	strucFile.read((char*)tab_counter,15*sizeof(counter));
+	cout << tab_counter[12].champion_a_counter << endl;
+	strucFile.close();
+	
+	return tab_counter;
 }
 
 

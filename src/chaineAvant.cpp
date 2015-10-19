@@ -23,23 +23,19 @@ void chaineAvant::runChaineAvant(){
 			while(antecedentDansBaseFait && j<antecedent.size())//on regarde dans tous les antecedents du fait
 			{
 				vector<Fait>::interator it_fait=find(base_fait.begin(),base_fait.end(),antecedent[j]);
-				bool estDansBaseFait=it_fait!=base_fait.end();//regarde si l'antécédent est dans la base de fait'
-				if(estDansBaseFait){
-					if(base_fait[it_fait].memeCategorie(antecedent[j])){
-						
+				bool estDansBaseFait=(it_fait!=base_fait.end());//regarde si l'antécédent est dans la base de fait'
+				if(estDansBaseFait){//si un antécédent est dans la base de fait
+					if(base_fait[it_fait].memeCategorie(antecedent[j])){//si l'antécédent est de même catégorie'
+						antecedentDansBaseFait=true;// on continue
 					}
-					else{
-						antecedentDansBaseFait=true;
+					else{//si l'antécédent n'est pas de même catégorie
+						antecedentDansBaseFait=false;//on s'arrête'
 					}
 				}
 				else{
-					antecedentDansBaseFait=false;//tous les antecedent ne sont pas dans la base de fait
+					antecedentDansBaseFait=false;//tous les antecedent ne sont pas dans la base de fait donc on s'arrête
 				}
-				if((estDansBaseFait && antecedent[j]!= ) || (!estDansBaseFait))//si un des antécédents n'est pas dans la base de fait'
-				{
-					
-				}
-				j++;
+				j++;//on parcours tous les antécédent grâce à cet itérateur
 			}
 		
 			if(antecedentDansBaseFait)//si tous les antecendent sont dans la base de fait
