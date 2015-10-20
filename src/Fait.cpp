@@ -4,25 +4,57 @@ using namespace std;
 
 void Fait::initRegex()
 {
-	jeVeux = "je veux [:alpha:]+";
-	jeVais = "jevais[[:alpha:]]+";
-	ilVa = "il va [:alpha:]";
-	ilPrend = "il prend [:alpha:]";
-	comparaison = "[:alpha:]([:alpha:])==[:alpha:]";
+	jeVeux.assign( "je veux ");
+	jeVais.assign("je vais ");
+	ilVa.assign( "il va ");
+	ilPrend.assign("il prend ");
+	jePrends.assign("je prends ");
+	comparaison.assign("[()[:alpha:]]+ == [()[:alpha:]]+");
+}
+
+Fait::Fait(){
+	
 }
 
 Fait::Fait(string regle)
 {
-	if (regex_search(regle,jeVais))
-		cout << "Regex type jeVais" << endl;
-	else 
-		cout << "Nope." << endl;
-	regex pattern { "a" };
- cout << "'a' match with 'ab': " << boolalpha << 
-     regex_match("ab", pattern) << endl;
-
- cout << "search 'a' in 'ab': " << boolalpha << 
-     regex_search("ab", pattern) << endl;
+	initRegex();
+	if (regex_search(regle,jeVeux)){
+		type="je veux ";
+		variable="PERSO";
+		valeur=regex_replace(regle,jeVeux,"");
+	}
+	else if (regex_search(regle,jeVais)){
+		type="je vais ";
+		variable="PERSO";
+		valeur=regex_replace(regle,jeVais,"");
+	}
+	else if (regex_search(regle,ilVa)){
+		type="il va ";
+		variable="PERSO";
+		valeur=regex_replace(regle,ilVa,"");
+	}
+	else if (regex_search(regle,ilPrend)){
+		type="il prend ";;
+		variable="PERSO";
+		valeur=regex_replace(regle,ilPrend,"");
+	}
+	else if (regex_search(regle,jePrends)){
+		type="je prends ";;
+		variable="PERSO";
+		valeur=regex_replace(regle,jePrends,"");
+	}
+	else if (regex_search(regle,comparaison)){
+		type="comparaison ";
+		variable="PERSO";
+		valeur=regex_replace(regle,comparaison,"");
+		cout << "plop";
+	}
+	else{
+		
+	}
+	//cout <<"Fait à partir de "<< type+variable << " et de valeur " << valeur << endl;
+	
 }
 
 bool Fait::demandable()
@@ -34,3 +66,19 @@ string Fait::toString()
 {
 	return type+" "+variable+" "+valeur;
 }
+
+bool Fait::memeCategorie(Fait& other){
+	return (strcmp((other.type).c_str(),type.c_str())==0);
+}
+
+Fait& Fait::operator=(const Fait& other){
+	type=other.type;
+	valeur=other.valeur;
+	variable=other.variable;
+	
+	return *this;
+}
+/*
+int main(){
+	Fait f("plop() == plop");
+}*/

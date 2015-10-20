@@ -42,6 +42,10 @@ string init(int argc, char *argv[])
 			fileGeneration file;
 			file.generationStructFile();
 		}
+		else if(strcmp(argv[1],"ch_avant")==0)
+		{
+			
+		}
 		else {
 			return "Arguments incorrect";
 		}

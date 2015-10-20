@@ -4,8 +4,10 @@
 #include <vector>
 #include <ostream>
 #include <algorithm>
-#include <string.h>
-#include "../include/struct.hpp"
+#include <string>
+#include "struct.hpp"
+#include "Regle.hpp"
+#include "Fait.hpp"
 using namespace std;
 
 class fileGeneration

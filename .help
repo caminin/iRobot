@@ -1,2 +1,6 @@
 basegen:
 	Génère une base de fait à partir de la base de connaissance puis l'affiche
+structgen:
+	Génère les structures comme les counter nécessaire
+ch_avant
+	Lance le chainage avant

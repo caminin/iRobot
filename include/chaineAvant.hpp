@@ -5,7 +5,10 @@
 #include <ostream>
 #include <algorithm>
 #include <string.h>
-#include "../include/struct.hpp"
+#include <map>
+#include "struct.hpp"
+#include "Fait.hpp"
+#include "Regle.hpp"
 
 using namespace std;
 

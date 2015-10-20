@@ -1,3 +1,6 @@
+#ifndef STRUCT
+#define STRUCT
+
 #include <string>
 
 using namespace std;
@@ -59,3 +62,5 @@ typedef struct s_preference
 	string poste[5];
 	string champion[5];
 } preference;
+
+#endif

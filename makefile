@@ -2,6 +2,9 @@ TARGET = prog
 
 SRCS = main.cpp\
        fileGeneration.cpp\
+       Regle.cpp\
+       Fait.cpp\
+       
 
 OBJ_DIR = ./obj
 SRC_DIR = ./src

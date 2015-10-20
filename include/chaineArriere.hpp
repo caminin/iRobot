@@ -6,7 +6,9 @@
 #include <algorithm>
 #include <string.h>
 #include <stdio.h>
-#include "../include/struct.hpp"
+#include "struct.hpp"
+#include "Fait.hpp"
+#include "Regle.hpp"
 
 using namespace std;
 
@@ -18,6 +20,6 @@ extern string pathBaseConnaissance;
 class chaineArriere
 {
 public:
-	void runChaineArriere(vector<Fait> but, vector<Fait> base_fait);
-	bool verif(vector<Fait> but, vector<Fait> base_fait);
+	bool runChaineArriere(Fait but, vector<Fait> base_fait);
+	bool verif(vector<Fait> ensemble_but, vector<Fait> base_fait);
 };

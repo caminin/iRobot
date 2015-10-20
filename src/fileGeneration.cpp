@@ -146,8 +146,48 @@ void fileGeneration::generationStructFile(){
 		strucFile.write((char *)&(list_counter[i]),sizeof(counter));
 	}
 	strucFile.close();
-	counter* tab_counter=nullptr;
-	getStructFile(tab_counter);
+	//counter* tab_counter=nullptr;
+	//getStructFile(tab_counter);
+	vector<Regle> base_regle;
+	ifstream fichier("./base/baseDeRegle.txt");
+     if(!fichier) 
+     {
+         cerr << "Le fichier base n'existe pas" << endl;
+     }
+     else
+     {
+         string ligne,debut;
+         vector<string> lignes;
+         
+         Regle new_regle;
+         while(getline(fichier,ligne))
+         {
+             Fait new_fait(ligne);
+             if(ligne!= "")
+             {
+            	size_t pos=ligne.find_first_of(" ");
+            	if(pos!=string::npos)
+            	{
+                  debut=ligne.substr(0,pos);
+            		ligne=ligne.substr(pos+1);
+                  Fait new_fait(ligne);
+                  if(!debut.find("THEN"))
+                  {
+	                  new_regle.addCons(new_fait);
+	                  base_regle.push_back(new_regle);
+	                  new_regle=Regle();
+                  }
+                  else
+                  {
+	                  new_regle.addAnt(new_fait);
+                  }
+	                  
+            	}
+             }
+             
+         }
+     }
+     cout << "Il y a "<< base_regle.size() << " Règles"<<endl;
 }
 
 
