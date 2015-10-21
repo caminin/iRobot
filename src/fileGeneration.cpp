@@ -138,9 +138,6 @@ void fileGeneration::generationStructFile(){
 	list_counter[14].champion_qui_counter=SHACO;
 	
 	ofstream strucFile("./base/list_counter.bin",ios::out |ios::binary);
-	int a=5;
-	strucFile.write((char *)&a,sizeof(int));
-		
 	for(int i=0;i<15;i++)
 	{
 		strucFile.write((char *)&(list_counter[i]),sizeof(counter));
@@ -148,59 +145,79 @@ void fileGeneration::generationStructFile(){
 	strucFile.close();
 	//counter* tab_counter=nullptr;
 	//getStructFile(tab_counter);
-	vector<Regle> base_regle;
-	ifstream fichier("./base/baseDeRegle.txt");
-     if(!fichier) 
-     {
-         cerr << "Le fichier base n'existe pas" << endl;
-     }
-     else
-     {
-         string ligne,debut;
-         vector<string> lignes;
-         
-         Regle new_regle;
-         while(getline(fichier,ligne))
-         {
-             Fait new_fait(ligne);
-             if(ligne!= "")
-             {
-            	size_t pos=ligne.find_first_of(" ");
-            	if(pos!=string::npos)
-            	{
-                  debut=ligne.substr(0,pos);
-            		ligne=ligne.substr(pos+1);
-                  Fait new_fait(ligne);
-                  if(!debut.find("THEN"))
-                  {
-	                  new_regle.addCons(new_fait);
-	                  base_regle.push_back(new_regle);
-	                  new_regle=Regle();
-                  }
-                  else
-                  {
-	                  new_regle.addAnt(new_fait);
-                  }
-	                  
-            	}
-             }
-             
-         }
-     }
-     cout << "Il y a "<< base_regle.size() << " Règles"<<endl;
 }
 
 
-counter* fileGeneration::getStructFile(counter* tab_counter){
+void fileGeneration::getStructFile(counter* tab_counter){
 	tab_counter = new counter[15];
 	ifstream strucFile("./base/list_counter.bin",ios::out |ios::binary);
 	strucFile.read((char*)tab_counter,15*sizeof(counter));
 	cout << tab_counter[12].champion_a_counter << endl;
 	strucFile.close();
 	
-	return tab_counter;
 }
 
+void fileGeneration::getBaseRegle(vector<Regle> * base_regle)
+{
+	ifstream fichier("./base/baseDeRegle.txt");
+	if(!fichier) 
+	{
+		cerr << "Le fichier base n'existe pas" << endl;
+	}
+	else
+	{
+		string ligne,debut;
+		vector<string> lignes;
+		
+		Regle new_regle;
+		while(getline(fichier,ligne))
+		{
+		    Fait new_fait(ligne);
+		    if(ligne!= "")
+		    {
+		   	size_t pos=ligne.find_first_of(" ");
+		   	if(pos!=string::npos)
+		   	{
+		         debut=ligne.substr(0,pos);
+		   		ligne=ligne.substr(pos+1);
+		         Fait new_fait(ligne);
+		         if(!debut.find("THEN"))
+		         {
+		            new_regle.addCons(new_fait);
+		            base_regle->push_back(new_regle);
+		            new_regle=Regle();
+		         }
+		         else
+		         {
+		            new_regle.addAnt(new_fait);
+		         }
+		            
+		   	}
+		    }
+		    
+		}
+	}
+	cout << "Il y a "<< base_regle->size() << " Règles"<<endl;
+	fichier.close();
+}
+
+void fileGeneration::getBaseFait(vector<Fait> *base_fait)
+{
+	ifstream fichier2("./base/baseFaitInital.txt");
+	if(!fichier2) 
+	{
+		cerr << "Le fichier help n'existe pas" << endl;
+	}
+	else
+	{
+		string line;
+		while(getline(fichier2,line))
+		{
+			Fait new_fait(line);
+			base_fait->push_back(new_fait);
+		}
+	}
+}
 
 
 

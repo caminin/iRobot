@@ -31,6 +31,7 @@ public:
 	string toString();
 	bool memeCategorie(Fait &other);
 	Fait& operator=(const Fait& other);
+	bool operator==(const Fait& other);
 };
 
 #endif

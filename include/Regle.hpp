@@ -1,3 +1,6 @@
+#ifndef CLASSREGLE
+#define CLASSREGLE
+
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -18,4 +21,7 @@ class Regle {
 		Fait getConsequence();
 		void addCons(Fait& cons);
 		void addAnt(Fait& ant);
+		bool operator==(const Regle &other);
 };
+
+#endif

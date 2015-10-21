@@ -22,3 +22,8 @@ void Regle::addCons(Fait& cons)
 {
 	consequence=cons;
 }
+
+bool Regle::operator==(const Regle& other)
+{
+	return (consequence==other.consequence);
+}

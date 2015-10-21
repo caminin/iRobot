@@ -4,7 +4,7 @@ SRCS = main.cpp\
        fileGeneration.cpp\
        Regle.cpp\
        Fait.cpp\
-       
+       chaineAvant.cpp\
 
 OBJ_DIR = ./obj
 SRC_DIR = ./src
