@@ -9,6 +9,7 @@
 #include "struct.hpp"
 #include "Fait.hpp"
 #include "Regle.hpp"
+#include "../include/fileGeneration.hpp"
 
 using namespace std;
 

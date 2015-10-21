@@ -78,6 +78,11 @@ Fait& Fait::operator=(const Fait& other){
 	
 	return *this;
 }
+
+bool Fait::operator==(const Fait& other)
+{
+	return ((strcmp(type.c_str(),other.type.c_str())==0)||(strcmp(valeur.c_str(),other.valeur.c_str())==0)||(strcmp(variable.c_str(),other.variable.c_str())==0));
+}
 /*
 int main(){
 	Fait f("plop() == plop");

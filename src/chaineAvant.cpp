@@ -3,10 +3,12 @@
 using namespace std;
 
 
-
 void chaineAvant::runChaineAvant(){
-	vector<Regle> tab_regle;//contient la base de regles
-	vector<Fait> base_fait;//contient la base des fait
+	fileGeneration file;
+	vector<Regle> base_regle;
+	file.getBaseRegle(&base_regle);//contient la base des règles
+	vector<Fait> base_fait;
+	file.getBaseFait(&base_fait);//contient la base des fait
 	int nbInference=0;//nombre de fois qu'on applique une des regles
 	map<Regle,int> memoriserRegleUtilisee;//memorise quand une regle est utilise
 	bool resteAuMoinsUneRegle=true;//verifie s'il reste au moins une regle a utilise'
@@ -14,12 +16,12 @@ void chaineAvant::runChaineAvant(){
 	while(auMoinsUneInference)//tant qu'on applique au moins une regle
 	{
 		auMoinsUneInference=false;
-		vector<Regle>::iterator it_regle=tab_regle.begin();
+		vector<Regle>::iterator it_regle=base_regle.begin();
 		while(resteAuMoinsUneRegle)
 		{
 			vector<Fait> antecedent=it_regle->getAntecedents();
 			bool antecedentDansBaseFait=true;
-			int j=0;
+			unsigned int j=0;
 			while(antecedentDansBaseFait && j<antecedent.size())//on regarde dans tous les antecedents du fait
 			{
 				vector<Fait>::iterator it_fait=find(base_fait.begin(),base_fait.end(),antecedent[j]);
@@ -42,14 +44,14 @@ void chaineAvant::runChaineAvant(){
 			{
 				base_fait.push_back(it_regle->getConsequence());//on save le nouveau fait
 				
-				nbInference++;//une inférence en plus
-				memoriserRegleUtilisee.insert(pair(it_regle,nbInference));//on memorise la regle et le moment ou on l'a utilisée
+				nbInference++;//une inférence en memoriserRegleUtilisee
+				//plus.insert(pair(it_regle,nbInference));//on memorise la regle et le moment ou on l'a utilisée
 				auMoinsUneInference=true;//il y a eu au moins une regle utilise
 				
-				remove(tab_regle.begin(),tab_regle.end(),*it_regle);//supprime le ieme element du vector
+				remove(base_regle.begin(),base_regle.end(),*it_regle);//supprime le ieme element du vector
 			}
 		
-			if(tab_regle.size()==0)//s'il ne reste pas de regle'
+			if(base_regle.size()==0)//s'il ne reste pas de regle'
 			{
 				resteAuMoinsUneRegle=false;//on met fin a la boucle
 			}

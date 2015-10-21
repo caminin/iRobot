@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <string.h>
 #include <iostream>
-#include "../include/fileGeneration.hpp"
+#include "../include/chaineAvant.hpp"
 using namespace std;
 
 string pathBaseFait = "./base/baseFait.txt";
@@ -41,6 +41,7 @@ string init(int argc, char *argv[])
 		{
 			fileGeneration file;
 			file.generationStructFile();
+			
 		}
 		else if(strcmp(argv[1],"ch_avant")==0)
 		{
