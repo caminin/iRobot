@@ -26,12 +26,12 @@ Fait::Fait(string regle)
 	}
 	else if (regex_search(regle,jeVais)){
 		type="je vais ";
-		variable="PERSO";
+		variable="POSTE";
 		valeur=regex_replace(regle,jeVais,"");
 	}
 	else if (regex_search(regle,ilVa)){
 		type="il va ";
-		variable="PERSO";
+		variable="POSTE";
 		valeur=regex_replace(regle,ilVa,"");
 	}
 	else if (regex_search(regle,ilPrend)){
