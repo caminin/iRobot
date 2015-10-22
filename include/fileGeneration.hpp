@@ -22,8 +22,8 @@ class fileGeneration
 		void generationStructFile();
 		void generationSortsFile();
 		void getStructFile(counter* tab_counter);
-		void getBaseRegle(vector<Regle>* base_regle);
-		void getBaseFait(vector<Fait>* base_fait);
+		void getBaseRegle(vector<Regle>& base_regle);
+		void getBaseFait(vector<Fait>& base_fait);
 };
 
 #endif

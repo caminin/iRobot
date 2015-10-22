@@ -27,3 +27,14 @@ bool Regle::operator==(const Regle& other)
 {
 	return (consequence==other.consequence);
 }
+
+string Regle::toString()
+{
+	string res="Antecents : ";
+	for(Fait fait:antecedents)
+	{
+		res=res+fait.toString()+",";
+	}
+	res=res+"----Consequence : "+consequence.toString();
+	return res;
+}

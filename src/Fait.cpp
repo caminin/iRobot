@@ -9,7 +9,7 @@ void Fait::initRegex()
 	ilVa.assign( "il va ");
 	ilPrend.assign("il prend ");
 	jePrends.assign("je prends ");
-	comparaison.assign("[()[:alpha:]]+ == [()[:alpha:]]+");
+	comparaison.assign("[()[:alpha:] ]+ == [ [:alpha:]()]+");
 }
 
 Fait::Fait(){
@@ -46,12 +46,14 @@ Fait::Fait(string regle)
 	}
 	else if (regex_search(regle,comparaison)){
 		type="comparaison ";
+		regex v1;
+		v1.assign(" == ");
 		variable="PERSO";
-		valeur=regex_replace(regle,comparaison,"");
-		cout << "plop";
+		valeur=regex_replace(regle,v1,",");
+		cout << type << variable<<" " << valeur<<endl;
 	}
 	else{
-		
+		cout << "Regle que je connais pas " <<regle << endl;
 	}
 	//cout <<"Fait à partir de "<< type+variable << " et de valeur " << valeur << endl;
 	
@@ -85,5 +87,5 @@ bool Fait::operator==(const Fait& other)
 }
 /*
 int main(){
-	Fait f("plop() == plop");
+	Fait f("avoirChoix() == false");
 }*/

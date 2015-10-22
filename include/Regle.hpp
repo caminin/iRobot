@@ -19,6 +19,7 @@ class Regle {
 		Regle();
 		vector<Fait> getAntecedents();
 		Fait getConsequence();
+		string toString();
 		void addCons(Fait& cons);
 		void addAnt(Fait& ant);
 		bool operator==(const Regle &other);
