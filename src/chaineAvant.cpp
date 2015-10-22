@@ -47,11 +47,17 @@ void chaineAvant::runChaineAvant(){
 			cout << "Trois" << endl;
 			if(antecedentDansBaseFait)//si tous les antecendent sont dans la base de fait
 			{
+<<<<<<< HEAD
 				cout << "sept "<<nbInference<< endl;
 				cout << it_regle->getConsequence().toString();
 				cout << "neuf"<<endl;
 				base_fait.push_back(it_regle->getConsequence());//on save le nouveau faitx	
 				cout << "huit" << endl;
+=======
+				// ici, application règle
+				base_fait.push_back(it_regle->getConsequence());//on save le nouveau fait
+				
+>>>>>>> f3b1e8cda6d334e2db07f87bc882cb0010a8c101
 				nbInference++;//une inférence en memoriserRegleUtilisee
 				//plus.insert(pair(it_regle,nbInference));//on memorise la regle et le moment ou on l'a utilisée
 				cout << "six" << endl;

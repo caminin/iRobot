@@ -12,9 +12,13 @@ IF je vais POSTE
 AND il prend PERSO
 THEN je prends Counter(POSTE,PERSO)
 
-IF il prend PERSO
-AND il va POSTE
-THEN je prends Counter(POSTE,PERSO)
+IF je vais POSTE
+AND il a pas choisi
+THEN je prends Pref(POSTE)
 
 IF Pref(POSTE) == vide
 THEN je prends Default(POSTE)
+
+IF je vais POSTE
+AND je prends PERSO
+THEN je prends Sorts(POSTE)

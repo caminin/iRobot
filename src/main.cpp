@@ -41,12 +41,18 @@ string init(int argc, char *argv[])
 		{
 			fileGeneration file;
 			file.generationStructFile();
+			file.generationSortsFile();
 			
 		}
 		else if(strcmp(argv[1],"ch_avant")==0)
 		{
+<<<<<<< HEAD
 			chaineAvant ch;
 			ch.runChaineAvant();
+=======
+			chaineAvant chainage;
+			chainage.runChaineAvant();
+>>>>>>> f3b1e8cda6d334e2db07f87bc882cb0010a8c101
 		}
 		else {
 			return "Arguments incorrect";
