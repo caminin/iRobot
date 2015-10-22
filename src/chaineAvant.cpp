@@ -42,6 +42,7 @@ void chaineAvant::runChaineAvant(){
 		
 			if(antecedentDansBaseFait)//si tous les antecendent sont dans la base de fait
 			{
+				// ici, application règle
 				base_fait.push_back(it_regle->getConsequence());//on save le nouveau fait
 				
 				nbInference++;//une inférence en memoriserRegleUtilisee

@@ -16,11 +16,11 @@ using namespace std;
 class fileGeneration
 {
 	public :
-		fileGeneration();
 		bool myfind(vector<std::string> *myvector,string &ligne);
 		void generationBaseFait();
 		void afficheBaseFait();
 		void generationStructFile();
+		void generationSortsFile();
 		void getStructFile(counter* tab_counter);
 		void getBaseRegle(vector<Regle>* base_regle);
 		void getBaseFait(vector<Fait>* base_fait);

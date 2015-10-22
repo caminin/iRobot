@@ -8,6 +8,8 @@ je prends Pref(POSTE)
 je vais POSTE
 il prend PERSO
 je prends Counter(POSTE,PERSO)
-il va POSTE
+il a pas choisi
 Pref(POSTE) ==  vide
 je prends Default(POSTE)
+je prends PERSO
+je prends Sorts(POSTE)

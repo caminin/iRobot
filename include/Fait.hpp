@@ -1,5 +1,5 @@
-#ifndef FAIT
-#define FAIT
+#ifndef FAITCLASSE
+#define FAITCLASSE
 
 
 #include <cstdio>

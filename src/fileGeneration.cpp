@@ -84,6 +84,38 @@ void fileGeneration::generationBaseFait()
     baseFait.close();
 }
 
+void fileGeneration::generationSortsFile()
+{
+	sorts list_sorts[5];
+
+	//=====================TOP=====================
+	list_sorts[0].sort1 = TELEPORT;
+	list_sorts[0].sort2 = FLASH;
+	
+	//====================MID=======================
+	list_sorts[1].sort1 = IGNITE;
+	list_sorts[1].sort2 = FLASH;
+
+	//====================ADC=======================
+	list_sorts[2].sort1 = HEAL;
+	list_sorts[2].sort2 = FLASH;
+	
+	//==================SUPPORT====================
+	list_sorts[3].sort1 = EXHAUST;
+	list_sorts[3].sort2 = FLASH;
+	
+	//===================JUNGLE======================
+	list_sorts[4].sort1 = SMITE;
+	list_sorts[4].sort2 = FLASH;
+
+	ofstream strucFile("./base/list_sorts.bin",ios::out |ios::binary);
+	for(int i=0;i<5;i++)
+	{
+		strucFile.write((char *)&(list_sorts[i]),sizeof(sorts));
+	}
+	strucFile.close();
+}
+
 void fileGeneration::generationStructFile(){
 	counter list_counter[15];
 	

@@ -5,7 +5,7 @@
 
 using namespace std;
 
-/*enum sort_invoc {FLASH,SMITE,IGNITE,HEAL,EXHAUST,SHIELD,TELEPORT,CLARITY};*/
+enum sort_invoc {FLASH,SMITE,IGNITE,HEAL,EXHAUST,SHIELD,TELEPORT,CLARITY};
 
 enum champion {GAREN,LULU,DARIUS,LEBLANC,MORGANA,AHRI,EZREAL,CAITLYN,VAYNE,NAMI,LEONA,NAUTILUS,LEE,SHACO,FIDDLE};
 /*
@@ -49,12 +49,18 @@ typedef struct s_counter {
 	champion champion_qui_counter;
 } counter;
 
+typedef struct s_sort
+{
+	sort_invoc sort1;
+	sort_invoc sort2;
+}sorts;
+
 typedef struct s_moi {
 	bool a_fait_un_choix;
 	type_poste poste_souhaite;
 	champion champion_souhaite;
 	champion champion_pris;
-	//sort_invoc mes_sorts[2];
+	sort_invoc mes_sorts[2];
 } moi;
 
 typedef struct s_preference
