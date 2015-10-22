@@ -13,15 +13,12 @@ void chaineAvant::runChaineAvant(){
 		cout << reg.toString()<<endl;
 	int nbInference=0;//nombre de fois qu'on applique une des regles
 	map<Regle,int> memoriserRegleUtilisee;//memorise quand une regle est utilise
-	bool resteAuMoinsUneRegle=true;//verifie s'il reste au moins une regle a utilise'
 	bool auMoinsUneInference=true;//vérifie si au moins une regle est utilise
 	while(auMoinsUneInference)//tant qu'on applique au moins une regle
 	{
 		auMoinsUneInference=false;
-		cout << "onze" << endl;
 		vector<Regle>::iterator it_regle=base_regle.begin();
-		cout << "dix" << endl;
-		while(resteAuMoinsUneRegle)
+		while(it_regle!=base_regle.end())
 		{
 			cout << "Premiere boucle" << endl;
 			vector<Fait> antecedent=it_regle->getAntecedents();
@@ -37,48 +34,43 @@ void chaineAvant::runChaineAvant(){
 					cout << it_fait->toString()<< " | "<<antecedent[j].toString() << endl;
 					if(it_fait->memeCategorie(antecedent[j]))//si l'antécédent est de même catégorie'
 					{
-						antecedentDansBaseFait=true;// on continue
+						//antecedentDansBaseFait=true;// on continue
 						cout << "meme catégorie"<<endl;
 					}
-					else{//si l'antécédent n'est pas de même catégorie
+					else//si l'antécédent n'est pas de même catégorie
+					{
 						antecedentDansBaseFait=false;//on s'arrête'
 					}
 				}
-				else{
+				else
+				{
 					antecedentDansBaseFait=false;//tous les antecedent ne sont pas dans la base de fait donc on s'arrête
 				}
 				j++;//on parcours tous les antécédent grâce à cet itérateur
 			}
-			cout << "Trois" << endl;
 			if(antecedentDansBaseFait)//si tous les antecendent sont dans la base de fait
 			{
 				base_fait.push_back(it_regle->getConsequence());//on save le nouveau faitx	
 				nbInference++;//une inférence en memoriserRegleUtilisee
 				//plus.insert(pair(it_regle,nbInference));//on memorise la regle et le moment ou on l'a utilisée
-				cout << "six" << endl;
 				auMoinsUneInference=true;//il y a eu au moins une regle utilise
-				remove(base_regle.begin(),base_regle.end(),*it_regle);//supprime le ieme element du vector
+				base_regle.erase(it_regle);//supprime le ieme element du vector
+				cout << "j'ai trouvé " << endl;
 			}
-			cout << "cinq" << endl;
 		
-			if(base_regle.size()==0)//s'il ne reste pas de regle'
-			{
-				resteAuMoinsUneRegle=false;//on met fin a la boucle
-			}
 			it_regle++;
-			if(it_regle==base_regle.end()){
-				it_regle=base_regle.begin();
-				cout << "j'ai fait toute les règles'"<<endl;				
+			if(it_regle==base_regle.end())
+{
+				cout << "j'ai fait toute les règles'"<<endl;		
 			}
 			for(Fait f:base_fait)
 				cout << f.toString()<<endl;
+			for(Regle reg:base_regle)
+				cout << reg.toString()<<endl;
 			cin.get();
+			
 		}
 	}
-	cout << "je vais afficher la base de fait" << endl;
-	for(vector<Fait>::iterator it=base_fait.begin();it!=base_fait.end();it++)
-		cout << (*it).toString();
-	cout <<endl <<"fin"<< endl;
 }
 
 
