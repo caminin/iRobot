@@ -45,7 +45,8 @@ string init(int argc, char *argv[])
 		}
 		else if(strcmp(argv[1],"ch_avant")==0)
 		{
-			
+			chaineAvant ch;
+			ch.runChaineAvant();
 		}
 		else {
 			return "Arguments incorrect";

@@ -157,7 +157,7 @@ void fileGeneration::getStructFile(counter* tab_counter){
 	
 }
 
-void fileGeneration::getBaseRegle(vector<Regle> * base_regle)
+void fileGeneration::getBaseRegle(vector<Regle> &base_regle)
 {
 	ifstream fichier("./base/baseDeRegle.txt");
 	if(!fichier) 
@@ -184,7 +184,7 @@ void fileGeneration::getBaseRegle(vector<Regle> * base_regle)
 		         if(!debut.find("THEN"))
 		         {
 		            new_regle.addCons(new_fait);
-		            base_regle->push_back(new_regle);
+		            base_regle.push_back(new_regle);
 		            new_regle=Regle();
 		         }
 		         else
@@ -197,11 +197,11 @@ void fileGeneration::getBaseRegle(vector<Regle> * base_regle)
 		    
 		}
 	}
-	cout << "Il y a "<< base_regle->size() << " Règles"<<endl;
+	cout << "Il y a "<< base_regle.size() << " Règles"<<endl;
 	fichier.close();
 }
 
-void fileGeneration::getBaseFait(vector<Fait> *base_fait)
+void fileGeneration::getBaseFait(vector<Fait> &base_fait)
 {
 	ifstream fichier2("./base/baseFaitInital.txt");
 	if(!fichier2) 
@@ -214,7 +214,7 @@ void fileGeneration::getBaseFait(vector<Fait> *base_fait)
 		while(getline(fichier2,line))
 		{
 			Fait new_fait(line);
-			base_fait->push_back(new_fait);
+			base_fait.push_back(new_fait);
 		}
 	}
 }
