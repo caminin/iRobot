@@ -8,7 +8,7 @@
 #include <ostream>
 #include <algorithm>
 #include <string.h>
-#include "../include/struct.hpp"
+#include "../include/Structure.hpp"
 #include "Fait.hpp"
 
 class Regle {

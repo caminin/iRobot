@@ -23,11 +23,13 @@ private:
 	regex ilPrend;
 	regex comparaison;
 	regex jePrends;
+	regex nonFonction;
 
 public:
 	void initRegex();
 	Fait();
 	Fait(string regle);
+	Fait(string regle,Structure &struc_stockage_fait);
 	bool demandable();
 	string toString();
 	bool memeCategorie(Fait &other);

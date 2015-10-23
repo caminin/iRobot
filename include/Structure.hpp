@@ -1,5 +1,5 @@
-#ifndef STRUCT
-#define STRUCT
+#ifndef STRUCTCLASS
+#define STRUCTCLASS
 
 #include <string>
 
@@ -68,7 +68,8 @@ JUNGLE:
 	Fiddle
 */
 
-class Structure {
+class Structure{
+public: 
 	preferenceType preference;
 	moiType moi;
 	bool tab_allie[5];

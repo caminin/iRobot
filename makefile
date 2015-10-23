@@ -1,10 +1,12 @@
 TARGET = prog
 
-SRCS = main.cpp\
+SRCS = Fait.cpp\
+		 Structure.cpp\
        fileGeneration.cpp\
        Regle.cpp\
-       Fait.cpp\
        chaineAvant.cpp\
+       main.cpp\
+       
 
 OBJ_DIR = ./obj
 SRC_DIR = ./src
