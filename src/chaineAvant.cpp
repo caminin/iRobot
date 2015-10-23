@@ -17,12 +17,14 @@ void chaineAvant::runChaineAvant(){
 	bool auMoinsUneInference=true;//vérifie si au moins une regle est utilise
 	cout << endl;
 	cout << "BASE DE FAIT ACTUELLE" << endl;
-	for(Fait f:base_fait){
+	for(Fait f:base_fait)
+	{
 		cout << f.toString()<<endl;
 	}
 	cout << endl;
 	cout << "BASE DE REGLE ACTUELLE" << endl;				
-	for(Regle reg:base_regle){
+	for(Regle reg:base_regle)
+	{
 		cout << reg.toString()<<endl;
 	}
 	cout << endl;
