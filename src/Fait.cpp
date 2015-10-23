@@ -17,13 +17,13 @@ std::string myreplace(std::string &s,std::string toReplace,std::string replaceWi
     return(s.replace(s.find(toReplace), toReplace.length(), replaceWith));
 }
 
-Fait::Fait(){
-	
-}
+Fait::Fait(){}
+
 
 ////////////////////////////////////////////////////AUTRE CONSTRUCTEUR
 Fait::Fait(string regle,Structure &struc_stockage_fait)
 {
+	MyRegle = regle;
 	initRegex();
 	if (regle.find(jeVeux)!=string::npos)
 	{

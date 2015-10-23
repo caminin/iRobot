@@ -208,26 +208,24 @@ void fileGeneration::getBaseRegle(vector<Regle> &base_regle)
 			Fait new_fait(ligne,struc_qui_sert_pas);
 		    if(ligne!= "")
 		    {
-		   	size_t pos=ligne.find_first_of(" ");
-		   	if(pos!=string::npos)
-		   	{
-		         debut=ligne.substr(0,pos);
-		   		ligne=ligne.substr(pos+1);
-		         Fait new_fait(ligne,struc_qui_sert_pas);
-		         if(!debut.find("THEN"))
-		         {
-		            new_regle.addCons(new_fait);
-		            base_regle.push_back(new_regle);
-		            new_regle=Regle();
-		         }
-		         else
-		         {
-		            new_regle.addAnt(new_fait);
-		         }
-		            
-		   	}
-		    }
-		    
+			   	size_t pos=ligne.find_first_of(" ");
+			   	if(pos!=string::npos)
+			   	{
+			        debut=ligne.substr(0,pos);
+			   		ligne=ligne.substr(pos+1);
+			        Fait new_fait(ligne,struc_qui_sert_pas);
+			        if(!debut.find("THEN"))
+			        {
+			            new_regle.addCons(new_fait);
+			            base_regle.push_back(new_regle);
+			            new_regle=Regle();
+			        }
+			        else
+			        {
+			        	new_regle.addAnt(new_fait);
+			        }     
+			   	}
+		    }   
 		}
 	}
 	cout << "Il y a "<< base_regle.size() << " Règles"<<endl;
