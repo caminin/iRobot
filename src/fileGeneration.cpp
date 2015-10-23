@@ -117,7 +117,7 @@ void fileGeneration::generationSortsFile()
 }
 
 void fileGeneration::generationStructFile(){
-	counter list_counter[15];
+	counterType list_counter[15];
 	
 	//=====================TOP=====================
 	list_counter[0].champion_a_counter=GAREN;
@@ -180,7 +180,7 @@ void fileGeneration::generationStructFile(){
 }
 
 
-void fileGeneration::getStructFile(counter* tab_counter){
+void fileGeneration::getStructFile(counterType* tab_counter){
 	tab_counter = new counter[15];
 	ifstream strucFile("./base/list_counter.bin",ios::out |ios::binary);
 	strucFile.read((char*)tab_counter,15*sizeof(counter));

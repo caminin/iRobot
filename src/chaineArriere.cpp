@@ -3,7 +3,7 @@
 using namespace std;
 
 
-bool chaineArriere::runChaineArriere(Fait but, vector<Fait> base_fait){
+bool chaineArriere::runChaineArriere(Fait& but, vector<Fait> &base_fait){
 	vector<Regle> base_regle;
 	bool dem=false;
 	if(find(base_fait.begin(),base_fait.end(),but)!=base_fait.end()){
@@ -14,7 +14,7 @@ bool chaineArriere::runChaineArriere(Fait but, vector<Fait> base_fait){
 		dem=verif((*it).getAntecedents(),base_fait);
 		it++;	
 	}
-	if(dem==false && but.demandable()){
+	if(dem==false){
 		bool reponse;
 		string reponse_but_demandable;
 		cout << "Le fait : "<< but.toString();
@@ -33,7 +33,7 @@ bool chaineArriere::runChaineArriere(Fait but, vector<Fait> base_fait){
 	return dem;
 }
 
-bool chaineArriere::verif(vector<Fait> ensemble_but, vector<Fait> base_fait){
+bool chaineArriere::verif(vector<Fait> &ensemble_but, vector<Fait> &base_fait){
 	bool estVerifie=true;
 	for(vector<Fait>::iterator i=ensemble_but.begin();i<ensemble_but.end()&&estVerifie==true;i++ ){
 		estVerifie=runChaineArriere(*i,base_fait);

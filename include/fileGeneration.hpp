@@ -8,7 +8,7 @@
 #include <ostream>
 #include <algorithm>
 #include <string>
-#include "struct.hpp"
+#include "Structure.hpp"
 #include "Regle.hpp"
 #include "Fait.hpp"
 using namespace std;

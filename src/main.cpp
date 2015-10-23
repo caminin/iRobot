@@ -2,6 +2,7 @@
 #include <string.h>
 #include <iostream>
 #include "../include/chaineAvant.hpp"
+#include "../include/chaineArriere.hpp"
 using namespace std;
 
 string pathBaseFait = "./base/baseFait.txt";
@@ -48,6 +49,11 @@ string init(int argc, char *argv[])
 		{
 			chaineAvant chainage;
 			chainage.runChaineAvant();
+		}
+		else if(strcmp(argv[1],"ch_arrier")==0)
+		{
+			chaineArriere chainage;
+			chainage.runChaineArriere();
 		}
 		else {
 			return "Arguments incorrect";

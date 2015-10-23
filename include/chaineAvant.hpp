@@ -6,7 +6,7 @@
 #include <algorithm>
 #include <string.h>
 #include <map>
-#include "struct.hpp"
+#include "Structure.hpp"
 #include "Fait.hpp"
 #include "Regle.hpp"
 #include "../include/fileGeneration.hpp"

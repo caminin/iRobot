@@ -6,6 +6,7 @@
 #include <string>
 #include <regex>
 #include <iostream>
+#include "Structure.hpp"
 using namespace std;
 
 
@@ -32,6 +33,7 @@ public:
 	bool memeCategorie(Fait &other);
 	Fait& operator=(const Fait& other);
 	bool operator==(const Fait& other);
+	void interpretation(Structure &struct_stockage);
 };
 
 #endif
