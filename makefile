@@ -1,4 +1,4 @@
-TARGET = prog
+TARGET = prog.exe
 
 SRCS = Fait.cpp\
 		 Structure.cpp\
