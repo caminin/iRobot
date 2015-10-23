@@ -76,6 +76,9 @@ public:
 	champion* tab_adversaire[5];
 	counterType* tab_counter;
 	Structure();
+
+	string getCounter(string aCounter);
+	void addAdversaire(string champ);
 	
 };
 
