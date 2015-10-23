@@ -4,7 +4,6 @@
 
 #include <cstdio>
 #include <string>
-#include <regex>
 #include <iostream>
 #include "Structure.hpp"
 using namespace std;
@@ -17,13 +16,12 @@ private:
 	string variable;
 	string valeur;
 
-	regex jeVeux;
-	regex jeVais;
-	regex ilVa;
-	regex ilPrend;
-	regex comparaison;
-	regex jePrends;
-	regex nonFonction;
+	string jeVeux;
+	string jeVais;
+	string ilVa;
+	string ilPrend;
+	string comparaison;
+	string jePrends;
 
 public:
 	void initRegex();

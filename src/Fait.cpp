@@ -4,129 +4,70 @@ using namespace std;
 
 void Fait::initRegex()
 {
-	jeVeux.assign( "je veux ");
-	jeVais.assign("je vais ");
-	ilVa.assign( "il va ");
-	ilPrend.assign("il prend ");
-	jePrends.assign("je prends ");
-	comparaison.assign("[()[:alpha:] ]+ == [ [:alpha:]()]+");
-	nonFonction.assign("[[:alpha:] ]+");
+	jeVeux = ( "je veux ");
+	jeVais = ("je vais ");
+	ilVa = ( "il va ");
+	ilPrend = ("il prend ");
+	jePrends = ("je prends ");
+	comparaison = ("==");
 }
 
 Fait::Fait(){
 	
 }
 
-Fait::Fait(string regle)
-{
-	initRegex();
-	if (regex_search(regle,jeVeux))
-	{
-		type="je veux ";
-		variable="PERSO";
-		valeur=regex_replace(regle,jeVeux,"");
-		
-	}
-	else if (regex_search(regle,jeVais))
-	{
-		type="je vais ";
-		variable="POSTE";
-		valeur=regex_replace(regle,jeVais,"");
-	}
-	else if (regex_search(regle,ilVa))
-	{
-		type="il va ";
-		variable="POSTE";
-		valeur=regex_replace(regle,ilVa,"");
-	}
-	else if (regex_search(regle,ilPrend)){
-		type="il prend ";;
-		variable="PERSO";
-		valeur=regex_replace(regle,ilPrend,"");
-	}
-	else if (regex_search(regle,jePrends))
-	{
-		type="je prends ";;
-		variable="PERSO";
-		valeur=regex_replace(regle,jePrends,"");
-	}
-	else if (regex_search(regle,comparaison))
-	{
-		regex fin_cmp;
-		fin_cmp.assign(" == [()[:alpha:] ]+");
-		string specialisation_comp=regex_replace(regle,fin_cmp,"");
-		
-		type=("comparaison : "+specialisation_comp);;
-		
-		regex v1;
-		v1.assign(" == ");
-		valeur=regex_replace(regle,v1,",");
-
-		variable="UNITE1,VALEUR";
-		cout << type << variable<<" " << valeur<<endl;
-	}
-	else
-	{
-		//cout << "Regle que je connais pas " <<regle << endl;
-	}
-	//cout << type << variable<<" " << valeur<<endl;
-}
-
 ////////////////////////////////////////////////////AUTRE CONSTRUCTEUR
 Fait::Fait(string regle,Structure &struc_stockage_fait)
 {
 	initRegex();
-	if (regex_search(regle,jeVeux))
+	if (regle.find(jeVeux)!=string::npos)
 	{
 		type="je veux ";
 		variable="PERSO";
 		valeur=regex_replace(regle,jeVeux,"");
 		
 	}
-	else if (regex_search(regle,jeVais))
+	else if (regle.find(jeVais)!=string::npos)
 	{
 		type="je vais ";
 		variable="POSTE";
 		valeur=regex_replace(regle,jeVais,"");
-		cout << "je suis dans pref 1 "<< endl;
-		//if(!regex_search(valeur,nonFonction))
+		if(!valeur.find(nonFonction)!=string::npos)
 		{
-			regex pref;
-			pref.assign("Pref(");
-			if(regex_search(valeur,pref))
+			if(valeur.find("Pref(")!=string::npos)
 			{
 				cout << "je suis dans pref2" << endl;
 								
 			}
 		}
 	}
-	else if (regex_search(regle,ilVa))
+	else if (regle.find(ilVa)!=string::npos)
 	{
 		type="il va ";
 		variable="POSTE";
 		valeur=regex_replace(regle,ilVa,"");
 	}
-	else if (regex_search(regle,ilPrend)){
+	else if (regle.find(ilPrend)!=string::npos){
 		type="il prend ";;
 		variable="PERSO";
 		valeur=regex_replace(regle,ilPrend,"");
 	}
-	else if (regex_search(regle,jePrends))
+	else if (regle.find(jePrends)!=string::npos)
 	{
 		type="je prends ";;
 		variable="PERSO";
 		valeur=regex_replace(regle,jePrends,"");
 	}
-	else if (regex_search(regle,comparaison))
+	else if (regle.find(comparaison)!=string::npos)
 	{
 		regex fin_cmp;
-		fin_cmp.assign(" == [()[:alpha:] ]+");
+		fin_cmp = (" == [()[:alpha:] ]+");
 		string specialisation_comp=regex_replace(regle,fin_cmp,"");
 		
 		type=("comparaison : "+specialisation_comp);;
 		
 		regex v1;
-		v1.assign(" == ");
+		v1 = (" == ");
 		valeur=regex_replace(regle,v1,",");
 
 		variable="UNITE1,VALEUR";
