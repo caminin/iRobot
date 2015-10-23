@@ -191,6 +191,7 @@ void fileGeneration::getStructFile(counterType* tab_counter){
 
 void fileGeneration::getBaseRegle(vector<Regle> &base_regle)
 {
+	Structure struc_qui_sert_pas;
 	ifstream fichier("./base/baseDeRegle.txt");
 	if(!fichier) 
 	{
@@ -204,7 +205,7 @@ void fileGeneration::getBaseRegle(vector<Regle> &base_regle)
 		Regle new_regle;
 		while(getline(fichier,ligne))
 		{
-		    Fait new_fait(ligne);
+			Fait new_fait(ligne,struc_qui_sert_pas);
 		    if(ligne!= "")
 		    {
 		   	size_t pos=ligne.find_first_of(" ");
@@ -212,7 +213,7 @@ void fileGeneration::getBaseRegle(vector<Regle> &base_regle)
 		   	{
 		         debut=ligne.substr(0,pos);
 		   		ligne=ligne.substr(pos+1);
-		         Fait new_fait(ligne);
+		         Fait new_fait(ligne,struc_qui_sert_pas);
 		         if(!debut.find("THEN"))
 		         {
 		            new_regle.addCons(new_fait);

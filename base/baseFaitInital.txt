@@ -1,2 +1,2 @@
 Libre(POSTE) == true
-je vais Pref(POSTE)
+je veux mid

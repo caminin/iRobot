@@ -5,6 +5,7 @@
 #include <cstdio>
 #include <string>
 #include <iostream>
+#include <regex>
 #include "Structure.hpp"
 using namespace std;
 
@@ -26,7 +27,6 @@ private:
 public:
 	void initRegex();
 	Fait();
-	Fait(string regle);
 	Fait(string regle,Structure &struc_stockage_fait);
 	bool demandable();
 	string toString();

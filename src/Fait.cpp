@@ -12,6 +12,11 @@ void Fait::initRegex()
 	comparaison = ("==");
 }
 
+std::string myreplace(std::string &s,std::string toReplace,std::string replaceWith)
+{
+    return(s.replace(s.find(toReplace), toReplace.length(), replaceWith));
+}
+
 Fait::Fait(){
 	
 }
@@ -24,39 +29,36 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 	{
 		type="je veux ";
 		variable="PERSO";
-		valeur=regex_replace(regle,jeVeux,"");
+		valeur=myreplace(regle,jeVeux,"");
 		
 	}
 	else if (regle.find(jeVais)!=string::npos)
 	{
 		type="je vais ";
 		variable="POSTE";
-		valeur=regex_replace(regle,jeVais,"");
-		if(!valeur.find(nonFonction)!=string::npos)
+		valeur=myreplace(regle,jeVais,"");
+		if(valeur.find("Pref(")!=string::npos)
 		{
-			if(valeur.find("Pref(")!=string::npos)
-			{
-				cout << "je suis dans pref2" << endl;
-								
-			}
+			cout << "je suis dans pref2" << endl;
+							
 		}
 	}
 	else if (regle.find(ilVa)!=string::npos)
 	{
 		type="il va ";
 		variable="POSTE";
-		valeur=regex_replace(regle,ilVa,"");
+		valeur=myreplace(regle,ilVa,"");
 	}
 	else if (regle.find(ilPrend)!=string::npos){
 		type="il prend ";;
 		variable="PERSO";
-		valeur=regex_replace(regle,ilPrend,"");
+		valeur=myreplace(regle,ilPrend,"");
 	}
 	else if (regle.find(jePrends)!=string::npos)
 	{
 		type="je prends ";;
 		variable="PERSO";
-		valeur=regex_replace(regle,jePrends,"");
+		valeur=myreplace(regle,jePrends,"");
 	}
 	else if (regle.find(comparaison)!=string::npos)
 	{
@@ -66,9 +68,7 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 		
 		type=("comparaison : "+specialisation_comp);;
 		
-		regex v1;
-		v1 = (" == ");
-		valeur=regex_replace(regle,v1,",");
+		valeur=myreplace(regle," == ",",");
 
 		variable="UNITE1,VALEUR";
 		cout << type << variable<<" " << valeur<<endl;

@@ -41,8 +41,10 @@ void chaineAvant::runChaineAvant(){
 			{
 				vector<Fait>::iterator it_fait=find(base_fait.begin(),base_fait.end(),antecedent[j]);
 				bool estDansBaseFait=(it_fait!=base_fait.end());//regarde si l'antécédent est dans la base de fait'
+				
 				if(estDansBaseFait)//si un antécédent est dans la base de fait
 				{
+					
 					cout << it_fait->toString()<< " | "<<antecedent[j].toString() << endl;
 					if(it_fait->memeCategorie(antecedent[j]))//si l'antécédent est de même catégorie'
 					{
@@ -67,7 +69,7 @@ void chaineAvant::runChaineAvant(){
 				//plus.insert(pair(it_regle,nbInference));//on memorise la regle et le moment ou on l'a utilisée
 				auMoinsUneInference=true;//il y a eu au moins une regle utilise
 				base_regle.erase(it_regle);//supprime le ieme element du vector
-				cout << "j'ai insérer un truc dans la base de fait " << endl;
+				cout << "j'ai inséré un truc dans la base de fait " << endl;
 				
 			}
 		
