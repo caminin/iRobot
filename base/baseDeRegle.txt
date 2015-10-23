@@ -13,7 +13,7 @@ AND il prend PERSO
 THEN je prends Counter(POSTE,PERSO)
 
 IF je vais POSTE
-AND il a pas choisi
+AND il prend NON_CHOISI
 THEN je vais Pref(POSTE)
 
 IF Pref(POSTE) == vide
@@ -22,3 +22,6 @@ THEN je vais Default(POSTE)
 IF je vais POSTE
 AND je prends PERSO
 THEN je prends Sorts(POSTE)
+
+
+

@@ -10,8 +10,8 @@ void chaineAvant::runChaineAvant(){
 	file.getBaseRegle(base_regle);//contient la base des règles
 	vector<Fait> base_fait;
 	file.getBaseFait(base_fait,struc_stockage_fait);//contient la base des fait
-	for(Regle reg:base_regle)
-		cout << reg.toString()<<endl;
+	//for(Regle reg:base_regle)
+	//	cout << reg.toString()<<endl;
 	int nbInference=0;//nombre de fois qu'on applique une des regles
 	map<Regle,int> memoriserRegleUtilisee;//memorise quand une regle est utilise
 	bool auMoinsUneInference=true;//vérifie si au moins une regle est utilise
@@ -61,13 +61,17 @@ void chaineAvant::runChaineAvant(){
 		
 			it_regle++;
 			if(it_regle==base_regle.end())
-{
+			{
 				cout << "j'ai fait toute les règles'"<<endl;		
 			}
-			for(Fait f:base_fait)
+			cout << "BASE DE FAIT ACTUELLE" << endl;
+			for(Fait f:base_fait){
 				cout << f.toString()<<endl;
-			for(Regle reg:base_regle)
-				cout << reg.toString()<<endl;
+			}
+			cout << "BASE DE REGLE ACTUELLE" << endl;				
+			for(Regle reg:base_regle){
+				//cout << reg.toString()<<endl;
+			}
 			cin.get();
 			
 		}
