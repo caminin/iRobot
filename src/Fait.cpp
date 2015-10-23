@@ -87,8 +87,7 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 			if(regex_search(valeur,regex("Pref(")))
 			{
 				cout << "je suis dans pref" << endl;
-				
-				
+								
 			}
 		}
 	}
@@ -151,13 +150,9 @@ Fait& Fait::operator=(const Fait& other){
 bool Fait::operator==(const Fait& other)
 {
 	return ((strcmp(type.c_str(),other.type.c_str())==0));//||(strcmp(valeur.c_str(),other.valeur.c_str())==0)||(strcmp(variable.c_str(),other.variable.c_str())==0));
-<<<<<<< HEAD
-}
-=======
 }
 
 /*
 int main(){
 	Fait f("avoirChoix(CHOIX) == false");
 }*/
->>>>>>> b88ba6f1f337f882a552f2a1287757221347f3d9

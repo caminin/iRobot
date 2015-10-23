@@ -3,7 +3,7 @@ AND je veux POSTE
 THEN je vais POSTE
 
 IF avoirChoix() == false
-THEN je prends DernierPoste()
+THEN je vais DernierPoste()
 
 IF avoirChoix() == true
 THEN je vais Pref(POSTE)
@@ -14,7 +14,7 @@ THEN je prends Counter(POSTE,PERSO)
 
 IF je vais POSTE
 AND il a pas choisi
-THEN je prends Pref(POSTE)
+THEN je vais Pref(POSTE)
 
 IF Pref(POSTE) == vide
 THEN je vais Default(POSTE)
