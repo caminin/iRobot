@@ -1,12 +1,12 @@
 IF Libre(POSTE) == true
 AND je veux POSTE
-THEN je prends POSTE
+THEN je vais POSTE
 
 IF avoirChoix() == false
 THEN je prends DernierPoste()
 
 IF avoirChoix() == true
-THEN je prends Pref(POSTE)
+THEN je vais Pref(POSTE)
 
 IF je vais POSTE
 AND il prend PERSO
@@ -17,7 +17,7 @@ AND il a pas choisi
 THEN je prends Pref(POSTE)
 
 IF Pref(POSTE) == vide
-THEN je prends Default(POSTE)
+THEN je vais Default(POSTE)
 
 IF je vais POSTE
 AND je prends PERSO

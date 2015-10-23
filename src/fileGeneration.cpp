@@ -86,7 +86,7 @@ void fileGeneration::generationBaseFait()
 
 void fileGeneration::generationSortsFile()
 {
-	sorts list_sorts[5];
+	sortsType list_sorts[5];
 
 	//=====================TOP=====================
 	list_sorts[0].sort1 = TELEPORT;
@@ -111,13 +111,13 @@ void fileGeneration::generationSortsFile()
 	ofstream strucFile("./base/list_sorts.bin",ios::out |ios::binary);
 	for(int i=0;i<5;i++)
 	{
-		strucFile.write((char *)&(list_sorts[i]),sizeof(sorts));
+		strucFile.write((char *)&(list_sorts[i]),sizeof(sortsType));
 	}
 	strucFile.close();
 }
 
 void fileGeneration::generationStructFile(){
-	counter list_counter[15];
+	counterType list_counter[15];
 	
 	//=====================TOP=====================
 	list_counter[0].champion_a_counter=GAREN;
@@ -172,7 +172,7 @@ void fileGeneration::generationStructFile(){
 	ofstream strucFile("./base/list_counter.bin",ios::out |ios::binary);
 	for(int i=0;i<15;i++)
 	{
-		strucFile.write((char *)&(list_counter[i]),sizeof(counter));
+		strucFile.write((char *)&(list_counter[i]),sizeof(counterType));
 	}
 	strucFile.close();
 	//counter* tab_counter=nullptr;
@@ -180,10 +180,10 @@ void fileGeneration::generationStructFile(){
 }
 
 
-void fileGeneration::getStructFile(counter* tab_counter){
-	tab_counter = new counter[15];
+void fileGeneration::getStructFile(counterType* tab_counter){
+	tab_counter = new counterType[15];
 	ifstream strucFile("./base/list_counter.bin",ios::out |ios::binary);
-	strucFile.read((char*)tab_counter,15*sizeof(counter));
+	strucFile.read((char*)tab_counter,15*sizeof(counterType));
 	cout << tab_counter[12].champion_a_counter << endl;
 	strucFile.close();
 	
@@ -233,7 +233,7 @@ void fileGeneration::getBaseRegle(vector<Regle> &base_regle)
 	fichier.close();
 }
 
-void fileGeneration::getBaseFait(vector<Fait> &base_fait)
+void fileGeneration::getBaseFait(vector<Fait> &base_fait,Structure &struc_stockage_fait)
 {
 	ifstream fichier2("./base/baseFaitInital.txt");
 	if(!fichier2) 
@@ -245,7 +245,7 @@ void fileGeneration::getBaseFait(vector<Fait> &base_fait)
 		string line;
 		while(getline(fichier2,line))
 		{
-			Fait new_fait(line);
+			Fait new_fait(line,struc_stockage_fait);
 			base_fait.push_back(new_fait);
 		}
 	}

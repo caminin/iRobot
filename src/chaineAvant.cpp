@@ -5,10 +5,11 @@ using namespace std;
 
 void chaineAvant::runChaineAvant(){
 	fileGeneration file;
+	Structure struc_stockage_fait;
 	vector<Regle> base_regle;
 	file.getBaseRegle(base_regle);//contient la base des règles
 	vector<Fait> base_fait;
-	file.getBaseFait(base_fait);//contient la base des fait
+	file.getBaseFait(base_fait,struc_stockage_fait);//contient la base des fait
 	for(Regle reg:base_regle)
 		cout << reg.toString()<<endl;
 	int nbInference=0;//nombre de fois qu'on applique une des regles
