@@ -10,7 +10,7 @@ THEN je vais Pref(POSTE)
 
 IF je vais POSTE
 AND il prend PERSO
-THEN je prends Counter(POSTE,PERSO)
+THEN je prends Counter(PERSO)
 
 IF je vais POSTE
 AND il prend NON_CHOISI

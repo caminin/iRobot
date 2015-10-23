@@ -88,11 +88,14 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 		type="je vais ";
 		variable="POSTE";
 		valeur=regex_replace(regle,jeVais,"");
-		if(!regex_search(valeur,nonFonction))
+		cout << "je suis dans pref 1 "<< endl;
+		//if(!regex_search(valeur,nonFonction))
 		{
-			if(regex_search(valeur,regex("Pref(")))
+			regex pref;
+			pref.assign("Pref(");
+			if(regex_search(valeur,pref))
 			{
-				cout << "je suis dans pref" << endl;
+				cout << "je suis dans pref2" << endl;
 								
 			}
 		}
