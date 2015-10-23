@@ -52,21 +52,26 @@ Fait::Fait(string regle)
 	}
 	else if (regex_search(regle,comparaison))
 	{
-		type="comparaison ";
+		regex fin_cmp;
+		fin_cmp.assign(" == [()[:alpha:] ]+");
+		string specialisation_comp=regex_replace(regle,fin_cmp,"");
+		
+		type=("comparaison : "+specialisation_comp);;
+		
 		regex v1;
 		v1.assign(" == ");
-		variable="UNITE1,UNITE2";
 		valeur=regex_replace(regle,v1,",");
+
+		variable="UNITE1,VALEUR";
 		cout << type << variable<<" " << valeur<<endl;
 	}
 	else
 	{
-		cout << "Regle que je connais pas " <<regle << endl;
+		//cout << "Regle que je connais pas " <<regle << endl;
 	}
-	//cout <<"Fait à partir de "<< type+variable << " et de valeur " << valeur << endl;
-	
+	//cout << type << variable<<" " << valeur<<endl;
 }
-
+////////////////////////////////////////////////////AUTRE CONSTRUCTEUR
 Fait::Fait(string regle,Structure &struc_stockage_fait)
 {
 	initRegex();
@@ -111,11 +116,17 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 	}
 	else if (regex_search(regle,comparaison))
 	{
-		type="comparaison ";
+		regex fin_cmp;
+		fin_cmp.assign(" == [()[:alpha:] ]+");
+		string specialisation_comp=regex_replace(regle,fin_cmp,"");
+		
+		type=("comparaison : "+specialisation_comp);;
+		
 		regex v1;
 		v1.assign(" == ");
-		variable="UNITE1,UNITE2";
 		valeur=regex_replace(regle,v1,",");
+
+		variable="UNITE1,VALEUR";
 		cout << type << variable<<" " << valeur<<endl;
 	}
 	else

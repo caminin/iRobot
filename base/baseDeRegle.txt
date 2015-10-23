@@ -22,3 +22,6 @@ THEN je vais Default(POSTE)
 IF je vais POSTE
 AND je prends PERSO
 THEN je prends Sorts(POSTE)
+
+
+
