@@ -15,19 +15,30 @@ void chaineAvant::runChaineAvant(){
 	int nbInference=0;//nombre de fois qu'on applique une des regles
 	map<Regle,int> memoriserRegleUtilisee;//memorise quand une regle est utilise
 	bool auMoinsUneInference=true;//vérifie si au moins une regle est utilise
+	cout << endl;
+	cout << "BASE DE FAIT ACTUELLE" << endl;
+	for(Fait f:base_fait){
+		cout << f.toString()<<endl;
+	}
+	cout << endl;
+	cout << "BASE DE REGLE ACTUELLE" << endl;				
+	for(Regle reg:base_regle){
+		cout << reg.toString()<<endl;
+	}
+	cout << endl;
+	cin.get();
+			
 	while(auMoinsUneInference)//tant qu'on applique au moins une regle
 	{
 		auMoinsUneInference=false;
 		vector<Regle>::iterator it_regle=base_regle.begin();
 		while(it_regle!=base_regle.end())
 		{
-			cout << "Premiere boucle" << endl;
 			vector<Fait> antecedent=it_regle->getAntecedents();
 			bool antecedentDansBaseFait=true;
 			unsigned int j=0;
 			while(antecedentDansBaseFait && j<antecedent.size())//on regarde dans tous les antecedents du fait
 			{
-				cout << "Deuxieme boucle" <<antecedent.size()<<" "<<antecedent[j].toString()<<  endl;
 				vector<Fait>::iterator it_fait=find(base_fait.begin(),base_fait.end(),antecedent[j]);
 				bool estDansBaseFait=(it_fait!=base_fait.end());//regarde si l'antécédent est dans la base de fait'
 				if(estDansBaseFait)//si un antécédent est dans la base de fait
@@ -36,7 +47,7 @@ void chaineAvant::runChaineAvant(){
 					if(it_fait->memeCategorie(antecedent[j]))//si l'antécédent est de même catégorie'
 					{
 						//antecedentDansBaseFait=true;// on continue
-						cout << "meme catégorie"<<endl;
+						cout << "J'ai trouvé un antécédent dans la base de fait"<<endl;
 					}
 					else//si l'antécédent n'est pas de même catégorie
 					{
@@ -56,7 +67,8 @@ void chaineAvant::runChaineAvant(){
 				//plus.insert(pair(it_regle,nbInference));//on memorise la regle et le moment ou on l'a utilisée
 				auMoinsUneInference=true;//il y a eu au moins une regle utilise
 				base_regle.erase(it_regle);//supprime le ieme element du vector
-				cout << "j'ai trouvé " << endl;
+				cout << "j'ai insérer un truc dans la base de fait " << endl;
+				
 			}
 		
 			it_regle++;
@@ -66,14 +78,10 @@ void chaineAvant::runChaineAvant(){
 			}
 			cout << "BASE DE FAIT ACTUELLE" << endl;
 			for(Fait f:base_fait){
-				//cout << f.toString()<<endl;
+				cout << f.toString()<<endl;
 			}
-			cout << "BASE DE REGLE ACTUELLE" << endl;				
-			for(Regle reg:base_regle){
-				//cout << reg.toString()<<endl;
-			}
+			cout << endl;
 			cin.get();
-			
 		}
 	}
 }
