@@ -64,7 +64,8 @@ void chaineAvant::runChaineAvant(){
 			}
 			if(antecedentDansBaseFait)//si tous les antecendent sont dans la base de fait
 			{
-				base_fait.push_back(it_regle->getConsequence());//on save le nouveau faitx	
+				Fait f(it_regle->getConsequence().getRegle(),struc_stockage_fait);
+				base_fait.push_back(it_regle->getConsequence());//on save le nouveau fait
 				nbInference++;//une inférence en memoriserRegleUtilisee
 				//plus.insert(pair(it_regle,nbInference));//on memorise la regle et le moment ou on l'a utilisée
 				auMoinsUneInference=true;//il y a eu au moins une regle utilise

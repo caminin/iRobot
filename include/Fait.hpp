@@ -17,6 +17,8 @@ private:
 	string variable;
 	string valeur;
 
+	string MyRegle;
+
 	string jeVeux;
 	string jeVais;
 	string ilVa;
@@ -34,6 +36,8 @@ public:
 	Fait& operator=(const Fait& other);
 	bool operator==(const Fait& other);
 	void interpretation(Structure &struct_stockage);
+	
+	string getRegle(){return MyRegle;};
 };
 
 #endif
