@@ -79,6 +79,7 @@ void chaineAvant::runChaineAvant(){
 			cout << "BASE DE FAIT ACTUELLE" << endl;
 			for(Fait f:base_fait){
 				cout << f.toString()<<endl;
+
 			}
 			cout << endl;
 			cin.get();

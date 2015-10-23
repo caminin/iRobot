@@ -71,6 +71,7 @@ Fait::Fait(string regle)
 	}
 	//cout << type << variable<<" " << valeur<<endl;
 }
+
 ////////////////////////////////////////////////////AUTRE CONSTRUCTEUR
 Fait::Fait(string regle,Structure &struc_stockage_fait)
 {
@@ -92,8 +93,7 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 			if(regex_search(valeur,regex("Pref(")))
 			{
 				cout << "je suis dans pref" << endl;
-				
-				
+								
 			}
 		}
 	}
