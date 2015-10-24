@@ -34,8 +34,11 @@ void chaineAvant::runChaineAvant(){
 	{
 		auMoinsUneInference=false;
 		vector<Regle>::iterator it_regle=base_regle.begin();
+		cout << "je suis sorti" << endl;
 		while(it_regle!=base_regle.end())
 		{
+			cout << "Je démarre la boucle" << endl;
+			cout << it_regle->toString() << endl;
 			vector<Fait> antecedent=it_regle->getAntecedents();
 			bool antecedentDansBaseFait=true;
 			unsigned int j=0;
@@ -66,17 +69,27 @@ void chaineAvant::runChaineAvant(){
 			}
 			if(antecedentDansBaseFait)//si tous les antecendent sont dans la base de fait
 			{
-				Fait f(it_regle->getConsequence().getRegle(),struc_stockage_fait);
+				cout << "Fait que j'insère : " << it_regle->toString() << " qui a été créé à partir de "<< (it_regle->getConsequence()).getRegle()<< endl;
+				Fait f((it_regle->getConsequence()).getRegle(),struc_stockage_fait);
 				base_fait.push_back(it_regle->getConsequence());//on save le nouveau fait
 				nbInference++;//une inférence en memoriserRegleUtilisee
 				//plus.insert(pair(it_regle,nbInference));//on memorise la regle et le moment ou on l'a utilisée
 				auMoinsUneInference=true;//il y a eu au moins une regle utilise
-				base_regle.erase(it_regle);//supprime le ieme element du vector
+				if((it_regle+1)==base_regle.end())// si on supprime le dernier élément, on met le vecteur sur l'avant-dernier car sinon on ne sait pas ou le vecteur est
+				{
+					base_regle.erase(it_regle);//supprime le ieme element du vector
+					it_regle=base_regle.end();//remet sur le dernier élément		
+					cout << "j'ai effacé le dernier'" << endl;
+				}
+				else{
+					base_regle.erase(it_regle);//supprime le ieme element du vector
+					it_regle++;					
+				}
 				cout << "j'ai inséré un truc dans la base de fait " << endl;
 				
 			}
-		
-			it_regle++;
+			else
+				it_regle++;
 			if(it_regle==base_regle.end())
 			{
 				cout << "j'ai fait toute les règles'"<<endl;		
@@ -84,8 +97,8 @@ void chaineAvant::runChaineAvant(){
 			cout << "BASE DE FAIT ACTUELLE" << endl;
 			for(Fait f:base_fait){
 				cout << f.toString()<<endl;
-
 			}
+			//it_regle est vide au 5e, mais il continue
 			cout << endl;
 			cin.get();
 		}

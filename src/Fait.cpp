@@ -6,7 +6,7 @@ void Fait::initRegex()
 {
 	jeVeux = ( "je veux ");
 	jeVais = ("je vais ");
-	ilVa = ( "il va ");
+	ilVa=("il va");
 	ilPrend = ("il prend ");
 	jePrends = ("je prends ");
 	comparaison = ("==");
@@ -16,8 +16,6 @@ std::string myreplace(std::string &s,std::string toReplace,std::string replaceWi
 {
     return(s.replace(s.find(toReplace), toReplace.length(), replaceWith));
 }
-
-Fait::Fait(){}
 
 
 ////////////////////////////////////////////////////AUTRE CONSTRUCTEUR
@@ -39,20 +37,30 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 		valeur=myreplace(regle,jeVais,"");
 		if(valeur.find("Pref(")!=string::npos)
 		{
-			cout << "je suis dans pref2" << endl;
-							
+			struc_stockage_fait.moi.poste_pris=struc_stockage_fait.moi.poste_souhaite;
+		}
+		else if(verifPoste(valeur,struc_stockage_fait.moi.poste_pris))
+		{
+			
 		}
 	}
 	else if (regle.find(ilVa)!=string::npos)
 	{
 		type="il va ";
 		variable="POSTE";
-		valeur=myreplace(regle,ilVa,"");
+		valeur=myreplace(regle,jeVais,"");
+		if(verifPoste(valeur,struc_stockage_fait.moi.poste_pris))
+		{
+			
+		}
 	}
 	else if (regle.find(ilPrend)!=string::npos){
 		type="il prend ";;
 		variable="PERSO";
 		valeur=myreplace(regle,ilPrend,"");
+		//if(verifPerso(valeur,))
+		{
+		}
 	}
 	else if (regle.find(jePrends)!=string::npos)
 	{
@@ -75,7 +83,7 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 	}
 	else
 	{
-		cout << "Regle que je connais pas " <<regle << endl;
+		cout << "Regle que je connais pas " <<regle << " | fin règle"<< endl;
 	}
 	//cout <<"Fait à partir de "<< type+variable << " et de valeur " << valeur << endl;
 	
@@ -88,7 +96,8 @@ bool Fait::demandable()
 
 string Fait::toString()
 {
-	return type+" "+variable+" "+valeur;
+	string res=type+" "+variable+" "+valeur;
+	return res;
 }
 
 bool Fait::memeCategorie(Fait& other){
@@ -108,6 +117,118 @@ bool Fait::operator==(const Fait& other)
 	return ((strcmp(type.c_str(),other.type.c_str())==0));//||(strcmp(valeur.c_str(),other.valeur.c_str())==0)||(strcmp(variable.c_str(),other.variable.c_str())==0));
 }
 
+bool Fait::verifPoste(string valeur,type_poste& poste_vise)
+{
+	bool res=false;
+	if(valeur.find("top")!=string::npos){
+		poste_vise=TOP;
+		res=true;
+	}
+	else if(valeur.find("mid")!=string::npos)
+	{
+		poste_vise=MID;
+		res=true;
+	}
+	else if(valeur.find("jungle")!=string::npos)
+	{
+		poste_vise=JUNGLE;
+		res=true;
+	}
+	else if(valeur.find("support")!=string::npos)
+	{
+		poste_vise=TOP;
+		res=true;
+	}
+	else if(valeur.find("adc")!=string::npos)
+	{
+		poste_vise=ADC;
+		res=true;
+	}
+	
+	return res;
+}
+
+bool Fait::verifPerso(string valeur, champion *perso)
+{
+	bool res=false;
+	if(valeur.find("GAREN")!=string::npos){
+		perso=new champion;
+		*perso=GAREN;
+		res=true;
+	}
+	else if(valeur.find("LULU")!=string::npos){
+		perso=new champion;
+		*perso=LULU;
+		res=true;
+	}
+	else if(valeur.find("DARIUS")!=string::npos){
+		perso=new champion;
+		*perso=DARIUS;
+		res=true;
+	}
+	else if(valeur.find("LEBLANC")!=string::npos){
+		perso=new champion;
+		*perso=LEBLANC;
+		res=true;
+	}
+	else if(valeur.find("MORGANA")!=string::npos){
+		perso=new champion;
+		*perso=MORGANA;
+		res=true;
+	}
+	else if(valeur.find("AHRI")!=string::npos){
+		perso=new champion;
+		*perso=AHRI;
+		res=true;
+	}
+	else if(valeur.find("EZREAL")!=string::npos){
+		perso=new champion;
+		*perso=EZREAL;
+		res=true;
+	}
+	else if(valeur.find("CAITLYN")!=string::npos){
+		perso=new champion;
+		*perso=CAITLYN;
+		res=true;
+	}
+	else if(valeur.find("VAYNE")!=string::npos){
+		perso=new champion;
+		*perso=VAYNE;
+		res=true;
+	}
+	else if(valeur.find("NAMI")!=string::npos){
+		perso=new champion;
+		*perso=NAMI;
+		res=true;
+	}
+	else if(valeur.find("LEONA")!=string::npos){
+		perso=new champion;
+		*perso=LEONA;
+		res=true;
+	}
+	else if(valeur.find("NAUTILUS")!=string::npos){
+		perso=new champion;
+		*perso=NAUTILUS;
+		res=true;
+	}
+	else if(valeur.find("LEE")!=string::npos){
+		perso=new champion;
+		*perso=LEE;
+		res=true;
+	}
+	else if(valeur.find("SHACO")!=string::npos){
+		perso=new champion;
+		*perso=SHACO;
+		res=true;
+	}
+	else if(valeur.find("FIDDLE")!=string::npos){
+		perso=new champion;
+		*perso=FIDDLE;
+		res=true;
+	}
+	
+	return res;
+}
 /*
 int main(){
 	Fait f("avoirChoix(CHOIX) == false");

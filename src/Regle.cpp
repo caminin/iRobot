@@ -6,11 +6,11 @@ vector<Fait> Regle::getAntecedents(){
 }
 
 Regle::Regle(){
-	
+	consequence=nullptr;
 }
 
 Fait Regle::getConsequence(){
-	return consequence;
+	return *consequence;
 }
 
 void Regle::addAnt(Fait& ant)
@@ -20,7 +20,7 @@ void Regle::addAnt(Fait& ant)
 
 void Regle::addCons(Fait& cons)
 {
-	consequence=cons;
+	consequence=new Fait(cons);
 }
 
 bool Regle::operator==(const Regle& other)
@@ -35,6 +35,6 @@ string Regle::toString()
 	{
 		res=res+fait.toString()+",";
 	}
-	res=res+"----Consequence : "+consequence.toString();
+	res=res+"----Consequence : "+consequence->toString();
 	return res;
 }

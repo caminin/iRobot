@@ -13,11 +13,11 @@ using namespace std;
 class Fait
 {
 private:
-	string type;
-	string variable;
-	string valeur;
+	string type="";
+	string variable="";
+	string valeur="";
 
-	string MyRegle;
+	string MyRegle="default";
 
 	string jeVeux;
 	string jeVais;
@@ -28,7 +28,6 @@ private:
 
 public:
 	void initRegex();
-	Fait();
 	Fait(string regle,Structure &struc_stockage_fait);
 	bool demandable();
 	string toString();
@@ -36,6 +35,8 @@ public:
 	Fait& operator=(const Fait& other);
 	bool operator==(const Fait& other);
 	void interpretation(Structure &struct_stockage);
+	bool verifPoste(string valeur,type_poste& poste_vise);
+	bool verifPerso(string valeur, champion *perso);
 	
 	string getRegle(){return MyRegle;};
 };

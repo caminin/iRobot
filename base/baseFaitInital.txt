@@ -1,3 +1,2 @@
-Libre(POSTE) == true
-je veux mid
-je vais Pref(Poste)
+je vais mid
+je prends veigar

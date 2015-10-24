@@ -13,7 +13,7 @@
 
 class Regle {
 	vector<Fait> antecedents;
-	Fait consequence;
+	Fait* consequence;
 	
 	public:
 		Regle();
