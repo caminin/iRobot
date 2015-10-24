@@ -58,8 +58,9 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 		type="il prend ";;
 		variable="PERSO";
 		valeur=myreplace(regle,ilPrend,"");
-		//if(verifPerso(valeur,))
+		if (valeur.find("NON_CHOISI")!=string::npos)
 		{
+			//struc_stockage_fait.moi.champion_pris = champ;
 		}
 	}
 	else if (regle.find(jePrends)!=string::npos)
@@ -67,6 +68,11 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 		type="je prends ";;
 		variable="PERSO";
 		valeur=myreplace(regle,jePrends,"");
+		if (valeur.find("Counter(")!=string::npos)
+		{
+			/*string champ = getCounter(valeur.substr(0,valeur.size()-1));
+			struc_stockage_fait.moi.champion_pris = champ;*/
+		}
 	}
 	else if (regle.find(comparaison)!=string::npos)
 	{
