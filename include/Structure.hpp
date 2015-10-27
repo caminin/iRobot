@@ -31,7 +31,7 @@ typedef struct s_sort
 } sortsType;
 
 typedef struct s_moi {
-	type_poste poste_souhaite=MID;
+	type_poste poste_souhaite;
 	type_poste poste_pris;
 	champion* champion_souhaite;
 	champion* champion_pris;

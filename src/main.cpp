@@ -53,8 +53,9 @@ string init(int argc, char *argv[])
 		}
 		else if(strcmp(argv[1],"ch_arriere")==0)
 		{
-			//chaineArriere chainage;
-			//chainage.runChaineArriere();
+			chaineArriere chainage("je vais mid");
+			
+			chainage.runChaineArriere();
 		}
 		else if(strcmp(argv[1],"doIt")==0)
 		{

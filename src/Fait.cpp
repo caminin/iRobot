@@ -18,7 +18,7 @@ std::string myreplace(std::string &s,std::string toReplace,std::string replaceWi
 }
 
 
-////////////////////////////////////////////////////AUTRE CONSTRUCTEUR
+////////////////////////////////////////////////////CONSTRUCTEUR
 Fait::Fait(string regle,Structure &struc_stockage_fait)
 {
 	MyRegle = regle;
