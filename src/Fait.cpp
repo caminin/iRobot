@@ -61,10 +61,6 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 		type="il prend ";;
 		variable="PERSO";
 		valeur=myreplace(regle,ilPrend,"");
-		if (valeur.find("NON_CHOISI")!=string::npos)
-		{
-			//struc_stockage_fait.moi.champion_pris = champ;
-		}
 		cout << type << variable<<" " << valeur<<endl;
 	}
 	else if (regle.find(jePrends)!=string::npos)
@@ -74,8 +70,21 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 		valeur=myreplace(regle,jePrends,"");
 		if (valeur.find("Counter(")!=string::npos)
 		{
-			//string v = myreplace(valeur,"Counter(","");
+			valeur = myreplace(valeur,"Counter(","");
+			valeur = myreplace(valeur, ")","");
+
+			// recherche du counter de valeur
+
 			cout << "je dois chercher le counter de " << valeur << endl;
+		}
+		if (valeur.find("Pref(")!=string::npos)
+		{
+			valeur = myreplace(valeur,"Pref(","");
+			valeur = myreplace(valeur, ")","");
+
+			// recherche du perso prefere pour valeur
+
+			cout << "je dois chercher le perso préféré pour " << valeur << endl;
 		}
 		cout << type << variable<<" " << valeur<<endl;
 	}

@@ -3,8 +3,7 @@ AND je veux POSTE
 THEN je vais POSTE
 
 IF je vais POSTE
-AND il prend NON_CHOISI
-THEN je vais Pref(POSTE)
+THEN je prends Pref(POSTE)
 
 IF Pref(POSTE) == vide
 THEN je prends Default(POSTE)

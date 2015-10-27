@@ -35,6 +35,7 @@ string Regle::toString()
 	{
 		res=res+"\n\t"+fait.toString();
 	}
-	res=res+"\nConsequence : "+consequence->toString()+"\n";
+	res=res+"\nConsequence : "+consequence->toString();
 	return res;
+	cout << endl;
 }

@@ -1,12 +1,11 @@
 Libre(POSTE) == true
 je veux POSTE
 je vais POSTE
-il prend NON_CHOISI
-je vais Pref(POSTE)
+je prends Pref(POSTE)
 Pref(POSTE) == vide
 je prends Default(POSTE)
 je prends PERSO
 je prends Sorts(POSTE)
 il va POSTE
-il prend POSTE
+il prend PERSO
 je prends Counter(PERSO)
