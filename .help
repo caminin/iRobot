@@ -4,3 +4,5 @@ structgen:
 	Génère les structures comme les counter nécessaire
 ch_avant
 	Lance le chainage avant
+ch_arriere
+	Lance le chainage arriere

@@ -31,6 +31,7 @@ string init(int argc, char *argv[])
 	                cout << line << endl;
 	            }
 	        }
+	        return "";
 		}
 		else if(strcmp(argv[1],"basegen")==0)
 		{
@@ -50,10 +51,23 @@ string init(int argc, char *argv[])
 			chaineAvant chainage;
 			chainage.runChaineAvant();
 		}
-		else if(strcmp(argv[1],"ch_arrier")==0)
+		else if(strcmp(argv[1],"ch_arriere")==0)
 		{
 			//chaineArriere chainage;
 			//chainage.runChaineArriere();
+		}
+		else if(strcmp(argv[1],"doIt")==0)
+		{
+			fileGeneration base;
+			base.generationBaseFait();
+			base.afficheBaseFait();
+
+			fileGeneration file;
+			file.generationStructFile();
+			file.generationSortsFile();
+
+			chaineAvant chainage;
+			chainage.runChaineAvant();
 		}
 		else {
 			return "Arguments incorrect";

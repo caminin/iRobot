@@ -1,15 +1,12 @@
-Libre(POSTE) ==  true
+Libre(POSTE) == true
 je veux POSTE
-je prends POSTE
-avoirChoix() ==  false
-je prends DernierPoste()
-avoirChoix() ==  true
-je prends Pref(POSTE)
 je vais POSTE
-il prend PERSO
-je prends Counter(POSTE,PERSO)
-il a pas choisi
-Pref(POSTE) ==  vide
+il prend NON_CHOISI
+je vais Pref(POSTE)
+Pref(POSTE) == vide
 je prends Default(POSTE)
 je prends PERSO
 je prends Sorts(POSTE)
+il va POSTE
+il prend POSTE
+je prends Counter(PERSO)

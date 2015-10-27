@@ -6,10 +6,19 @@ using namespace std;
 void chaineAvant::runChaineAvant(){
 	fileGeneration file;
 	Structure struc_stockage_fait;
+
+	cout << "LECTURE DE LA BASE DE REGLE" << endl;
+	cout << "/////////////////////////////////////////////////////////////" << endl;
 	vector<Regle> base_regle;
 	file.getBaseRegle(base_regle);//contient la base des règles
+	cout << "/////////////////////////////////////////////////////////////" << endl;
+
+	cout <<endl<< "LECTURE DE LA BASE DE FAIT" << endl;
+	cout << "/////////////////////////////////////////////////////////////" << endl;
 	vector<Fait> base_fait;
 	file.getBaseFait(base_fait,struc_stockage_fait);//contient la base des fait
+	cout << "/////////////////////////////////////////////////////////////" <<endl<< endl;
+
 	//for(Regle reg:base_regle)
 	//	cout << reg.toString()<<endl;
 	int nbInference=0;//nombre de fois qu'on applique une des regles
@@ -99,7 +108,7 @@ void chaineAvant::runChaineAvant(){
 				cout << f.toString()<<endl;
 			}
 			//it_regle est vide au 5e, mais il continue
-			cout << endl;
+			cout << endl << endl;;
 			cin.get();
 		}
 	}

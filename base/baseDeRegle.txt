@@ -3,10 +3,6 @@ AND je veux POSTE
 THEN je vais POSTE
 
 IF je vais POSTE
-AND il prend PERSO
-THEN je prends Counter(PERSO)
-
-IF je vais POSTE
 AND il prend NON_CHOISI
 THEN je vais Pref(POSTE)
 
@@ -16,4 +12,9 @@ THEN je prends Default(POSTE)
 IF je vais POSTE
 AND je prends PERSO
 THEN je prends Sorts(POSTE)
+
+IF il va POSTE
+AND il prend PERSO
+AND je vais POSTE
+THEN je prends Counter(PERSO)
 

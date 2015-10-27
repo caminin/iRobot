@@ -23,7 +23,7 @@ void fileGeneration::afficheBaseFait()
 	ifstream fichier(pathBaseFait);
         if(!fichier) 
         {
-            cerr << "Le fichier help n'existe pas" << endl;
+            cerr << "Le fichier baseFait.txt n'existe pas" << endl;
         }
         else
         {
@@ -205,8 +205,8 @@ void fileGeneration::getBaseRegle(vector<Regle> &base_regle)
 		Regle new_regle;
 		while(getline(fichier,ligne))
 		{
-			Fait new_fait(ligne,struc_qui_sert_pas);
-		    if(ligne!= "")
+			//Fait new_fait(ligne,struc_qui_sert_pas);
+		    if(ligne.size()>0)
 		    {
 			   	size_t pos=ligne.find_first_of(" ");
 			   	if(pos!=string::npos)
@@ -219,6 +219,7 @@ void fileGeneration::getBaseRegle(vector<Regle> &base_regle)
 			            new_regle.addCons(new_fait);
 			            base_regle.push_back(new_regle);
 			            new_regle=Regle();
+			            cout << endl;
 			        }
 			        else
 			        {
@@ -228,7 +229,7 @@ void fileGeneration::getBaseRegle(vector<Regle> &base_regle)
 		    }   
 		}
 	}
-	cout << "Il y a "<< base_regle.size() << " Règles"<<endl;
+	cout << "==> Il y a "<< base_regle.size() << " Règles"<<endl;
 	fichier.close();
 }
 
