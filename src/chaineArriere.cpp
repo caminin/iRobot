@@ -9,7 +9,6 @@ chaineArriere::chaineArriere(string regle)
 }
 void chaineArriere::runChaineArriere()
 {
-	gen.getBaseFait(base_fait,s);
 	Demo(*fait,base_fait);
 }
 
@@ -18,6 +17,14 @@ bool chaineArriere::Demo(Fait& but, vector<Fait> &base_fait)
 	cout << "debut" << endl;
 	vector<Regle> base_regle;
 	gen.getBaseRegle(base_regle);
+	
+	cout << "BASE DE FAIT ACTUELLE" << endl;
+	for(Fait f:base_fait)
+	{
+		cout << f.toString()<<endl;
+	}
+	cout << "FIN BASE FAIT" << endl;
+	
 	bool dem=false;
 	vector<Fait>::iterator it_fait=find(base_fait.begin(),base_fait.end(),but);
 	
@@ -26,16 +33,19 @@ bool chaineArriere::Demo(Fait& but, vector<Fait> &base_fait)
 	{
 		cout <<"Premier fait : "<< but.toString() << " | "<< it_fait->toString() << endl;
 		dem=true;
-		cout << "boucle 1" << endl;
 	}
-	vector<Regle>::iterator it=base_regle.begin();
-	while(dem==false && it!=base_regle.end())
+	vector<Regle>::iterator it_regle=base_regle.begin();
+	while(dem==false && it_regle!=base_regle.end())
 	{
 		vector<Fait> f;
-		f=it->getAntecedents();
-		dem=verif(f,base_fait);
-		it++;	
-		cout << "boucle 2" << endl;
+		if(it_regle==base_regle.end())
+			cout << "plop"<< endl;
+		if(it_regle->getConsequence()==but)
+		{
+			f=it_regle->getAntecedents();
+			dem=verif(f,base_fait);
+		}
+		it_regle++;	
 	}
 	if(dem==false)
 	{
@@ -50,15 +60,18 @@ bool chaineArriere::Demo(Fait& but, vector<Fait> &base_fait)
 			reponse=false;
 		}
 		dem=reponse;
-		cout << "boucle 3" << endl;
 	}
 	if(dem==true)
 	{
 		base_fait.push_back(but);
-		cout << "boucle 4" << endl;
 	}
 	
-	
+	cout << "BASE DE FAIT ACTUELLE" << endl;
+	for(Fait f:base_fait)
+	{
+		cout << f.toString()<<endl;
+	}
+	cout << "FIN BASE FAIT" << endl;
 	cout << "boucle 5" << endl;
 	return dem;
 }

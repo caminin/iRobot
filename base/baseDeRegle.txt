@@ -17,3 +17,4 @@ IF je vais POSTE
 AND je prends PERSO
 THEN je prends Sorts(POSTE)
 
+
