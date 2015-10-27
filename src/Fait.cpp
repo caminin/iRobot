@@ -18,7 +18,7 @@ std::string myreplace(std::string &s,std::string toReplace,std::string replaceWi
 }
 
 
-////////////////////////////////////////////////////AUTRE CONSTRUCTEUR
+////////////////////////////////////////////////////CONSTRUCTEUR
 Fait::Fait(string regle,Structure &struc_stockage_fait)
 {
 	MyRegle = regle;
@@ -49,7 +49,7 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 		type="il va ";
 		variable="POSTE";
 		valeur=myreplace(regle,jeVais,"");
-		if(verifPoste(valeur,struc_stockage_fait.moi.poste_pris))
+		if(verifPoste(valeur,struc_stockage_fait.moi.poste_pris))// a fix
 		{
 			
 		}
@@ -85,11 +85,11 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 		valeur=myreplace(regle," == ",",");
 
 		variable="UNITE1,VALEUR";
-		cout << type << variable<<" " << valeur<<endl;
+		//cout << type << variable<<" " << valeur<<endl;
 	}
 	else
 	{
-		cout << "Regle que je connais pas " <<regle << " | fin règle"<< endl;
+		//cout << "Regle que je connais pas " <<regle << " | fin règle"<< endl;
 	}
 	//cout <<"Fait à partir de "<< type+variable << " et de valeur " << valeur << endl;
 	

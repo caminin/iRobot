@@ -20,7 +20,15 @@ extern string pathBaseConnaissance;
 
 class chaineArriere
 {
+	private:
+		Structure s;
+		vector<Fait> base_fait;
+		fileGeneration gen;
+		Fait *fait;
+			
 public:
-	bool runChaineArriere(Fait &but, vector<Fait> &base_fait);
+	chaineArriere(string regle);
+	void runChaineArriere();
+	bool Demo(Fait &but, vector<Fait> &base_fait);
 	bool verif(vector<Fait> &ensemble_but, vector<Fait> &base_fait);
 };

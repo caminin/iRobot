@@ -50,10 +50,11 @@ string init(int argc, char *argv[])
 			chaineAvant chainage;
 			chainage.runChaineAvant();
 		}
-		else if(strcmp(argv[1],"ch_arrier")==0)
+		else if(strcmp(argv[1],"ch_arr")==0)
 		{
-			//chaineArriere chainage;
-			//chainage.runChaineArriere();
+			chaineArriere chainage("je vais mid");
+			
+			chainage.runChaineArriere();
 		}
 		else {
 			return "Arguments incorrect";
