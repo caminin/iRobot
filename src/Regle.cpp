@@ -33,8 +33,9 @@ string Regle::toString()
 	string res="Antecents : ";
 	for(Fait fait:antecedents)
 	{
-		res=res+fait.toString()+",";
+		res=res+"\n\t"+fait.toString();
 	}
-	res=res+"----Consequence : "+consequence->toString();
+	res=res+"\nConsequence : "+consequence->toString();
 	return res;
+	cout << endl;
 }

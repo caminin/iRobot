@@ -40,7 +40,6 @@ typedef struct s_moi {
 
 typedef struct s_preference
 {
-	string poste[5];
 	string champion[5];
 } preferenceType;
 

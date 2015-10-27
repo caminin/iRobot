@@ -6,10 +6,19 @@ using namespace std;
 void chaineAvant::runChaineAvant(){
 	fileGeneration file;
 	Structure struc_stockage_fait;
+
+	cout << "LECTURE DE LA BASE DE REGLE" << endl;
+	cout << "/////////////////////////////////////////////////////////////" << endl;
 	vector<Regle> base_regle;
 	file.getBaseRegle(base_regle);//contient la base des règles
+	cout << "/////////////////////////////////////////////////////////////" << endl;
+
+	cout <<endl<< "LECTURE DE LA BASE DE FAIT" << endl;
+	cout << "/////////////////////////////////////////////////////////////" << endl;
 	vector<Fait> base_fait;
 	file.getBaseFait(base_fait,struc_stockage_fait);//contient la base des fait
+	cout << "/////////////////////////////////////////////////////////////" <<endl<< endl;
+
 	//for(Regle reg:base_regle)
 	//	cout << reg.toString()<<endl;
 	int nbInference=0;//nombre de fois qu'on applique une des regles
@@ -19,7 +28,7 @@ void chaineAvant::runChaineAvant(){
 	cout << "BASE DE FAIT ACTUELLE" << endl;
 	for(Fait f:base_fait)
 	{
-		cout << f.toString()<<endl;
+		cout << "| " << f.toString()<<endl;
 	}
 	cout << endl;
 	cout << "BASE DE REGLE ACTUELLE" << endl;				
@@ -54,7 +63,7 @@ void chaineAvant::runChaineAvant(){
 					if(it_fait->memeCategorie(antecedent[j]))//si l'antécédent est de même catégorie'
 					{
 						//antecedentDansBaseFait=true;// on continue
-						cout << "J'ai trouvé un antécédent dans la base de fait"<<endl;
+						cout << endl<<"|> J'ai trouvé un antécédent dans la base de fait"<<endl;
 					}
 					else//si l'antécédent n'est pas de même catégorie
 					{
@@ -69,7 +78,7 @@ void chaineAvant::runChaineAvant(){
 			}
 			if(antecedentDansBaseFait)//si tous les antecendent sont dans la base de fait
 			{
-				cout << "Fait que j'insère : " << it_regle->toString() << " qui a été créé à partir de "<< (it_regle->getConsequence()).getRegle()<< endl;
+				cout << endl<<"Fait que j'insère : \n" << (it_regle->getConsequence()).getRegle()<< endl;
 				Fait f((it_regle->getConsequence()).getRegle(),struc_stockage_fait);
 				base_fait.push_back(it_regle->getConsequence());//on save le nouveau fait
 				nbInference++;//une inférence en memoriserRegleUtilisee
@@ -92,14 +101,14 @@ void chaineAvant::runChaineAvant(){
 				it_regle++;
 			if(it_regle==base_regle.end())
 			{
-				cout << "j'ai fait toute les règles'"<<endl;		
+				cout << "j'ai fait toute les règles"<<endl;		
 			}
-			cout << "BASE DE FAIT ACTUELLE" << endl;
+			cout << endl <<"BASE DE FAIT ACTUELLE" << endl;
 			for(Fait f:base_fait){
-				cout << f.toString()<<endl;
+				cout << "| " << f.toString()<<endl;
 			}
 			//it_regle est vide au 5e, mais il continue
-			cout << endl;
+			cout << endl << endl;;
 			cin.get();
 		}
 	}

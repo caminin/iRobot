@@ -28,6 +28,7 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 		type="je veux ";
 		variable="PERSO";
 		valeur=myreplace(regle,jeVeux,"");
+		cout << type << variable<<" " << valeur<<endl;
 		
 	}
 	else if (regle.find(jeVais)!=string::npos)
@@ -43,25 +44,24 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 		{
 			
 		}
+		cout << type << variable<<" " << valeur<<endl;
 	}
 	else if (regle.find(ilVa)!=string::npos)
 	{
 		type="il va ";
 		variable="POSTE";
-		valeur=myreplace(regle,jeVais,"");
-		if(verifPoste(valeur,struc_stockage_fait.moi.poste_pris))// a fix
+		valeur=myreplace(regle,ilVa,"");
+		if(verifPoste(valeur,struc_stockage_fait.moi.poste_pris))
 		{
 			
 		}
+		cout << type << variable<<" " << valeur<<endl;
 	}
 	else if (regle.find(ilPrend)!=string::npos){
 		type="il prend ";;
 		variable="PERSO";
 		valeur=myreplace(regle,ilPrend,"");
-		if (valeur.find("NON_CHOISI")!=string::npos)
-		{
-			//struc_stockage_fait.moi.champion_pris = champ;
-		}
+		cout << type << variable<<" " << valeur<<endl;
 	}
 	else if (regle.find(jePrends)!=string::npos)
 	{
@@ -70,9 +70,23 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 		valeur=myreplace(regle,jePrends,"");
 		if (valeur.find("Counter(")!=string::npos)
 		{
-			/*string champ = getCounter(valeur.substr(0,valeur.size()-1));
-			struc_stockage_fait.moi.champion_pris = champ;*/
+			valeur = myreplace(valeur,"Counter(","");
+			valeur = myreplace(valeur, ")","");
+
+			// recherche du counter de valeur
+
+			cout << "je dois chercher le counter de " << valeur << endl;
 		}
+		if (valeur.find("Pref(")!=string::npos)
+		{
+			valeur = myreplace(valeur,"Pref(","");
+			valeur = myreplace(valeur, ")","");
+
+			// recherche du perso prefere pour valeur
+
+			cout << "je dois chercher le perso préféré pour " << valeur << endl;
+		}
+		cout << type << variable<<" " << valeur<<endl;
 	}
 	else if (regle.find(comparaison)!=string::npos)
 	{
@@ -80,19 +94,22 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 		fin_cmp = (" == [()[:alpha:] ]+");
 		string specialisation_comp=regex_replace(regle,fin_cmp,"");
 		
-		type=("comparaison : "+specialisation_comp);;
+		//type=("comparaison : "+specialisation_comp);;
+		type = "comparaison ";
+				
+		//variable="ARGUMENT,VALEUR";
+		variable = regle.substr(0,regle.find("==")-1); 
 		
-		valeur=myreplace(regle," == ",",");
+		//valeur=myreplace(regle," == ",",");
+		valeur = regle.substr(regle.find("==")+2);
 
-		variable="UNITE1,VALEUR";
 		//cout << type << variable<<" " << valeur<<endl;
 	}
 	else
 	{
-		//cout << "Regle que je connais pas " <<regle << " | fin règle"<< endl;
+		cout << "Regle que je connais pas " <<MyRegle << " | fin règle"<< endl;
 	}
 	//cout <<"Fait à partir de "<< type+variable << " et de valeur " << valeur << endl;
-	
 }
 
 bool Fait::demandable()
@@ -102,7 +119,7 @@ bool Fait::demandable()
 
 string Fait::toString()
 {
-	string res=type+" "+variable+" "+valeur;
+	string res=type+" ["+variable+"] "+valeur;
 	return res;
 }
 
