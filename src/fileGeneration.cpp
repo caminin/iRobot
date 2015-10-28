@@ -184,7 +184,6 @@ void fileGeneration::getStructFile(counterType* tab_counter){
 	tab_counter = new counterType[15];
 	ifstream strucFile("./base/list_counter.bin",ios::out |ios::binary);
 	strucFile.read((char*)tab_counter,15*sizeof(counterType));
-	cout << tab_counter[12].champion_a_counter << endl;
 	strucFile.close();
 	
 }

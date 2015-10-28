@@ -25,6 +25,8 @@ private:
 	string ilPrend;
 	string comparaison;
 	string jePrends;
+	string jeJoue;
+	string jAi;
 
 public:
 	void initRegex();

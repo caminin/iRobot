@@ -37,5 +37,4 @@ string Regle::toString()
 	}
 	res=res+"\nConsequence : "+consequence->toString();
 	return res;
-	cout << endl;
 }

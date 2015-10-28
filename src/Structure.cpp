@@ -6,11 +6,12 @@ Structure::Structure()
 	fileGeneration gen;
 	for(int i=0;i<5;i++)
 		tab_allie[i]=false;
-	for(int i=0;i<5;i++)
-		tab_adversaire[i]=nullptr;
+	adversaire.son_champion=nullptr;
 	moi.champion_souhaite=nullptr;
 	moi.champion_pris=nullptr;
+	moi.ma_situation=EGALITE;
 	gen.getStructFile(tab_counter);
+	
 	
 	
 }

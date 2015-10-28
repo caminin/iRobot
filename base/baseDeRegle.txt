@@ -2,6 +2,10 @@ IF Libre(POSTE) == true
 AND je veux POSTE
 THEN je vais POSTE
 
+IF je veux POSTE
+AND je veux PERSO
+THEN Pref(POSTE) == PERSO
+
 IF je vais POSTE
 THEN je prends Pref(POSTE)
 
@@ -16,3 +20,17 @@ IF il va POSTE
 AND il prend PERSO
 AND je vais POSTE
 THEN je prends Counter(PERSO)
+
+IF je prends PERSO
+AND il prend Counter(PERSO)
+THEN j'ai un DESAVANTAGE
+
+IF il prend PERSO
+AND je prends Counter(PERSO)
+THEN j'ai un AVANTAGE
+
+IF j'ai un AVANTAGE
+THEN je joue OFFENSIF
+
+IF j'ai un DESAVANTAGE
+THEN je joue DEFENSIF

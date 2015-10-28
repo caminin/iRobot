@@ -13,6 +13,8 @@ enum type_poste {TOP,MID,ADC,SUPPORT,JUNGLE};
 
 enum statut {LIBRE,PRIS};
 
+enum situation {AVANTAGE,DESAVANTAGE,EGALITE};
+
 /*
 typedef struct s_poste {
 	type_poste nom_poste;
@@ -36,13 +38,14 @@ typedef struct s_moi {
 	champion* champion_souhaite;
 	champion* champion_pris;
 	sortsType mes_sorts;
+	situation ma_situation;
+	
 } moiType;
 
-typedef struct s_preference
-{
-	string champion[5];
-} preferenceType;
-
+typedef struct s_adversaireType {
+	champion * son_champion;
+	type_poste son_poste;
+} adversaireType;
 
 /*
 TOP:
@@ -69,10 +72,9 @@ JUNGLE:
 
 class Structure{
 public: 
-	preferenceType preference;
 	moiType moi;
 	bool tab_allie[5];
-	champion* tab_adversaire[5];
+	adversaireType adversaire;
 	counterType* tab_counter;
 	Structure();
 
