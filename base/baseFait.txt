@@ -1,6 +1,8 @@
 Libre(POSTE) == true
 je veux POSTE
 je vais POSTE
+je veux PERSO
+Pref(POSTE) == PERSO
 je prends Pref(POSTE)
 Pref(POSTE) == vide
 je prends Default(POSTE)
@@ -9,3 +11,8 @@ je prends Sorts(POSTE)
 il va POSTE
 il prend PERSO
 je prends Counter(PERSO)
+il prend Counter(PERSO)
+j'ai un DESAVANTAGE
+j'ai un AVANTAGE
+je joue OFFENSIF
+je joue DEFENSIF
