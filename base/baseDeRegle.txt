@@ -23,14 +23,14 @@ THEN je prends Counter(PERSO)
 
 IF je prends PERSO
 AND il prend Counter(PERSO)
-THEN j'ai un DESAVANTAGE
+THEN je suis en DESAVANTAGE
 
 IF il prend PERSO
 AND je prends Counter(PERSO)
-THEN j'ai un AVANTAGE
+THEN je suis en AVANTAGE
 
-IF j'ai un AVANTAGE
+IF je suis en un AVANTAGE
 THEN je joue OFFENSIF
 
-IF j'ai un DESAVANTAGE
+IF je suis en un DESAVANTAGE
 THEN je joue DEFENSIF

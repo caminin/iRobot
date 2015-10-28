@@ -11,7 +11,7 @@ void Fait::initRegex()
 	jePrends = ("je prends ");
 	comparaison = ("==");
 	jeJoue= ("je joue ");
-	jAi= ("j'ai un ");
+	jAi= ("je suis en ");
 }
 
 std::string myreplace(std::string &s,std::string toReplace,std::string replaceWith)
@@ -41,7 +41,7 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 		{
 			if(!verifPoste(valeur,struc_stockage_fait.moi.poste_souhaite))
 			{
-				cerr << "Le poste n'est pas reconnu sur un fait de type : " << type << endl;
+				cerr << "Le poste n'est pas reconnu sur un fait de type : " << type << " de valeur : "<< valeur <<endl;
 			}
 			else
 			{
@@ -66,7 +66,7 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 		}
 		else if(!verifPoste(valeur,struc_stockage_fait.moi.poste_pris))
 		{
-			cerr << "Le poste n'est pas reconnu sur un fait de type : " << type << endl;
+			cerr << "Le poste n'est pas reconnu sur un fait de type : " << " de valeur : "<< valeur <<endl;
 		}
 		cout << type << variable<<" " << valeur<<endl;
 	}
@@ -77,7 +77,7 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 		valeur=myreplace(regle,ilVa,"");
 		if(!verifPoste(valeur,struc_stockage_fait.adversaire.son_poste))
 		{
-			cerr << "Le poste n'est pas reconnu sur un fait de type : " << type << endl;
+			cerr << "Le poste n'est pas reconnu sur un fait de type : " << " de valeur : "<< valeur <<endl;
 		}
 	}
 	else if (regle.find(ilPrend)!=string::npos){
@@ -86,7 +86,7 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 		valeur=myreplace(regle,ilPrend,"");
 		if(!verifPerso(valeur,struc_stockage_fait.adversaire.son_champion))
 		{
-			cerr << "Le poste n'est pas reconnu sur un fait de type : " << type << endl;
+			cerr << "Le poste n'est pas reconnu sur un fait de type : " << " de valeur : "<< valeur <<endl;
 		}
 	}
 	else if (regle.find(jePrends)!=string::npos)
