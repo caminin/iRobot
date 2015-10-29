@@ -12,7 +12,9 @@ il va POSTE
 il prend PERSO
 je prends Counter(PERSO)
 il prend Counter(PERSO)
-j'ai un DESAVANTAGE
-j'ai un AVANTAGE
+je suis en DESAVANTAGE
+je suis en AVANTAGE
+je suis en un AVANTAGE
 je joue OFFENSIF
+je suis en un DESAVANTAGE
 je joue DEFENSIF

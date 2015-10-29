@@ -37,7 +37,7 @@ void chaineAvant::runChaineAvant(){
 		cout << reg.toString()<<endl;
 	}
 	cout << endl;
-	cin.get();
+	//cin.get();
 			
 	while(auMoinsUneInference)//tant qu'on applique au moins une regle
 	{
@@ -109,7 +109,7 @@ void chaineAvant::runChaineAvant(){
 			}
 			//it_regle est vide au 5e, mais il continue
 			cout << endl << endl;;
-			cin.get();
+			//cin.get();
 		}
 	}
 }
