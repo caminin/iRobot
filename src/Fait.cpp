@@ -37,20 +37,25 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 		{
 			variable=valeur;
 		}
-		else if(!verifPerso(valeur,struc_stockage_fait.moi.champion_souhaite))// s'il contient une valeur, on met la valeur et le type correspondant'
+		else 
 		{
-			if(!verifPoste(valeur,struc_stockage_fait.moi.poste_souhaite))
+			struc_stockage_fait.adversaire.son_champion= new champion;
+			if(!getPerso(valeur,struc_stockage_fait.adversaire.son_champion))
 			{
-				cerr << "Le poste n'est pas reconnu sur un fait de type : " << type << " de valeur : "<< valeur <<endl;
+				struc_stockage_fait.adversaire.son_champion=nullptr;
+				if(!verifPoste(valeur,struc_stockage_fait.moi.poste_souhaite))
+				{
+					cerr << "Le poste n'est pas reconnu sur un fait de type : " << type << " de valeur : "<< valeur <<endl;
+				}
+				else
+				{
+					variable="POSTE";
+				}
 			}
 			else
 			{
-				variable="POSTE";
+				variable="PERSO";
 			}
-		}
-		else
-		{
-			variable="PERSO";
 		}
 		cout << type << variable<<" " << valeur<<endl;
 		
@@ -84,9 +89,33 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 		type="il prend ";;
 		variable="PERSO";
 		valeur=myreplace(regle,ilPrend,"");
-		if(!verifPerso(valeur,struc_stockage_fait.adversaire.son_champion))
+		
+		
+		struc_stockage_fait.adversaire.son_champion= new champion;
+		if (valeur.find("Counter(")!=string::npos)
 		{
-			cerr << "Le poste n'est pas reconnu sur un fait de type : " << " de valeur : "<< valeur <<endl;
+			valeur = myreplace(valeur,"Counter(","");
+			valeur = myreplace(valeur, ")","");
+
+			// recherche du counter de valeur
+			
+			cout << "je dois chercher le counter de " << valeur << endl;
+			
+			if(struc_stockage_fait.moi.champion_pris!=nullptr)
+			{
+				struc_stockage_fait.adversaire.son_champion=new champion;
+				*(struc_stockage_fait.adversaire.son_champion)=struc_stockage_fait.getCounter(struc_stockage_fait.moi.champion_pris);
+				cout << "j'ai trouvé " << *struc_stockage_fait.adversaire.son_champion << endl;
+				valeur = getNomPerso(*struc_stockage_fait.adversaire.son_champion);
+			}
+			else
+				cerr << "On ne peut pas prendre le counter d'un perso qui n'existe pas" << endl;
+
+		}
+		else if(!getPerso(valeur,struc_stockage_fait.adversaire.son_champion))
+		{
+			struc_stockage_fait.adversaire.son_champion=nullptr;
+			cerr << "Le perso n'est pas reconnu sur un fait de type : " <<type << " de valeur : "<< valeur <<endl;
 		}
 	}
 	else if (regle.find(jePrends)!=string::npos)
@@ -100,8 +129,19 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 			valeur = myreplace(valeur, ")","");
 
 			// recherche du counter de valeur
-
+			
 			cout << "je dois chercher le counter de " << valeur << endl;
+			
+			if(struc_stockage_fait.adversaire.son_champion!=nullptr)
+			{
+				struc_stockage_fait.moi.champion_pris=new champion;
+				*(struc_stockage_fait.moi.champion_pris)=struc_stockage_fait.getCounter(struc_stockage_fait.adversaire.son_champion);
+				cout << "j'ai trouvé " << *struc_stockage_fait.moi.champion_pris << endl;
+				valeur = getNomPerso(*struc_stockage_fait.moi.champion_pris);
+			}
+			else
+				cerr << "On ne peut pas prendre le counter d'un perso qui n'existe pas" << endl;
+
 		}
 		if (valeur.find("Pref(")!=string::npos)
 		{
@@ -255,71 +295,107 @@ bool Fait::verifPoste(string valeur,type_poste& poste_vise)
 	return res;
 }
 
-bool Fait::verifPerso(string valeur, champion *perso)
+bool Fait::getPerso(string valeur, champion *perso)
 {
 	bool res=false;
-	perso=new champion;
+	champion new_perso;
 	if(valeur.find("GAREN")!=string::npos){
-		*perso=GAREN;
+		new_perso=GAREN;
 		res=true;
 	}
 	else if(valeur.find("LULU")!=string::npos){
-		*perso=LULU;
+		new_perso=LULU;
 		res=true;
 	}
 	else if(valeur.find("DARIUS")!=string::npos){
-		*perso=DARIUS;
+		new_perso=DARIUS;
 		res=true;
 	}
 	else if(valeur.find("LEBLANC")!=string::npos){
-		*perso=LEBLANC;
+		new_perso=LEBLANC;
 		res=true;
 	}
 	else if(valeur.find("MORGANA")!=string::npos){
-		*perso=MORGANA;
+		new_perso=MORGANA;
 		res=true;
 	}
 	else if(valeur.find("AHRI")!=string::npos){
-		*perso=AHRI;
+		new_perso=AHRI;
 		res=true;
 	}
 	else if(valeur.find("EZREAL")!=string::npos){
-		*perso=EZREAL;
+		new_perso=EZREAL;
 		res=true;
 	}
 	else if(valeur.find("CAITLYN")!=string::npos){
-		*perso=CAITLYN;
+		new_perso=CAITLYN;
 		res=true;
 	}
 	else if(valeur.find("VAYNE")!=string::npos){
-		*perso=VAYNE;
+		new_perso=VAYNE;
 		res=true;
 	}
 	else if(valeur.find("NAMI")!=string::npos){
-		*perso=NAMI;
+		new_perso=NAMI;
 		res=true;
 	}
 	else if(valeur.find("LEONA")!=string::npos){
-		*perso=LEONA;
+		new_perso=LEONA;
 		res=true;
 	}
 	else if(valeur.find("NAUTILUS")!=string::npos){
-		*perso=NAUTILUS;
+		new_perso=NAUTILUS;
 		res=true;
 	}
 	else if(valeur.find("LEE")!=string::npos){
-		*perso=LEE;
+		new_perso=LEE;
 		res=true;
 	}
 	else if(valeur.find("SHACO")!=string::npos){
-		*perso=SHACO;
+		new_perso=SHACO;
 		res=true;
 	}
 	else if(valeur.find("FIDDLE")!=string::npos){
-		*perso=FIDDLE;
+		new_perso=FIDDLE;
 		res=true;
 	}
-	
+	else
+	{
+		new_perso=CHAMPION_INCONNU;
+	}
+	if(perso==nullptr)
+	{
+		cerr << "Pointeur non initialisé avec getPerso" << endl;
+	}
+	else
+	{
+		*perso=new_perso;
+	}
+	return res;
+}
+
+string Fait::getNomPerso(champion champ)
+{
+	string res;
+	switch(champ)
+	{
+		case GAREN : res="GAREN";break;
+		case LULU : res="LULU";break;
+		case DARIUS : res="DARIUS";break;
+		case LEBLANC : res="LEBLANC";break;
+		case MORGANA : res="MORGANA";break;
+		case AHRI : res="AHRI";break;
+		case EZREAL : res="EZREAL";break;
+		case CAITLYN : res="CAITLYN";break;
+		case VAYNE : res="VAYNE";break;
+		case NAMI : res="NAMI";break;
+		case LEONA : res="LEONA";break;
+		case LEE : res="LEE";break;
+		case SHACO : res="SHACO";break;
+		case FIDDLE : res="FIDDLE";break;
+		case NAUTILUS : res="NAUTILUS";break;
+		case CHAMPION_INCONNU : res="FIDDLE"; cout << "On récupère le nom d'un champion inconnu"<< endl;break;
+	}
 	return res;
 }
 /*

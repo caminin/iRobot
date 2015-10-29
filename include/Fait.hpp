@@ -38,7 +38,8 @@ public:
 	bool operator==(const Fait& other);
 	void interpretation(Structure &struct_stockage);
 	bool verifPoste(string valeur,type_poste& poste_vise);
-	bool verifPerso(string valeur, champion *perso);
+	bool getPerso(string valeur, champion *perso);
+	string getNomPerso(champion champ);
 	
 	string getRegle(){return MyRegle;};
 };

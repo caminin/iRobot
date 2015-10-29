@@ -7,7 +7,7 @@ using namespace std;
 
 enum sort_invoc {FLASH,SMITE,IGNITE,HEAL,EXHAUST,SHIELD,TELEPORT,CLARITY};
 
-enum champion {GAREN,LULU,DARIUS,LEBLANC,MORGANA,AHRI,EZREAL,CAITLYN,VAYNE,NAMI,LEONA,NAUTILUS,LEE,SHACO,FIDDLE};
+enum champion {GAREN,LULU,DARIUS,LEBLANC,MORGANA,AHRI,EZREAL,CAITLYN,VAYNE,NAMI,LEONA,NAUTILUS,LEE,SHACO,FIDDLE,CHAMPION_INCONNU};
 
 enum type_poste {TOP,MID,ADC,SUPPORT,JUNGLE};
 
@@ -78,8 +78,7 @@ public:
 	counterType* tab_counter;
 	Structure();
 
-	string getCounter(string aCounter);
-	void addAdversaire(string champ);
+	champion getCounter(champion* aCounter);
 	
 };
 

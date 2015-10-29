@@ -181,10 +181,16 @@ void fileGeneration::generationStructFile(){
 
 
 void fileGeneration::getStructFile(counterType* tab_counter){
-	tab_counter = new counterType[15];
-	ifstream strucFile("./base/list_counter.bin",ios::out |ios::binary);
-	strucFile.read((char*)tab_counter,15*sizeof(counterType));
-	strucFile.close();
+	if(tab_counter==nullptr)
+	{
+		cerr << "tab_counter non intialisé dans getStructFile" << endl;		
+	}
+	else
+	{
+		ifstream strucFile("./base/list_counter.bin",ios::out |ios::binary);
+		strucFile.read((char*)tab_counter,15*sizeof(counterType));
+		strucFile.close();
+	}
 	
 }
 
