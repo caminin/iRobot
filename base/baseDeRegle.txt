@@ -12,10 +12,6 @@ THEN je prends Pref(POSTE)
 IF Pref(POSTE) == vide
 THEN je prends Default(POSTE)
 
-IF je vais POSTE
-AND je prends PERSO
-THEN je prends Sorts(POSTE)
-
 IF il va POSTE
 AND il prend PERSO
 AND je vais POSTE

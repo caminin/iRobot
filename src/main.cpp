@@ -43,7 +43,6 @@ string init(int argc, char *argv[])
 		{
 			fileGeneration file;
 			file.generationStructFile();
-			file.generationSortsFile();
 			
 		}
 		else if(strcmp(argv[1],"ch_avant")==0)
@@ -65,7 +64,6 @@ string init(int argc, char *argv[])
 
 			fileGeneration file;
 			file.generationStructFile();
-			file.generationSortsFile();
 
 			chaineAvant chainage;
 			chainage.runChaineAvant();

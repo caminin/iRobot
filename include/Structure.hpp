@@ -5,8 +5,6 @@
 
 using namespace std;
 
-enum sort_invoc {FLASH,SMITE,IGNITE,HEAL,EXHAUST,SHIELD,TELEPORT,CLARITY};
-
 enum champion {GAREN,LULU,DARIUS,LEBLANC,MORGANA,AHRI,EZREAL,CAITLYN,VAYNE,NAMI,LEONA,NAUTILUS,LEE,SHACO,FIDDLE,CHAMPION_INCONNU};
 
 enum type_poste {TOP,MID,ADC,SUPPORT,JUNGLE};
@@ -26,18 +24,11 @@ typedef struct s_counter {
 	champion champion_qui_counter;
 } counterType;
 
-typedef struct s_sort
-{
-	sort_invoc sort1;
-	sort_invoc sort2;
-} sortsType;
-
 typedef struct s_moi {
 	type_poste poste_souhaite;
 	type_poste poste_pris;
 	champion* champion_souhaite;
 	champion* champion_pris;
-	sortsType mes_sorts;
 	situation ma_situation;
 	
 } moiType;

@@ -194,8 +194,12 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 			// recherche du counter de valeur
 			
 			cout << "je dois chercher le counter de " << valeur << endl;
-			
-			if(struc_stockage_fait.adversaire.son_champion!=nullptr)
+			champion champ;
+			if(getPerso(valeur,&champ))
+			{
+				valeur=getNomPerso(getCounter(&champ));	
+			}
+			else if(struc_stockage_fait.adversaire.son_champion!=nullptr)
 			{
 				struc_stockage_fait.moi.champion_pris=new champion;
 				*(struc_stockage_fait.moi.champion_pris)=getCounter(struc_stockage_fait.adversaire.son_champion);
