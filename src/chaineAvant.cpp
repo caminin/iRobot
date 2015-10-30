@@ -60,7 +60,7 @@ void chaineAvant::runChaineAvant(){
 				{
 					
 					cout << it_fait->toString()<< " | "<<antecedent[j].toString() << endl;
-					if(it_fait->memeCategorie(antecedent[j]))//si l'antécédent est de même catégorie'
+					if(it_fait->memeCategorie(antecedent[j],struc_stockage_fait))//si l'antécédent est de même catégorie'
 					{
 						//antecedentDansBaseFait=true;// on continue
 						cout << endl<<"|> J'ai trouvé un antécédent dans la base de fait"<<endl;
@@ -109,7 +109,7 @@ void chaineAvant::runChaineAvant(){
 			}
 			//it_regle est vide au 5e, mais il continue
 			cout << endl << endl;;
-			//cin.get();
+			cin.get();
 		}
 	}
 }

@@ -31,15 +31,17 @@ private:
 public:
 	void initRegex();
 	Fait(string regle,Structure &struc_stockage_fait);
+	Fait(string regle);
 	bool demandable();
 	string toString();
-	bool memeCategorie(Fait &other);
+	bool memeCategorie(Fait &other,Structure &struc_stockage_fait);
 	Fait& operator=(const Fait& other);
 	bool operator==(const Fait& other);
 	void interpretation(Structure &struct_stockage);
 	bool verifPoste(string valeur,type_poste& poste_vise);
 	bool getPerso(string valeur, champion *perso);
 	string getNomPerso(champion champ);
+	champion getCounter(champion* aCounter);
 	
 	string getRegle(){return MyRegle;};
 };

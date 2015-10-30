@@ -78,7 +78,7 @@ public:
 	counterType* tab_counter;
 	Structure();
 
-	champion getCounter(champion* aCounter);
+	
 	
 };
 

@@ -1,8 +1,8 @@
 TARGET = prog.exe
 
-SRCS = Fait.cpp\
-		 Structure.cpp\
+SRCS = Structure.cpp\
        fileGeneration.cpp\
+       Fait.cpp\
        Regle.cpp\
        chaineAvant.cpp\
        chaineArriere.cpp\
