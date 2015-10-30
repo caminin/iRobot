@@ -68,6 +68,7 @@ void chaineAvant::runChaineAvant(){
 					else//si l'antécédent n'est pas de même catégorie
 					{
 						antecedentDansBaseFait=false;//on s'arrête'
+						cout <<"plop"<< endl<< endl << endl;
 					}
 				}
 				else

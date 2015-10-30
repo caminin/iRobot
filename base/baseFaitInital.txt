@@ -1,1 +1,2 @@
-je joue OFFENSIF
+je prends LEONA
+il prend Counter(PERSO)

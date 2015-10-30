@@ -154,7 +154,6 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 		valeur=myreplace(regle,ilPrend,"");
 		
 		
-		struc_stockage_fait.adversaire.son_champion= new champion;
 		if (valeur.find("Counter(")!=string::npos)
 		{
 			valeur = myreplace(valeur,"Counter(","");
@@ -162,9 +161,14 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 
 			// recherche du counter de valeur
 			
-			cout << "je dois chercher le counter de " << valeur << endl;
-			
-			if(struc_stockage_fait.moi.champion_pris!=nullptr)
+			champion* champ=new champion;
+			if(getPerso(valeur,champ))
+			{
+				struc_stockage_fait.adversaire.son_champion=new champion;
+				*struc_stockage_fait.adversaire.son_champion=*champ;
+				valeur=getNomPerso(getCounter(champ));	
+			}
+			else if(struc_stockage_fait.moi.champion_pris!=nullptr)
 			{
 				struc_stockage_fait.adversaire.son_champion=new champion;
 				*(struc_stockage_fait.adversaire.son_champion)=getCounter(struc_stockage_fait.moi.champion_pris);
@@ -175,11 +179,15 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 				cerr << "On ne peut pas prendre le counter d'un perso qui n'existe pas" << endl;
 
 		}
-		else if(!getPerso(valeur,struc_stockage_fait.adversaire.son_champion))
+		else
 		{
-			struc_stockage_fait.adversaire.son_champion=nullptr;
-			cerr << "Le perso n'est pas reconnu sur un fait de type : " <<type << " de valeur : "<< valeur <<endl;
-		}
+			struc_stockage_fait.adversaire.son_champion=new champion;
+			if(!getPerso(valeur,struc_stockage_fait.adversaire.son_champion))
+			{
+				struc_stockage_fait.adversaire.son_champion=nullptr;
+				cerr << "Le perso n'est pas reconnu sur un fait de type : " <<type << " de valeur : "<< valeur <<endl;
+			}
+		} 
 	}
 	else if (regle.find(jePrends)!=string::npos)
 	{
@@ -193,11 +201,13 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 
 			// recherche du counter de valeur
 			
-			cout << "je dois chercher le counter de " << valeur << endl;
-			champion champ;
-			if(getPerso(valeur,&champ))
+			champion* champ=new champion;
+			if(getPerso(valeur,champ))
 			{
-				valeur=getNomPerso(getCounter(&champ));	
+				struc_stockage_fait.moi.champion_pris=new champion;
+				*struc_stockage_fait.moi.champion_pris=*champ;
+				valeur=getNomPerso(getCounter(champ));
+				
 			}
 			else if(struc_stockage_fait.adversaire.son_champion!=nullptr)
 			{
@@ -210,7 +220,7 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 				cerr << "On ne peut pas prendre le counter d'un perso qui n'existe pas" << endl;
 
 		}
-		if (valeur.find("Pref(")!=string::npos)
+		else if (valeur.find("Pref(")!=string::npos)
 		{
 			valeur = myreplace(valeur,"Pref(","");
 			valeur = myreplace(valeur, ")","");
@@ -218,6 +228,15 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 			// recherche du perso prefere pour valeur
 
 			cout << "je dois chercher le perso préféré pour " << valeur << endl;
+		}
+		else
+		{
+			struc_stockage_fait.moi.champion_pris=new champion;
+			if(!getPerso(valeur,struc_stockage_fait.moi.champion_pris))
+			{
+				struc_stockage_fait.moi.champion_pris=nullptr;
+				cerr << "Le perso n'est pas reconnu sur un fait de type : " <<type << " de valeur : "<< valeur <<endl;
+			}
 		}
 		cout << type << variable<<" " << valeur<<endl;
 	}
