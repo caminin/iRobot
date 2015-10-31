@@ -1,14 +1,22 @@
-#include "./afficheur.h"
+#include "../include/afficheur.hpp"
 
-afficheur::afficheur(QTextEdit *ten, QProcess *p)
-: te(ten), proc(p)
+afficheur::afficheur(QTextEdit *g, QTextEdit *r, QTextEdit *f, QProcess *p)
+: gen(g), reg(r), fait(f), proc(p)
 {}
 
 afficheur::~afficheur()
 {}
 
-void afficheur::affiche( int exitCode, QProcess::ExitStatus exitStatus)
+void afficheur::affiche()
 {
 	QString s(proc->readAllStandardOutput().data());
-	te->setText(s);
+	QStringList lignes(s.split("\n"));
+	fait->setText("");
+	for (int i = 0; i < lignes.size(); ++i)
+	{
+		if (lignes[i].startsWith("|"))
+			fait->append(lignes[i]);
+		else
+			gen->append(s);
+	}
 }

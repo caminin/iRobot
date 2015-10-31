@@ -1,5 +1,3 @@
-#ifndef AFFICHEUR_H
-#define AFFICHEUR_H
 #include <Qt/QtGui>
 #include <cstdio>
 #include <iostream>
@@ -8,15 +6,15 @@ class afficheur : public QObject
 {
 Q_OBJECT
 private slots:
-	void affiche( int exitCode, QProcess::ExitStatus exitStatus);
+	void affiche();
 
 public:
-	afficheur(QTextEdit *, QProcess *);
+	afficheur(QTextEdit *, QTextEdit *, QTextEdit *, QProcess *);
 	~afficheur();
 
 private:
-	QTextEdit *te;
+	QTextEdit *gen;
 	QProcess *proc;
+	QTextEdit *reg;
+	QTextEdit *fait;
 };
-
-#endif

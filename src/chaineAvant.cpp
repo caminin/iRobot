@@ -110,7 +110,8 @@ void chaineAvant::runChaineAvant(){
 			}
 			//it_regle est vide au 5e, mais il continue
 			cout << endl << endl;;
-			cin.get();
+			sleep(2);
+			//cin.get();
 		}
 	}
 }
