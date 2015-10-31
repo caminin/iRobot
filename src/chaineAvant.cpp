@@ -25,7 +25,7 @@ void chaineAvant::runChaineAvant(){
 	map<Regle,int> memoriserRegleUtilisee;//memorise quand une regle est utilise
 	bool auMoinsUneInference=true;//vérifie si au moins une regle est utilise
 	cout << endl;
-	cout << "BASE DE FAIT ACTUELLE" << endl;
+	//cout << "BASE DE FAIT ACTUELLE" << endl;
 	for(Fait f:base_fait)
 	{
 		cout << "| " << f.toString()<<endl;
@@ -43,10 +43,10 @@ void chaineAvant::runChaineAvant(){
 	{
 		auMoinsUneInference=false;
 		vector<Regle>::iterator it_regle=base_regle.begin();
-		cout << "je suis sorti" << endl;
+		//cout << "je suis sorti" << endl;
 		while(it_regle!=base_regle.end())
 		{
-			cout << "Je démarre la boucle" << endl;
+			//cout << "Je démarre la boucle" << endl;
 			cout << it_regle->toString() << endl;
 			vector<Fait> antecedent=it_regle->getAntecedents();
 			bool antecedentDansBaseFait=true;
@@ -63,7 +63,7 @@ void chaineAvant::runChaineAvant(){
 					if(it_fait->memeCategorie(antecedent[j],struc_stockage_fait))//si l'antécédent est de même catégorie'
 					{
 						//antecedentDansBaseFait=true;// on continue
-						cout << endl<<"|> J'ai trouvé un antécédent dans la base de fait"<<endl;
+						cout << endl<<"> J'ai trouvé un antécédent dans la base de fait"<<endl;
 					}
 					else//si l'antécédent n'est pas de même catégorie
 					{
@@ -104,13 +104,13 @@ void chaineAvant::runChaineAvant(){
 			{
 				cout << "j'ai fait toute les règles"<<endl;		
 			}
-			cout << endl <<"BASE DE FAIT ACTUELLE" << endl;
+			//cout << endl <<"BASE DE FAIT ACTUELLE" << endl;
 			for(Fait f:base_fait){
 				cout << "| " << f.toString()<<endl;
 			}
+			sleep(2);
 			//it_regle est vide au 5e, mais il continue
 			cout << endl << endl;;
-			sleep(2);
 			//cin.get();
 		}
 	}

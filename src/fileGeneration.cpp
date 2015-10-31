@@ -189,6 +189,7 @@ void fileGeneration::getBaseRegle(vector<Regle> &base_regle)
 			        {
 			            new_regle.addCons(new_fait);
 			            base_regle.push_back(new_regle);
+			            cout << new_regle.toString() ;
 			            new_regle=Regle();
 			            cout << endl;
 			        }

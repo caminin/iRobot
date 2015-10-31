@@ -21,9 +21,16 @@ int main( int argc, char **argv )
 		QWidget *wdroite = new QWidget(&w);
 			QVBoxLayout *droite = new QVBoxLayout(wdroite);
 			QSplitter *etatActuel = new QSplitter(Qt::Vertical,wdroite);
-				QTextEdit *regle = new QTextEdit(wdroite);
-				QTextEdit *fait = new QTextEdit(wdroite);
-
+				QWidget *wregle = new QWidget(wdroite);
+					QVBoxLayout *Bregle = new QVBoxLayout(wregle);
+						QLabel *labelRegle = new QLabel("Base de règle:");
+						QTextEdit *regle = new QTextEdit(wregle);
+				
+				QWidget *wfait = new QWidget(wdroite);
+					QVBoxLayout *Bfait = new QVBoxLayout(wfait);
+						QLabel *labelFait = new QLabel("Base de fait:");
+						QTextEdit *fait = new QTextEdit(wdroite);
+						QPushButton *lance = new QPushButton("Lancer", wdroite);
 	
 		affichage->setText("");
 		affichage->setReadOnly(true);
@@ -45,11 +52,18 @@ int main( int argc, char **argv )
 	afficheur *ui = new afficheur(affichage,regle,fait,main);
 	
 	QObject::connect(main,SIGNAL(readyReadStandardOutput()),ui,SLOT(affiche()));
-		main->start(nomProg,arg);
+	QObject::connect(lance,SIGNAL(clicked()),ui,SLOT(run()));	
 
 
-	etatActuel->addWidget(regle);
-	etatActuel->addWidget(fait);
+
+	Bregle->addWidget(labelRegle);
+	Bregle->addWidget(regle);
+	Bregle->addWidget(lance);
+	etatActuel->addWidget(wregle);
+
+	Bfait->addWidget(labelFait);
+	Bfait->addWidget(fait);
+	etatActuel->addWidget(wfait);
 
 	droite->addWidget(etatActuel);
 

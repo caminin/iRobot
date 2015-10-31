@@ -7,6 +7,14 @@ afficheur::afficheur(QTextEdit *g, QTextEdit *r, QTextEdit *f, QProcess *p)
 afficheur::~afficheur()
 {}
 
+void afficheur::run()
+{
+	QString nomProg = "/home/etudiant/iRobot/bin/prog.exe";
+	QStringList arg;
+		arg.append("ch_avant");
+	proc->start(nomProg,arg);
+}
+
 void afficheur::affiche()
 {
 	QString s(proc->readAllStandardOutput().data());
@@ -15,8 +23,11 @@ void afficheur::affiche()
 	for (int i = 0; i < lignes.size(); ++i)
 	{
 		if (lignes[i].startsWith("|"))
-			fait->append(lignes[i]);
+			fait->append(lignes[i].remove(0,1));
 		else
-			gen->append(s);
+			if (lignes[i].startsWith(";"))
+				reg->append(lignes[i].remove(0,1));
+			else
+				gen->append(lignes[i]);
 	}
 }
