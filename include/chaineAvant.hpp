@@ -10,6 +10,7 @@
 #include "Structure.hpp"
 #include "Fait.hpp"
 #include "Regle.hpp"
+#include <utility>
 #include "../include/fileGeneration.hpp"
 
 using namespace std;

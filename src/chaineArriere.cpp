@@ -56,7 +56,6 @@ bool chaineArriere::Demo(Fait& but, vector<Fait> &base_fait,vector<Regle> &base_
 		if(it_regle->getConsequence()==but)
 		{
 			save_regle_applicable.push_back(*it_regle);
-			
 		}
 		it_regle++;	
 	}
@@ -70,17 +69,9 @@ bool chaineArriere::Demo(Fait& but, vector<Fait> &base_fait,vector<Regle> &base_
 	
 	if(dem==false)
 	{
-		bool reponse;
-		string reponse_but_demandable;
-		cout << "Le fait : "<< but.toString();
-		cout <<" est-il connu ? (y/N)"<<endl;
-		cin >> reponse_but_demandable;
-		if(strcmp(reponse_but_demandable.c_str(),"y")==0)
-			reponse =true;
-		else{
-			reponse=false;
-		}
-		dem=reponse;
+		//save_base_necessaire.push_back(but);
+		cout << but.toString() << " est nécessaire"<<endl;
+		dem=true;
 	}
 	if(dem==true)
 	{
@@ -105,14 +96,12 @@ Regle chaineArriere::getBestRegle(vector<Regle> base_regle)
 	unsigned int size=0;
 	for(Regle regle:base_regle)
 	{
-		vector <Fait> f=regle.getAntecedents();
-		if(size<f.size())
+		vector<Fait> f=regle.getAntecedents();
+		if(size < f.size())
 		{
 			res=regle;
+			size=f.size();
 		}
-		else
-			cout << "la règle était plus grnade" << endl;
 	}
-	
 	return res;
 }

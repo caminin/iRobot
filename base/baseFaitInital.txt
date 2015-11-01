@@ -1,1 +1,4 @@
-je suis en AVANTAGE
+je veux mid
+LibrePoste(mid) == true
+je veux AHRI
+MoiIndecis(mid) == false

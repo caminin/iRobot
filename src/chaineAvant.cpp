@@ -16,7 +16,7 @@ void chaineAvant::runChaineAvant(){
 	//for(Regle reg:base_regle)
 	//	cout << reg.toString()<<endl;
 	int nbInference=0;//nombre de fois qu'on applique une des regles
-	map<Regle,int> memoriserRegleUtilisee;//memorise quand une regle est utilise
+	map<string,int> memoriserRegleUtilisee;//memorise quand une regle est utilise
 	bool auMoinsUneInference=true;//vérifie si au moins une regle est utilise
 	cout << endl;
 	//cout << "BASE DE FAIT ACTUELLE" << endl;
@@ -77,38 +77,41 @@ void chaineAvant::runChaineAvant(){
 				base_fait.push_back(f);//on save le nouveau fait
 				cout << "|" <<f.toString() << endl;
 				nbInference++;//une inférence en memoriserRegleUtilisee
-				//plus.insert(pair(it_regle,nbInference));//on memorise la regle et le moment ou on l'a utilisée
+				memoriserRegleUtilisee.insert(pair<string,int>(it_regle->toString(),nbInference));//on memorise la regle et le moment ou on l'a utilisée
 				auMoinsUneInference=true;//il y a eu au moins une regle utilise
 				if((it_regle+1)==base_regle.end())// si on supprime le dernier élément, on met le vecteur sur l'avant-dernier car sinon on ne sait pas ou le vecteur est
 				{
 					base_regle.erase(it_regle);//supprime le ieme element du vector
 					it_regle=base_regle.end();//remet sur le dernier élément		
-					cout << "j'ai effacé le dernier'" << endl;
 				}
 				else{
 					base_regle.erase(it_regle);//supprime le ieme element du vector
 					it_regle++;					
 				}
-				cout << "j'ai inséré un truc dans la base de fait " << endl;
+				//cout << "j'ai inséré un truc dans la base de fait " << endl;
 				
 			}
 			else
 				it_regle++;
-			if(it_regle==base_regle.end())
-			{
-				cout << "j'ai fait toute les règles"<<endl;		
-			}
 			//cout << endl <<"BASE DE FAIT ACTUELLE" << endl;
 			//for(Fait f:base_fait){
 				//cout << "| " << f.toString()<<endl;
 			//}
-			sleep(2);
+			//sleep(2);
 			//it_regle est vide au 5e, mais il continue
 			//cout << endl << endl;;
 			//cin.get();
 		}
 	}
+	map<string,int>::iterator it_map=memoriserRegleUtilisee.begin();
+	cout << "voici le chemin parcouru" << endl;
+	while(it_map!=memoriserRegleUtilisee.end())
+	{
+		std::cout << get<0>(*it_map) << " and " << get<1>(*it_map) << '\n';
+		it_map++;
+	}
 }
+
 
 
 
