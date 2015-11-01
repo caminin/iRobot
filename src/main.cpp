@@ -52,8 +52,7 @@ string init(int argc, char *argv[])
 		}
 		else if(strcmp(argv[1],"ch_arriere")==0)
 		{
-			chaineArriere chainage("je joue OFFENSIF");
-			
+			chaineArriere chainage;
 			chainage.runChaineArriere();
 		}
 		else if(strcmp(argv[1],"doIt")==0)

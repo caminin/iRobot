@@ -1,2 +1,3 @@
-je prends LEONA
-il prend Counter(PERSO)
+je vais mid
+MoiIndecis(mid) == true
+il prend MORGANA

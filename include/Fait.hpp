@@ -6,6 +6,8 @@
 #include <string>
 #include <iostream>
 #include <regex>
+#include <stdlib.h>
+#include <time.h> 
 #include "Structure.hpp"
 using namespace std;
 
@@ -27,6 +29,8 @@ private:
 	string jePrends;
 	string jeJoue;
 	string jAi;
+	string affectation;
+	
 
 public:
 	void initRegex();
@@ -42,6 +46,7 @@ public:
 	bool getPerso(string valeur, champion *perso);
 	string getNomPerso(champion champ);
 	champion getCounter(champion* aCounter);
+	string getNomPoste(type_poste poste);
 	
 	string getRegle(){return MyRegle;};
 };

@@ -1,21 +1,23 @@
-IF Libre(POSTE) == true
+IF LibrePoste(POSTE) == true
 AND je veux POSTE
 THEN je vais POSTE
 
-IF je veux POSTE
-AND je veux PERSO
-THEN Pref(POSTE) == PERSO
-
-IF je vais POSTE
-THEN je prends Pref(POSTE)
-
-IF Pref(POSTE) == vide
-THEN je prends Default(POSTE)
+IF je veux PERSO
+AND je veux POSTE
+THEN Pref(POSTE) = PERSO
 
 IF il va POSTE
 AND il prend PERSO
 AND je vais POSTE
 THEN je prends Counter(PERSO)
+
+IF je vais POSTE
+AND MoiIndecis(POSTE) == false
+THEN je prends PERSO
+
+IF je vais POSTE
+AND MoiIndecis(POSTE) == true
+THEN je prends Random(POSTE)
 
 IF je prends PERSO
 AND il prend Counter(PERSO)

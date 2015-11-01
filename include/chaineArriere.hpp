@@ -24,11 +24,11 @@ class chaineArriere
 		Structure s;
 		vector<Fait> base_fait;
 		fileGeneration gen;
-		Fait *fait;
+		vector<Fait> but;
 			
 public:
-	chaineArriere(string regle);
+	chaineArriere();
 	void runChaineArriere();
-	bool Demo(Fait &but, vector<Fait> &base_fait);
-	bool verif(vector<Fait> &ensemble_but, vector<Fait> &base_fait);
+	bool Demo(Fait &but, vector<Fait> &base_fait,vector<Regle> &base_regle);
+	bool verif(vector<Fait> &ensemble_but, vector<Fait> &base_fait,vector<Regle> &base_regle);
 };

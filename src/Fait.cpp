@@ -12,6 +12,8 @@ void Fait::initRegex()
 	comparaison = ("==");
 	jeJoue= ("je joue ");
 	jAi= ("je suis en ");
+	affectation=("=");
+	comparaison =("==");
 }
 
 std::string myreplace(std::string &s,std::string toReplace,std::string replaceWith)
@@ -26,8 +28,16 @@ Fait::Fait(string regle)
 	if (regle.find(jeVeux)!=string::npos)
 	{
 		type="je veux ";
-		variable="PERSO";
 		valeur=myreplace(regle,jeVeux,"");
+		
+		if(strcmp(valeur.c_str(),"PERSO")==0)// si o=c'est un fait ne contenant pas de valeur, on met juste le type'
+		{
+			variable="PERSO";
+		}
+		else if(strcmp(valeur.c_str(),"POSTE")==0)
+		{
+			variable="POSTE";
+		}
 	}
 	else if (regle.find(jeVais)!=string::npos)
 	{
@@ -54,15 +64,33 @@ Fait::Fait(string regle)
 	}
 	else if (regle.find(comparaison)!=string::npos)
 	{
-		regex fin_cmp;
-		fin_cmp = (" == [()[:alpha:] ]+");
-		string specialisation_comp=regex_replace(regle,fin_cmp,"");
-		type = "comparaison ";
-				
-		variable = regle.substr(0,regle.find("==")-1); 
+		//variable="ARGUMENT,VALEUR";
+		string fonction = regle.substr(0,regle.find("==")-1); 
 		
-		valeur = regle.substr(regle.find("==")+2);
+		string res_fonction = regle.substr(regle.find("==")+2);
 		
+		if (regle.find("MoiIndecis")!=string::npos)
+		{
+			type="comparaison ";
+			variable="MoiIndecis(POSTE)";
+			fonction = myreplace(fonction,"MoiIndecis(","");
+			fonction = myreplace(fonction, ")","");
+			valeur=fonction+","+res_fonction;
+		}
+		else if (regle.find("LibrePoste")!=string::npos)
+		{
+			type="comparaison ";
+			variable="LibrePoste(POSTE)";
+			fonction = myreplace(fonction,"LibrePoste(","");
+			fonction = myreplace(fonction, ")","");
+			valeur=fonction+","+res_fonction;
+		}
+		else
+		{
+			cerr << "comparaison non reconnue" << endl;
+		}
+		
+		//cout << type << variable<<" " << valeur<<endl;
 	}
 	else if (regle.find(jeJoue)!=string::npos)
 	{
@@ -75,6 +103,31 @@ Fait::Fait(string regle)
 		type=jAi;
 		variable="AV_ou_DEV";
 		valeur=myreplace(regle,jAi,"");
+	}
+	else if (regle.find("MoiIndecis")!=string::npos)
+	{
+		type="indecis";
+		variable="POSTE";
+		valeur="POSTE";
+	}
+	else if (regle.find(jAi)!=string::npos)
+	{
+		type=jAi;
+		variable="AV_ou_DEV";
+		valeur=myreplace(regle,jAi,"");
+	}
+	else if (regle.find(affectation)!=string::npos)
+	{
+		regex fin_cmp;
+		fin_cmp = (" = [()[:alpha:] ]+");
+		string specialisation_comp=regex_replace(regle,fin_cmp,"");
+		type = "affectation ";
+				
+		variable = regle.substr(0,regle.find("=")-1); 
+		
+		valeur = regle.substr(regle.find("=")+2);
+		
+		//cout << type << variable<<" " << valeur<<endl;
 	}
 	else
 	{
@@ -92,20 +145,21 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 	{
 		type="je veux ";
 		valeur=myreplace(regle,jeVeux,"");
+		
 		if(strcmp(valeur.c_str(),"PERSO")==0)// si o=c'est un fait ne contenant pas de valeur, on met juste le type'
 		{
-			variable=valeur;
+			variable="PERSO";
 		}
 		else if(strcmp(valeur.c_str(),"POSTE")==0)
 		{
-			variable=valeur;
+			variable="POSTE";
 		}
 		else 
 		{
-			struc_stockage_fait.adversaire.son_champion= new champion;
-			if(!getPerso(valeur,struc_stockage_fait.adversaire.son_champion))
+			struc_stockage_fait.stockage_champion_pref= new champion;
+			if(!getPerso(valeur,struc_stockage_fait.stockage_champion_pref))
 			{
-				struc_stockage_fait.adversaire.son_champion=nullptr;
+				struc_stockage_fait.stockage_champion_pref=nullptr;
 				if(!verifPoste(valeur,struc_stockage_fait.moi.poste_souhaite))
 				{
 					cerr << "Le poste n'est pas reconnu sur un fait de type : " << type << " de valeur : "<< valeur <<endl;
@@ -128,13 +182,11 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 		type="je vais ";
 		variable="POSTE";
 		valeur=myreplace(regle,jeVais,"");
-		if(valeur.find("Pref(")!=string::npos)
+		
+		if(!verifPoste(valeur,struc_stockage_fait.moi.poste_pris))//si on arrive pas à trouver un poste
 		{
-			struc_stockage_fait.moi.poste_pris=struc_stockage_fait.moi.poste_souhaite;
-		}
-		else if(!verifPoste(valeur,struc_stockage_fait.moi.poste_pris))
-		{
-			cerr << "Le poste n'est pas reconnu sur un fait de type : " << " de valeur : "<< valeur <<endl;
+			struc_stockage_fait.moi.poste_pris=struc_stockage_fait.moi.poste_souhaite;//on prend le poste préféré
+			valeur=getNomPoste(struc_stockage_fait.moi.poste_souhaite);
 		}
 		cout << type << variable<<" " << valeur<<endl;
 	}
@@ -224,10 +276,53 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 		{
 			valeur = myreplace(valeur,"Pref(","");
 			valeur = myreplace(valeur, ")","");
+			
+			type_poste poste;
+			if(!verifPoste(valeur,poste))
+			{
+				cerr << "aucun poste n'a été trouvé avec verifPoste dans pref'" << endl;
+			}
 
 			// recherche du perso prefere pour valeur
-
+			if(struc_stockage_fait.moi.champion_souhaite!=nullptr)
+			{
+				struc_stockage_fait.moi.champion_pris=new champion;
+				*(struc_stockage_fait.moi.champion_pris)=getCounter(struc_stockage_fait.moi.champion_souhaite[poste]);
+				valeur = getNomPerso(*struc_stockage_fait.moi.champion_pris);
+			}
+			
 			cout << "je dois chercher le perso préféré pour " << valeur << endl;
+		}
+		else if (valeur.find("Random(")!=string::npos)
+		{
+			srand(time(NULL));
+			valeur = myreplace(valeur,"Random(","");
+			valeur = myreplace(valeur, ")","");
+			int random=rand()%3;
+			
+			type_poste poste;
+			if(!verifPoste(valeur,poste))
+			{
+				poste=struc_stockage_fait.moi.poste_pris;
+			}
+			
+			switch(poste)
+			{
+				case TOP : break;
+				case MID : random+=3;break;
+				case ADC : random+=6;break;
+				case SUPPORT : random+=9;break;
+				case JUNGLE :random+=12; break;
+				default : cerr<< "le poste dans random est incorret, peut-être avez-vous oubliez de précisez une préférence"<<endl;break;
+			}	
+			
+			champion new_champ=(champion)random;
+			
+			struc_stockage_fait.moi.champion_pris=new champion;
+			*(struc_stockage_fait.moi.champion_pris)=new_champ;
+			valeur=getNomPerso(new_champ);	
+			
+			
 		}
 		else
 		{
@@ -242,18 +337,31 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 	}
 	else if (regle.find(comparaison)!=string::npos)
 	{
-		regex fin_cmp;
-		fin_cmp = (" == [()[:alpha:] ]+");
-		string specialisation_comp=regex_replace(regle,fin_cmp,"");
-		
-		//type=("comparaison : "+specialisation_comp);;
-		type = "comparaison ";
-				
 		//variable="ARGUMENT,VALEUR";
-		variable = regle.substr(0,regle.find("==")-1); 
+		string fonction = regle.substr(0,regle.find("==")-1); 
 		
-		//valeur=myreplace(regle," == ",",");
-		valeur = regle.substr(regle.find("==")+2);
+		string res_fonction = regle.substr(regle.find("==")+2);
+		
+		if (regle.find("MoiIndecis")!=string::npos)
+		{
+			type="comparaison ";
+			variable="MoiIndecis(POSTE)";
+			fonction = myreplace(fonction,"MoiIndecis(","");
+			fonction = myreplace(fonction, ")","");
+			valeur=fonction+","+res_fonction;
+		}
+		else if (regle.find("LibrePoste")!=string::npos)
+		{
+			type="comparaison ";
+			variable="LibrePoste(POSTE)";
+			fonction = myreplace(fonction,"LibrePoste(","");
+			fonction = myreplace(fonction, ")","");
+			valeur=fonction+","+res_fonction;
+		}
+		else
+		{
+			cerr << "comparaison non reconnue" << endl;
+		}
 		
 		//cout << type << variable<<" " << valeur<<endl;
 	}
@@ -281,6 +389,21 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 		{
 			cerr << "Cette valeur est anormale"<< endl;
 		}
+	}
+	else if (regle.find(affectation)!=string::npos)
+	{
+		type = "affectation ";
+
+		//variable="ARGUMENT,VALEUR";
+		variable="Pref("+getNomPoste(struc_stockage_fait.moi.poste_souhaite)+")";
+
+		valeur=getNomPerso(*struc_stockage_fait.stockage_champion_pref);
+		
+		struc_stockage_fait.moi.champion_souhaite[struc_stockage_fait.moi.poste_souhaite]=new champion;
+		*struc_stockage_fait.moi.champion_souhaite[struc_stockage_fait.moi.poste_souhaite]=*struc_stockage_fait.stockage_champion_pref;
+		
+		struc_stockage_fait.stockage_champion_pref=nullptr;
+		//cout << type << variable<<" " << valeur<<endl;
 	}
 	
 	else
@@ -346,6 +469,58 @@ bool Fait::memeCategorie(Fait& other,Structure &struc_stockage_fait)
 		{
 			res=(strcmp(valeur.c_str(),other.valeur.c_str())==0);
 		}
+		else if(strcmp(other.type.c_str(),"comparaison ")==0)
+		{
+			if(strcmp(other.variable.c_str(),"LibrePoste(POSTE)")==0)
+			{
+				string valeur_res=valeur.substr(valeur.find(",")+1);
+				res=(strcmp(valeur_res.c_str()," true")==0);
+				
+			}
+			else if(strcmp(other.variable.c_str(),"MoiIndecis(POSTE)")==0)
+			{
+				string valeur1=valeur.substr(0,valeur.find(","));
+				string valeur2=valeur.substr(valeur.find(",")+1);
+				string other_valeur2=other.valeur.substr(other.valeur.find(",")+1);
+				
+				if((strcmp(valeur2.c_str(),other_valeur2.c_str())==0))
+				{
+				
+					if(strcmp(valeur2.c_str()," true")==0)
+					{
+						type_poste poste;
+						if(!verifPoste(valeur1,poste))
+						{
+							cerr << "je n'ai pas trouvé le poste dans memecategorie'"<<endl;
+						}
+						else
+						{
+							res=(struc_stockage_fait.moi.champion_souhaite[poste]==nullptr);
+						}
+					}
+					else if(strcmp(valeur2.c_str()," false")==0)
+					{
+						type_poste poste;
+						if(!verifPoste(valeur1,poste))
+						{
+							cerr << "je n'ai pas trouvé le poste dans memecategorie'"<<endl;
+						}
+						else
+						{
+							res=(struc_stockage_fait.moi.champion_souhaite[poste]!=nullptr);
+						}
+					}
+				}
+				else
+				{
+					res=false;
+				}
+			}
+			else
+			{
+				cerr << "comparaison non reconnue dans meme catégorie"<< endl;
+			}
+		}
 		else
 		{
 			res=true;
@@ -373,7 +548,7 @@ bool Fait::operator==(const Fait& other)
 	{
 		if((strcmp(variable.c_str(),other.variable.c_str())==0))
 		{
-			if(strcmp(type.c_str(),"comparaison ")==0)
+			/*if(strcmp(type.c_str(),"comparaison ")==0)
 			{
 				if(strcmp(valeur.c_str(),other.valeur.c_str())==0)
 				{
@@ -384,7 +559,7 @@ bool Fait::operator==(const Fait& other)
 					res=false;
 				}
 			}
-			else
+			else*/
 			{
 				res=true;
 			}
@@ -429,7 +604,20 @@ bool Fait::verifPoste(string valeur,type_poste& poste_vise)
 		poste_vise=ADC;
 		res=true;
 	}
-	
+	return res;
+}
+
+string Fait::getNomPoste(type_poste poste)
+{
+	string res;
+	switch(poste)
+	{
+		case TOP : res="top";break;
+		case MID : res="mid";break;
+		case JUNGLE : res="jungle";break;
+		case ADC : res="adc";break;
+		case SUPPORT : res="support";break;
+	}
 	return res;
 }
 

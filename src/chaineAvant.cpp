@@ -68,7 +68,6 @@ void chaineAvant::runChaineAvant(){
 					else//si l'antécédent n'est pas de même catégorie
 					{
 						antecedentDansBaseFait=false;//on s'arrête'
-						cout <<"plop"<< endl<< endl << endl;
 					}
 				}
 				else
@@ -81,7 +80,7 @@ void chaineAvant::runChaineAvant(){
 			{
 				cout << endl<<"Fait que j'insère : \n" << (it_regle->getConsequence()).getRegle()<< endl;
 				Fait f((it_regle->getConsequence()).getRegle(),struc_stockage_fait);
-				base_fait.push_back(it_regle->getConsequence());//on save le nouveau fait
+				base_fait.push_back(f);//on save le nouveau fait
 				nbInference++;//une inférence en memoriserRegleUtilisee
 				//plus.insert(pair(it_regle,nbInference));//on memorise la regle et le moment ou on l'a utilisée
 				auMoinsUneInference=true;//il y a eu au moins une regle utilise
@@ -110,7 +109,7 @@ void chaineAvant::runChaineAvant(){
 			}
 			//it_regle est vide au 5e, mais il continue
 			cout << endl << endl;;
-			cin.get();
+			//cin.get();
 		}
 	}
 }

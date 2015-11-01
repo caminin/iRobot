@@ -27,7 +27,7 @@ typedef struct s_counter {
 typedef struct s_moi {
 	type_poste poste_souhaite;
 	type_poste poste_pris;
-	champion* champion_souhaite;
+	champion* champion_souhaite[5];
 	champion* champion_pris;
 	situation ma_situation;
 	
@@ -63,6 +63,7 @@ JUNGLE:
 
 class Structure{
 public: 
+	champion * stockage_champion_pref;
 	moiType moi;
 	bool tab_allie[5];
 	adversaireType adversaire;

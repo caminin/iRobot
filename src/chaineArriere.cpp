@@ -2,28 +2,40 @@
 
 using namespace std;
 
-chaineArriere::chaineArriere(string regle)
+chaineArriere::chaineArriere()
 {
-	fait = new Fait(regle,s);
-	cout << "le but est :" << fait->toString() << " fait avec la regle : " << regle << endl;
+	fileGeneration gen;
+	vector<Fait> but;
+	gen.getBaseFait(base_fait,s);
+	
+	cout << "BUT" << endl;
+	for(Fait f:but)
+	{
+		cout << f.toString()<<endl;
+	}
 }
 void chaineArriere::runChaineArriere()
 {
-	Demo(*fait,base_fait);
-}
-
-bool chaineArriere::Demo(Fait& but, vector<Fait> &base_fait)
-{
-	cout << "debut" << endl;
 	vector<Regle> base_regle;
 	gen.getBaseRegle(base_regle);
 	
-	cout << "BASE DE FAIT ACTUELLE" << endl;
+	verif(but,base_fait,base_regle);
+	
+	cout << "BASE DE FAIT" << endl;
 	for(Fait f:base_fait)
 	{
 		cout << f.toString()<<endl;
 	}
-	cout << "FIN BASE FAIT" << endl;
+}
+
+bool chaineArriere::Demo(Fait& but, vector<Fait> &base_fait,vector<Regle> &base_regle)
+{
+	/*cout << "BASE DE FAIT ACTUELLE" << endl;
+	for(Fait f:base_fait)
+	{
+		cout << f.toString()<<endl;
+	}
+	cout << "FIN BASE FAIT" << endl;*/
 	
 	bool dem=false;
 	vector<Fait>::iterator it_fait=find(base_fait.begin(),base_fait.end(),but);
@@ -43,7 +55,7 @@ bool chaineArriere::Demo(Fait& but, vector<Fait> &base_fait)
 		if(it_regle->getConsequence()==but)
 		{
 			f=it_regle->getAntecedents();
-			dem=verif(f,base_fait);
+			dem=verif(f,base_fait,base_regle);
 		}
 		it_regle++;	
 	}
@@ -66,20 +78,19 @@ bool chaineArriere::Demo(Fait& but, vector<Fait> &base_fait)
 		base_fait.push_back(but);
 	}
 	
-	cout << "BASE DE FAIT ACTUELLE" << endl;
+	/*cout << "BASE DE FAIT ACTUELLE" << endl;
 	for(Fait f:base_fait)
 	{
 		cout << f.toString()<<endl;
 	}
-	cout << "FIN BASE FAIT" << endl;
-	cout << "boucle 5" << endl;
+	cout << "FIN BASE FAIT" << endl;*/
 	return dem;
 }
 
-bool chaineArriere::verif(vector<Fait> &ensemble_but, vector<Fait> &base_fait){
+bool chaineArriere::verif(vector<Fait> &ensemble_but, vector<Fait> &base_fait,vector<Regle> &base_regle){
 	bool estVerifie=true;
 	for(vector<Fait>::iterator i=ensemble_but.begin();i!=ensemble_but.end()&&estVerifie==true;i++ ){
-		estVerifie=Demo(*i,base_fait);
+		estVerifie=Demo(*i,base_fait,base_regle);
 	}
 	
 	return estVerifie;
