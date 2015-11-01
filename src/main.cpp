@@ -77,7 +77,7 @@ string init(int argc, char *argv[])
 int main(int argc, char* argv[])
 {
 	init(argc, argv);
-	//cout << "Programme terminé";
+	cout << "Programme terminé";
 
 	return 0;
 }
