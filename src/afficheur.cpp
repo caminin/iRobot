@@ -11,7 +11,7 @@ void afficheur::run()
 {
 	QString nomProg = "/home/etudiant/iRobot/bin/prog.exe";
 	QStringList arg;
-		arg.append("ch_avant");
+		arg.append("ch_arriere");
 	proc->start(nomProg,arg);
 }
 
@@ -19,7 +19,6 @@ void afficheur::affiche()
 {
 	QString s(proc->readAllStandardOutput().data());
 	QStringList lignes(s.split("\n"));
-	fait->setText("");
 	for (int i = 0; i < lignes.size(); ++i)
 	{
 		if (lignes[i].startsWith("|"))
@@ -28,6 +27,11 @@ void afficheur::affiche()
 			if (lignes[i].startsWith(";"))
 				reg->append(lignes[i].remove(0,1));
 			else
-				gen->append(lignes[i]);
+				if (lignes[i].startsWith(">"))
+				{		
+					gen->append(lignes[i]);
+				}
+				else
+					gen->append(lignes[i]);
 	}
 }

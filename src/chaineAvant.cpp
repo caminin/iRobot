@@ -7,17 +7,11 @@ void chaineAvant::runChaineAvant(){
 	fileGeneration file;
 	Structure struc_stockage_fait;
 
-	cout << "LECTURE DE LA BASE DE REGLE" << endl;
-	cout << "/////////////////////////////////////////////////////////////" << endl;
 	vector<Regle> base_regle;
 	file.getBaseRegle(base_regle);//contient la base des règles
-	cout << "/////////////////////////////////////////////////////////////" << endl;
 
-	cout <<endl<< "LECTURE DE LA BASE DE FAIT" << endl;
-	cout << "/////////////////////////////////////////////////////////////" << endl;
 	vector<Fait> base_fait;
 	file.getBaseFait(base_fait,struc_stockage_fait);//contient la base des fait
-	cout << "/////////////////////////////////////////////////////////////" <<endl<< endl;
 
 	//for(Regle reg:base_regle)
 	//	cout << reg.toString()<<endl;
@@ -47,7 +41,7 @@ void chaineAvant::runChaineAvant(){
 		while(it_regle!=base_regle.end())
 		{
 			//cout << "Je démarre la boucle" << endl;
-			cout << it_regle->toString() << endl;
+			//cout << it_regle->toString() << endl;
 			vector<Fait> antecedent=it_regle->getAntecedents();
 			bool antecedentDansBaseFait=true;
 			unsigned int j=0;
@@ -81,6 +75,7 @@ void chaineAvant::runChaineAvant(){
 				cout << endl<<"Fait que j'insère : \n" << (it_regle->getConsequence()).getRegle()<< endl;
 				Fait f((it_regle->getConsequence()).getRegle(),struc_stockage_fait);
 				base_fait.push_back(f);//on save le nouveau fait
+				cout << "|" <<f.toString() << endl;
 				nbInference++;//une inférence en memoriserRegleUtilisee
 				//plus.insert(pair(it_regle,nbInference));//on memorise la regle et le moment ou on l'a utilisée
 				auMoinsUneInference=true;//il y a eu au moins une regle utilise
@@ -104,12 +99,12 @@ void chaineAvant::runChaineAvant(){
 				cout << "j'ai fait toute les règles"<<endl;		
 			}
 			//cout << endl <<"BASE DE FAIT ACTUELLE" << endl;
-			for(Fait f:base_fait){
-				cout << "| " << f.toString()<<endl;
-			}
+			//for(Fait f:base_fait){
+				//cout << "| " << f.toString()<<endl;
+			//}
 			sleep(2);
 			//it_regle est vide au 5e, mais il continue
-			cout << endl << endl;;
+			//cout << endl << endl;;
 			//cin.get();
 		}
 	}
