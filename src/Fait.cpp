@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void Fait::initRegex()
+void Fait::initString()
 {
 	jeVeux = ( "je veux ");
 	jeVais = ("je vais ");
@@ -444,7 +444,7 @@ string Fait::toString()
 	return res;
 }
 
-bool Fait::memeCategorie(Fait& other,Structure &struc_stockage_fait)
+bool Fait::memeValeur(Fait& other,Structure &struc_stockage_fait)
 {
 	cout << "je regarde la catégorie" << endl;
 	bool res=false;
