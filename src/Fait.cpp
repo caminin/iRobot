@@ -38,6 +38,26 @@ Fait::Fait(string regle)
 		{
 			variable="POSTE";
 		}
+		else 
+		{
+			champion *c= new champion;
+			if(!getPerso(valeur,c))
+			{
+				type_poste p;
+				if(!verifPoste(valeur,p))
+				{
+					cerr << "Le poste n'est pas reconnu sur un fait de type : " << type << " de valeur : "<< valeur <<endl;
+				}
+				else
+				{
+					variable="POSTE";
+				}
+			}
+			else
+			{
+				variable="PERSO";
+			}
+		}
 	}
 	else if (regle.find(jeVais)!=string::npos)
 	{
