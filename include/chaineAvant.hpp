@@ -5,6 +5,7 @@
 #include <ostream>
 #include <algorithm>
 #include <string.h>
+#include <unistd.h>
 #include <map>
 #include "Structure.hpp"
 #include "Fait.hpp"

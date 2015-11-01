@@ -30,11 +30,11 @@ bool Regle::operator==(const Regle& other)
 
 string Regle::toString()
 {
-	string res="Antecents : ";
+	string res=";Antecents : ";
 	for(Fait fait:antecedents)
 	{
-		res=res+"\n\t"+fait.toString();
+		res=res+"\n;\t"+fait.toString();
 	}
-	res=res+"\nConsequence : "+consequence->toString();
+	res=res+"\n;Consequence : "+consequence->toString();
 	return res;
 }
