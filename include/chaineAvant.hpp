@@ -23,6 +23,6 @@ extern string pathBaseConnaissance;
 class chaineAvant
 {
 public:
-//mlance le chainage avant
+//lance le chainage avant
 	void runChaineAvant();
 };
