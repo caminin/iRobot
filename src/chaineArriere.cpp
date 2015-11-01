@@ -25,7 +25,7 @@ void chaineArriere::runChaineArriere()
 	cout <<endl<< "BASE DE FAIT FINALE" << endl;
 	for(Fait f:base_fait)
 	{
-		cout << f.toString()<<endl;
+		cout << "| " << f.toString()<<endl;
 	}
 	
 	verif(base_fait,but,base_regle);
