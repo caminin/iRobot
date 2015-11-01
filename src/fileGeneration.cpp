@@ -84,6 +84,7 @@ void fileGeneration::generationBaseFait()
     baseFait.close();
 }
 
+
 void fileGeneration::generationStructFile(){
 	counterType list_counter[15];
 	
@@ -219,6 +220,24 @@ void fileGeneration::getBaseFait(vector<Fait> &base_fait,Structure &struc_stocka
 		{
 			Fait new_fait(line,struc_stockage_fait);
 			base_fait.push_back(new_fait);
+		}
+	}
+}
+
+void fileGeneration::getBut(vector<Fait> &but)
+{
+	ifstream fichier2("./base/baseBut.txt");
+	if(!fichier2) 
+	{
+		cerr << "Le fichier help n'existe pas" << endl;
+	}
+	else
+	{
+		string line;
+		while(getline(fichier2,line))
+		{
+			Fait new_fait(line);
+			but.push_back(new_fait);
 		}
 	}
 }
