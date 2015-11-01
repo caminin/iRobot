@@ -31,4 +31,5 @@ public:
 	void runChaineArriere();
 	bool Demo(Fait &but, vector<Fait> &base_fait,vector<Regle> &base_regle);
 	bool verif(vector<Fait> &ensemble_but, vector<Fait> &base_fait,vector<Regle> &base_regle);
+	Regle getBestRegle(vector<Regle> base_regle);
 };
