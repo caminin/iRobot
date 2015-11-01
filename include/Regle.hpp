@@ -20,6 +20,7 @@ class Regle {
 		vector<Fait> getAntecedents();
 		Fait getConsequence();
 		string toString();
+		string toStringSansFormat();
 		void addCons(Fait& cons);
 		void addAnt(Fait& ant);
 		bool operator==(const Regle &other);

@@ -48,12 +48,12 @@ string init(int argc, char *argv[])
 		else if(strcmp(argv[1],"ch_avant")==0)
 		{
 			chaineAvant chainage;
-			chainage.runChaineAvant();
+			chainage.runChaineAvant(std::stoi(argv[2]));
 		}
 		else if(strcmp(argv[1],"ch_arriere")==0)
 		{
 			chaineArriere chainage;
-			chainage.runChaineArriere();
+			chainage.runChaineArriere(std::stoi(argv[2]));
 		}
 		else if(strcmp(argv[1],"doIt")==0)
 		{
@@ -65,7 +65,7 @@ string init(int argc, char *argv[])
 			file.generationStructFile();
 
 			chaineAvant chainage;
-			chainage.runChaineAvant();
+			chainage.runChaineAvant(std::stoi(argv[2]));
 		}
 		else {
 			return "Arguments incorrect";

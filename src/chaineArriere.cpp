@@ -11,8 +11,9 @@ chaineArriere::chaineArriere()
 	
 	
 }
-void chaineArriere::runChaineArriere()
+void chaineArriere::runChaineArriere(int s)
 {
+	step = s;
 	vector<Regle> base_regle;
 	gen.getBaseRegle(base_regle);
 	
@@ -22,7 +23,6 @@ void chaineArriere::runChaineArriere()
 		cout << f.toString()<<endl;
 	}
 	
-	cout <<endl<< "BASE DE FAIT FINALE" << endl;
 	for(Fait f:base_fait)
 	{
 		cout << "| " << f.toString()<<endl;
@@ -85,6 +85,7 @@ bool chaineArriere::verif(vector<Fait> &ensemble_but, vector<Fait> &base_fait,ve
 	bool estVerifie=true;
 	for(vector<Fait>::iterator i=ensemble_but.begin();i!=ensemble_but.end()&&estVerifie==true;i++ ){
 		estVerifie=Demo(*i,base_fait,base_regle);
+		sleep(step);
 	}
 	
 	return estVerifie;

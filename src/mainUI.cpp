@@ -1,4 +1,3 @@
-#include <Qt/QtGui>
 #include "../include/afficheur.hpp"
 using namespace std;
 
@@ -30,8 +29,21 @@ int main( int argc, char **argv )
 					QVBoxLayout *Bfait = new QVBoxLayout(wfait);
 						QLabel *labelFait = new QLabel("Base de fait:");
 						QTextEdit *fait = new QTextEdit(wdroite);
-						QPushButton *lance = new QPushButton("Lancer", wdroite);
-	
+						QWidget *woptions = new QWidget(wdroite);
+						
+							QHBoxLayout *Boptions = new QHBoxLayout(woptions); 	
+								QWidget *wboutons = new QWidget(woptions);
+									QVBoxLayout *Bboutons = new QVBoxLayout(wboutons);
+										QPushButton *lanceAvant = new QPushButton("Lancer le chainage avant", wdroite);
+										QPushButton *lanceArriere = new QPushButton("Lancer le chainage arrière", wdroite);
+								QWidget *wintervalle = new QWidget(woptions);
+									QVBoxLayout *Bintervalle = new QVBoxLayout(wintervalle);
+										QLabel *labelIntervalle = new QLabel("Intervalle des étapes (en secondes):", wintervalle);
+										QSpinBox *intervalle = new QSpinBox(wintervalle);
+					
+		intervalle->setValue(2);
+		intervalle->setMinimum(0);
+
 		affichage->setText("");
 		affichage->setReadOnly(true);
 
@@ -41,24 +53,28 @@ int main( int argc, char **argv )
 		fait->setText("");
 		fait->setReadOnly(true);
 
-	QString nomProg = "/home/etudiant/iRobot/bin/prog.exe";
-	QStringList arg;
-		arg.append("ch_avant");
-
 
 	QProcess *main = new QProcess();
 		main->setReadChannel(QProcess::StandardOutput);
 
-	afficheur *ui = new afficheur(affichage,regle,fait,main);
+	afficheur *ui = new afficheur(affichage,regle,fait,intervalle,main);
 	
 	QObject::connect(main,SIGNAL(readyReadStandardOutput()),ui,SLOT(affiche()));
-	QObject::connect(lance,SIGNAL(clicked()),ui,SLOT(run()));	
+	QObject::connect(lanceAvant,SIGNAL(clicked()),ui,SLOT(runAvant()));	
+	QObject::connect(lanceArriere,SIGNAL(clicked()),ui,SLOT(runArriere()));	
 
+	Bintervalle->addWidget(labelIntervalle);
+	Bintervalle->addWidget(intervalle);
 
+	Bboutons->addWidget(lanceAvant);
+	Bboutons->addWidget(lanceArriere);
+
+	Boptions->addWidget(wboutons);
+	Boptions->addWidget(wintervalle);
 
 	Bregle->addWidget(labelRegle);
 	Bregle->addWidget(regle);
-	Bregle->addWidget(lance);
+	Bregle->addWidget(woptions);
 	etatActuel->addWidget(wregle);
 
 	Bfait->addWidget(labelFait);
@@ -69,6 +85,7 @@ int main( int argc, char **argv )
 
 	general->addWidget(affichage);
 	general->addWidget(wdroite);
+	general->setStretchFactor(0,2);
 
 	layoutH->addWidget(general);
 

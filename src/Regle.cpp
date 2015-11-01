@@ -38,3 +38,14 @@ string Regle::toString()
 	res=res+"\n;Consequence : "+consequence->toString();
 	return res;
 }
+
+string Regle::toStringSansFormat()
+{
+	string res="Antecents : ";
+	for(Fait fait:antecedents)
+	{
+		res=res+"\n\t"+fait.toString();
+	}
+	res=res+"\nConsequence : "+consequence->toString();
+	return res;
+}

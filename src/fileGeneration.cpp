@@ -202,7 +202,6 @@ void fileGeneration::getBaseRegle(vector<Regle> &base_regle)
 		    }   
 		}
 	}
-	cout << "==> Il y a "<< base_regle.size() << " Règles"<<endl;
 	fichier.close();
 }
 

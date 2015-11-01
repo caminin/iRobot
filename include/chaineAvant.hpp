@@ -1,16 +1,16 @@
-#include <iostream>
-#include <string>
-#include <fstream>
-#include <vector>
-#include <ostream>
 #include <algorithm>
-#include <string.h>
-#include <unistd.h>
+#include <fstream>
+#include <iostream>
 #include <map>
+#include <ostream>
+#include <string.h>
+#include <string>
+#include <unistd.h>
+#include <utility>
+#include <vector>
 #include "Structure.hpp"
 #include "Fait.hpp"
 #include "Regle.hpp"
-#include <utility>
 #include "../include/fileGeneration.hpp"
 
 using namespace std;
@@ -24,5 +24,5 @@ class chaineAvant
 {
 public:
 //lance le chainage avant
-	void runChaineAvant();
+	void runChaineAvant(int);
 };
