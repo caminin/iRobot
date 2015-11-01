@@ -548,7 +548,7 @@ bool Fait::operator==(const Fait& other)
 	{
 		if((strcmp(variable.c_str(),other.variable.c_str())==0))
 		{
-			/*if(strcmp(type.c_str(),"comparaison ")==0)
+			if(strcmp(type.c_str(),"je suis en ")==0)
 			{
 				if(strcmp(valeur.c_str(),other.valeur.c_str())==0)
 				{
@@ -559,7 +559,7 @@ bool Fait::operator==(const Fait& other)
 					res=false;
 				}
 			}
-			else*/
+			else
 			{
 				res=true;
 			}

@@ -1,27 +1,36 @@
 #include "../include/chaineArriere.hpp"
 
 using namespace std;
+int i=0;
 
 chaineArriere::chaineArriere()
 {
 	fileGeneration gen;
-	vector<Fait> but;
 	gen.getBaseFait(base_fait,s);
+	gen.getBut(but);
 	
-	cout << "BUT" << endl;
-	for(Fait f:but)
-	{
-		cout << f.toString()<<endl;
-	}
+	
 }
 void chaineArriere::runChaineArriere()
 {
 	vector<Regle> base_regle;
 	gen.getBaseRegle(base_regle);
 	
-	verif(but,base_fait,base_regle);
+	cout << "BUT" << endl;
+	for(Fait f:but)
+	{
+		cout << f.toString()<<endl;
+	}
 	
-	cout << "BASE DE FAIT" << endl;
+	cout <<endl<< "BASE DE FAIT FINALE" << endl;
+	for(Fait f:base_fait)
+	{
+		cout << f.toString()<<endl;
+	}
+	
+	verif(base_fait,but,base_regle);
+	
+	cout <<endl<< "BASE DE FAIT FINALE" << endl;
 	for(Fait f:base_fait)
 	{
 		cout << f.toString()<<endl;
@@ -36,26 +45,27 @@ bool chaineArriere::Demo(Fait& but, vector<Fait> &base_fait,vector<Regle> &base_
 		cout << f.toString()<<endl;
 	}
 	cout << "FIN BASE FAIT" << endl;*/
-	
 	bool dem=false;
 	vector<Fait>::iterator it_fait=find(base_fait.begin(),base_fait.end(),but);
 	
 	bool estDansBaseFait=(it_fait!=base_fait.end());
 	if(estDansBaseFait)
 	{
-		cout <<"Premier fait : "<< but.toString() << " | "<< it_fait->toString() << endl;
+		//cout <<"Premier fait : "<< but.toString() << " | "<< it_fait->toString() << endl;
 		dem=true;
 	}
 	vector<Regle>::iterator it_regle=base_regle.begin();
 	while(dem==false && it_regle!=base_regle.end())
 	{
 		vector<Fait> f;
-		if(it_regle==base_regle.end())
-			cout << "plop"<< endl;
 		if(it_regle->getConsequence()==but)
 		{
 			f=it_regle->getAntecedents();
 			dem=verif(f,base_fait,base_regle);
+			if(dem==true)
+			{
+				i++;
+			}
 		}
 		it_regle++;	
 	}
@@ -63,19 +73,22 @@ bool chaineArriere::Demo(Fait& but, vector<Fait> &base_fait,vector<Regle> &base_
 	{
 		bool reponse;
 		string reponse_but_demandable;
-		cout << "Le fait : "<< but.toString();
-		cout <<" est-il demandable ? (y/N)"<<endl;
-		cin >> reponse_but_demandable;
+		//cout << "Le fait : "<< but.toString();
+		//cout <<" est-il demandable ? (y/N)"<<endl;
+		/*cin >> reponse_but_demandable;
 		if(strcmp(reponse_but_demandable.c_str(),"y")==0)
 			reponse =true;
 		else{
 			reponse=false;
-		}
-		dem=reponse;
+		}*/
+		dem=true;
 	}
 	if(dem==true)
 	{
 		base_fait.push_back(but);
+		for (int j=0;j<i;j++)
+			cout << "\t";
+		cout << but.toString() << endl;
 	}
 	
 	/*cout << "BASE DE FAIT ACTUELLE" << endl;

@@ -24,6 +24,7 @@ class fileGeneration
 		void getStructFile(counterType* tab_counter);
 		void getBaseRegle(vector<Regle>& base_regle);
 		void getBaseFait(vector<Fait>& base_fait,Structure &struc_stockage_fait);
+		void getBut(vector<Fait> &but);
 };
 
 #endif
