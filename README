@@ -1,0 +1,37 @@
+PROGRAMME POUR LE COURS IA
+NOEL FLORENTIN
+CHARLOT RODOLPHE
+
+*Le programme se découpe en deux parties : 
+	- Interface graphique en QT
+	- Moteurs en C++11
+*Les fichiers sources des deux sont présents dans les dossier "/include" et "/src"
+
+*La base de faits et la base de règles se trouvent dans le dossier "/base"
+
+*Le programme contient, en ligne de commande, les instructions pour lancer les chainages.
+
+*Les chainages présents sont :
+	-chainage avant
+	-chainage arrière
+	
+*L'algorithme pour choisir la règle est :
+	-règle comportant le plus de prémisses
+	
+*Les explications sont fournies à la fin du lancement du chainage par un couplage de la règle utilisée et de l'itération où elle a été utilisée
+
+____________________________________________________________
+EXPLICATIONS :
+
+Le programme charge la base de fait grâce à la classe fileGeneration (qui génèrent et gèrent tous les fichiers).
+
+Il lance ensuite l'un des deux chainages.
+
+Les chainages parsent les règles pour les utiliser, puis interprètent les faits en stockant les données dans la classe Structure.
+
+	
+
+
+
+
+
