@@ -2,3 +2,4 @@ je veux mid
 LibrePoste(mid) == true
 je veux AHRI
 MoiIndecis(mid) == false
+il prend MORGANA

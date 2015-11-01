@@ -13,31 +13,21 @@ void chaineAvant::runChaineAvant(){
 	vector<Fait> base_fait;
 	file.getBaseFait(base_fait,struc_stockage_fait);//contient la base des fait
 
-	//for(Regle reg:base_regle)
-	//	cout << reg.toString()<<endl;
 	int nbInference=0;//nombre de fois qu'on applique une des regles
-	map<string,int> memoriserRegleUtilisee;//memorise quand une regle est utilise
+	map<int,string> memoriserRegleUtilisee;//memorise quand une regle est utilise
 	bool auMoinsUneInference=true;//vérifie si au moins une regle est utilise
 	cout << endl;
-	//cout << "BASE DE FAIT ACTUELLE" << endl;
+	cout << "BASE DE FAIT ACTUELLE" << endl;
 	for(Fait f:base_fait)
 	{
 		cout << "| " << f.toString()<<endl;
 	}
 	cout << endl;
-	cout << "BASE DE REGLE ACTUELLE" << endl;				
-	for(Regle reg:base_regle)
-	{
-		cout << reg.toString()<<endl;
-	}
-	cout << endl;
-	//cin.get();
 			
 	while(auMoinsUneInference)//tant qu'on applique au moins une regle
 	{
 		auMoinsUneInference=false;
 		vector<Regle>::iterator it_regle=base_regle.begin();
-		//cout << "je suis sorti" << endl;
 		while(it_regle!=base_regle.end())
 		{
 			//cout << "Je démarre la boucle" << endl;
@@ -53,11 +43,11 @@ void chaineAvant::runChaineAvant(){
 				if(estDansBaseFait)//si un antécédent est dans la base de fait
 				{
 					
-					cout << it_fait->toString()<< " | "<<antecedent[j].toString() << endl;
+					//cout << it_fait->toString()<< " | "<<antecedent[j].toString() << endl;
 					if(it_fait->memeValeur(antecedent[j],struc_stockage_fait))//si l'antécédent est de même catégorie'
 					{
 						//antecedentDansBaseFait=true;// on continue
-						cout << endl<<"> J'ai trouvé un antécédent dans la base de fait"<<endl;
+						//cout << endl<<"> J'ai trouvé un antécédent dans la base de fait"<<endl;
 					}
 					else//si l'antécédent n'est pas de même catégorie
 					{
@@ -72,12 +62,12 @@ void chaineAvant::runChaineAvant(){
 			}
 			if(antecedentDansBaseFait)//si tous les antecendent sont dans la base de fait
 			{
-				cout << endl<<"Fait que j'insère : \n" << (it_regle->getConsequence()).getRegle()<< endl;
+				//cout << endl<<"Fait que j'insère : \n" << (it_regle->getConsequence()).getRegle()<< endl;
 				Fait f((it_regle->getConsequence()).getRegle(),struc_stockage_fait);
 				base_fait.push_back(f);//on save le nouveau fait
-				cout << "|" <<f.toString() << endl;
+				//cout << "|" <<f.toString() << endl;
 				nbInference++;//une inférence en memoriserRegleUtilisee
-				memoriserRegleUtilisee.insert(pair<string,int>(it_regle->toString(),nbInference));//on memorise la regle et le moment ou on l'a utilisée
+				memoriserRegleUtilisee.insert(pair<int,string>(nbInference,it_regle->toString()));//on memorise la regle et le moment ou on l'a utilisée
 				auMoinsUneInference=true;//il y a eu au moins une regle utilise
 				if((it_regle+1)==base_regle.end())// si on supprime le dernier élément, on met le vecteur sur l'avant-dernier car sinon on ne sait pas ou le vecteur est
 				{
@@ -93,22 +83,13 @@ void chaineAvant::runChaineAvant(){
 			}
 			else
 				it_regle++;
-			//cout << endl <<"BASE DE FAIT ACTUELLE" << endl;
-			//for(Fait f:base_fait){
-				//cout << "| " << f.toString()<<endl;
-			//}
-			//sleep(2);
 			//it_regle est vide au 5e, mais il continue
-			//cout << endl << endl;;
-			//cin.get();
 		}
 	}
-	map<string,int>::iterator it_map=memoriserRegleUtilisee.begin();
-	cout << "voici le chemin parcouru" << endl;
-	while(it_map!=memoriserRegleUtilisee.end())
+	
+	for(unsigned int i=1;i<=memoriserRegleUtilisee.size();i++)
 	{
-		std::cout << get<0>(*it_map) << " and " << get<1>(*it_map) << '\n';
-		it_map++;
+		cout <<"La "<<i<<"ème règle utilisée est : "<<endl<<memoriserRegleUtilisee[i]<<endl<<endl;
 	}
 }
 

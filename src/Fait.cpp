@@ -24,7 +24,7 @@ std::string myreplace(std::string &s,std::string toReplace,std::string replaceWi
 Fait::Fait(string regle)
 {
 	MyRegle = regle;
-	initRegex();
+	initString();
 	if (regle.find(jeVeux)!=string::npos)
 	{
 		type="je veux ";
@@ -151,7 +151,7 @@ Fait::Fait(string regle)
 	}
 	else
 	{
-		cout << "Regle que je connais pas " <<MyRegle << " | fin règle"<< endl;
+		cerr << "Regle que je connais pas " <<MyRegle << " | fin règle"<< endl;
 	}
 }
 
@@ -160,7 +160,7 @@ Fait::Fait(string regle)
 Fait::Fait(string regle,Structure &struc_stockage_fait)
 {
 	MyRegle = regle;
-	initRegex();
+	initString();
 	if (regle.find(jeVeux)!=string::npos)
 	{
 		type="je veux ";
@@ -194,7 +194,7 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 				variable="PERSO";
 			}
 		}
-		cout << type << variable<<" " << valeur<<endl;
+		//cout << type << variable<<" " << valeur<<endl;
 		
 	}
 	else if (regle.find(jeVais)!=string::npos)
@@ -208,7 +208,7 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 			struc_stockage_fait.moi.poste_pris=struc_stockage_fait.moi.poste_souhaite;//on prend le poste préféré
 			valeur=getNomPoste(struc_stockage_fait.moi.poste_souhaite);
 		}
-		cout << type << variable<<" " << valeur<<endl;
+		//cout << type << variable<<" " << valeur<<endl;
 	}
 	else if (regle.find(ilVa)!=string::npos)
 	{
@@ -285,7 +285,6 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 			{
 				struc_stockage_fait.moi.champion_pris=new champion;
 				*(struc_stockage_fait.moi.champion_pris)=getCounter(struc_stockage_fait.adversaire.son_champion);
-				cout << "j'ai trouvé " << *struc_stockage_fait.moi.champion_pris << endl;
 				valeur = getNomPerso(*struc_stockage_fait.moi.champion_pris);
 			}
 			else
@@ -311,7 +310,6 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 				valeur = getNomPerso(*struc_stockage_fait.moi.champion_pris);
 			}
 			
-			cout << "je dois chercher le perso préféré pour " << valeur << endl;
 		}
 		else if (valeur.find("Random(")!=string::npos)
 		{
@@ -349,11 +347,10 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 			struc_stockage_fait.moi.champion_pris=new champion;
 			if(!getPerso(valeur,struc_stockage_fait.moi.champion_pris))
 			{
-				struc_stockage_fait.moi.champion_pris=nullptr;
-				cerr << "Le perso n'est pas reconnu sur un fait de type : " <<type << " de valeur : "<< valeur <<endl;
+				struc_stockage_fait.moi.champion_pris=struc_stockage_fait.moi.champion_souhaite[struc_stockage_fait.moi.poste_souhaite];
 			}
 		}
-		cout << type << variable<<" " << valeur<<endl;
+		//cout << type << variable<<" " << valeur<<endl;
 	}
 	else if (regle.find(comparaison)!=string::npos)
 	{
@@ -428,14 +425,9 @@ Fait::Fait(string regle,Structure &struc_stockage_fait)
 	
 	else
 	{
-		cout << "Regle que je connais pas " <<MyRegle << " | fin règle"<< endl;
+		cerr << "Regle que je connais pas " <<MyRegle << " | fin règle"<< endl;
 	}
 	//cout <<"Fait à partir de "<< type+variable << " et de valeur " << valeur << endl;
-}
-
-bool Fait::demandable()
-{
-	return true;
 }
 
 string Fait::toString()
@@ -446,7 +438,6 @@ string Fait::toString()
 
 bool Fait::memeValeur(Fait& other,Structure &struc_stockage_fait)
 {
-	cout << "je regarde la catégorie" << endl;
 	bool res=false;
 	if((strcmp((other.type).c_str(),type.c_str())==0) && (strcmp((other.variable).c_str(),variable.c_str())==0))
 	{
@@ -457,14 +448,12 @@ bool Fait::memeValeur(Fait& other,Structure &struc_stockage_fait)
 			{
 				string qui_counter=getNomPerso(getCounter(struc_stockage_fait.adversaire.son_champion));
 				string a_counter=other.valeur;
-				cout << "je compare " << a_counter << " et "<< qui_counter << endl;
 				res=(strcmp(a_counter.c_str(),qui_counter.c_str())==0);
 			}
 			else if(type.find(ilPrend)!=string::npos)
 			{
 				string qui_counter=getNomPerso(getCounter(struc_stockage_fait.moi.champion_pris));
 				string a_counter=other.valeur;
-				cout << "je compare " << a_counter << " et "<< qui_counter << endl;
 				res=(strcmp(a_counter.c_str(),qui_counter.c_str())==0);
 			}
 		}
@@ -474,14 +463,12 @@ bool Fait::memeValeur(Fait& other,Structure &struc_stockage_fait)
 			{
 				string qui_counter=getNomPerso(getCounter(struc_stockage_fait.adversaire.son_champion));
 				string a_counter=valeur;
-				cout << "je compare " << a_counter << " et "<< qui_counter << endl;
 				res=(strcmp(a_counter.c_str(),qui_counter.c_str())==0);
 			}
 			else if(other.type.find(ilPrend)!=string::npos)
 			{
 				string qui_counter=getNomPerso(getCounter(struc_stockage_fait.moi.champion_pris));
 				string a_counter=valeur;
-				cout << "je compare " << a_counter << " et "<< qui_counter << endl;
 				res=(strcmp(a_counter.c_str(),qui_counter.c_str())==0);
 			}
 		}
@@ -752,12 +739,11 @@ champion Fait::getCounter(champion* aCounter)
 	{
 		if (s.tab_counter[i].champion_a_counter == *aCounter)
 		{
-			cout << "j'ai trouvé un counter" << endl;			
 			return s.tab_counter[i].champion_qui_counter;
 		}
 	}
 	
-	cout << "Counter non trouvé dans Strcture.cpp" << endl;
+	cerr << "Counter non trouvé dans Strcture.cpp" << endl;
 	return GAREN;
 }
 
