@@ -7,6 +7,13 @@ CHARLOT RODOLPHE
 	- Moteurs en C++11
 *Les fichiers sources des deux sont présents dans les dossier "/include" et "/src"
 
+*La base et les règles sont tirés d'un jeu vidéo, car après quelques problèmes pour trouver une base il nous a semblé plus simple
+	de prendre un domaine où nous avions déjà des connaissances.
+	Le but des chainages est donc de savoir si on doit jouer OFFENSIF ou DEFENSIF, on prenant en compte le poste (endroit sur la carte où le joueur va jouer)
+	et le personnage que l'on prend pour jouer.
+	
+	Definition COUNTER : personnage fort contre un autre
+	
 *La base de faits et la base de règles se trouvent dans le dossier "/base"
 
 *Le programme contient, en ligne de commande, les instructions pour lancer les chainages.

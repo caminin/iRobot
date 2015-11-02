@@ -22,6 +22,7 @@ extern string pathBaseConnaissance;
 class chaineArriere
 {
 private:
+	// Stockage pour les bases
 	int step;
 	Structure s;
 	vector<Fait> base_fait;
@@ -29,9 +30,18 @@ private:
 	vector<Fait> but;
 			
 public:
+	// constructeur
 	chaineArriere();
-	void runChaineArriere(int);
+	
+	//Lance le chainage arrière
+	void runChaineArriere(int step);
+	
+	//vérifie si un but est dans la base, sinon cherche avec une règle
 	bool Demo(Fait &but, vector<Fait> &base_fait,vector<Regle> &base_regle);
+	
+	//applique démo à tous les buts
 	bool verif(vector<Fait> &ensemble_but, vector<Fait> &base_fait,vector<Regle> &base_regle);
+	
+	//récupère la meilleure règle à appliquer
 	Regle getBestRegle(vector<Regle> base_regle);
 };

@@ -83,11 +83,32 @@ void chaineAvant::runChaineAvant(int step){
 			//it_regle est vide au 5e, mais il continue
 		}
 	}
-	
+	cout << "__________________________________"<<endl;
 	for(unsigned int i=1;i<=memoriserRegleUtilisee.size();i++)
 	{
 		cout <<"La "<<i<<"ème règle utilisée est : "<<endl<<memoriserRegleUtilisee[i]<<endl<<endl;
 	}
+	
+	cout << "Résumé :"<<endl;;
+	if(struc_stockage_fait.moi.champion_pris!=nullptr)
+	{
+		cout << "j'ai pris " << base_fait[0].getNomPerso(*struc_stockage_fait.moi.champion_pris)<< " à "<<base_fait[0].getNomPoste(struc_stockage_fait.moi.poste_pris)<<endl;
+	}	
+	if(struc_stockage_fait.adversaire.son_champion!=nullptr)
+	{
+		cout << "il a pris " << base_fait[0].getNomPerso(*struc_stockage_fait.adversaire.son_champion)<<endl;
+	}	
+	if(struc_stockage_fait.moi.ma_situation==AVANTAGE)
+	{
+		cout << "J'ai un avantage"<<endl;
+	}
+	else if(struc_stockage_fait.moi.ma_situation==DESAVANTAGE)
+	{
+		cout << "J'ai un desavantage"<<endl;
+	}
+	
+	
+	
 }
 
 

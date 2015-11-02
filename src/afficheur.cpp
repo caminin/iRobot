@@ -14,7 +14,7 @@ void afficheur::runAvant()
 	gen->setText("");
 	reg->setText("");
 	fait->setText("");
-	QString nomProg = "/home/etudiant/iRobot/bin/prog.exe";
+	QString nomProg = "~/iRobot/bin/prog.exe";
 	QStringList arg;
 		arg.append("ch_avant");
 		arg.append(QString::number(spin->value()));

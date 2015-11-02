@@ -5,25 +5,21 @@
 
 using namespace std;
 
+//stocke tous les champions (personnage a jouer)
 enum champion {GAREN,LULU,DARIUS,LEBLANC,MORGANA,AHRI,EZREAL,CAITLYN,VAYNE,NAMI,LEONA,NAUTILUS,LEE,SHACO,FIDDLE,CHAMPION_INCONNU};
 
+//Les 5 postes disponibles
 enum type_poste {TOP,MID,ADC,SUPPORT,JUNGLE};
-
-enum statut {LIBRE,PRIS};
 
 enum situation {AVANTAGE,DESAVANTAGE,EGALITE};
 
-/*
-typedef struct s_poste {
-	type_poste nom_poste;
-	statut mon_statut;
-} posteType;*/
-
+//stockage du counter d'un personnage'
 typedef struct s_counter {
 	champion champion_a_counter;
 	champion champion_qui_counter;
 } counterType;
 
+//stockage de nos données
 typedef struct s_moi {
 	type_poste poste_souhaite;
 	type_poste poste_pris;
@@ -33,33 +29,12 @@ typedef struct s_moi {
 	
 } moiType;
 
+//stockage de l'adversaire'
 typedef struct s_adversaireType {
 	champion * son_champion;
 	type_poste son_poste;
 } adversaireType;
 
-/*
-TOP:
-	Garen
-	Lulu
-	Darius
-MID:
-	Leblanc
-	Morgana
-	Ahri
-ADC:
-	Ezreal
-	Caitlyn
-	Vayne
-SUPPORT:
-	Nami
-	Leona
-	Nautilus
-JUNGLE:
-	Lee
-	Shaco
-	Fiddle
-*/
 
 class Structure{
 public: 
@@ -69,9 +44,6 @@ public:
 	adversaireType adversaire;
 	counterType* tab_counter;
 	Structure();
-
-	
-	
 };
 
 
